@@ -40,8 +40,9 @@ bot.start(async(ctx)=>{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
-                    [{text:'Search',switch_inline_query:''},{text:'Link',callback_data:'POP'}],
-                    [{text:'Ginger Candy File', url: 'https://t.me/gingercandyfiles'}]
+                    [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
+                    [{text:'Owner1', url: 'https://t.me/SoraHearts'}],
+                    [{text:'Owner2', url: 'https://t.me/Gingercandy02'}]
                 ]
             }
         })

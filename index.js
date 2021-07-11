@@ -50,16 +50,12 @@ bot.start(async(ctx)=>{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);
             if(res.type=='video'){
-                ctx.replyWithVideo(res.file_id,{caption: `<b>${res.caption}</b>`,
-            parse_mode:'HTML'})
-            }else if(res.type=='document'){
-                ctx.replyWithDocument(res.file_id,{caption: `<b>${res.caption}</b>`,
+                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n Ketik /start untuk mengirim kembali`,
             parse_mode:'HTML'})
             }else{
-                ctx.reply(`Ketik /start untuk dapat mengirim kembali`,{
-            parse_mode:'HTML'
-            }
-            
+                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n Ketik /start untuk mengirim kembali`,
+            parse_mode:'HTML'})
+            }            
         })
     }
     //saving user details to the database

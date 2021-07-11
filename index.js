@@ -71,47 +71,6 @@ bot.action('POP',(ctx)=>{
     ctx.reply('Kirim bot file')
 })
 
-bot.command('/sendfile',(ctx)=>{
-    user2 ={
-        first_name:ctx.from.first_name,
-        userId:ctx.from.id
-    }
-
-    if(length == 1){
-        ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna dan bot mendukung <a href="t.me/mdtohtmlbot">HTML</a>.`,{
-            parse_mode:'HTML',
-            reply_markup:{
-                inline_keyboard:[
-                    [{text:'Tautan',callback_data:'POP2'}]
-                ]
-            }
-        })
-    }else{
-        file = await saver.getFile(query).then((res)=>{
-            console.log(res);
-            if(res.type=='video'){
-                ctx.replyWithVideo(res.file_id,{caption: `<b>${res.caption}</b>`,
-            parse_mode:'HTML'})
-            }else{
-                ctx.replyWithDocument(res.file_id,{caption: `<b>${res.caption}</b>`,
-            parse_mode:'HTML'})
-            }
-            
-        })
-    }
-    //saving user details to the database
-
-    saver.saveUser(user2)   
-    
-})
-
-//DEFINING POP CALLBACK
-bot.action('POP2',(ctx)=>{
-    ctx.deleteMessage()
-    ctx.reply('Kirim bot file')
-})
-
-
 //help
 
 //bot.command('/help',(ctx)=>{

@@ -40,15 +40,7 @@ bot.start(async(ctx)=>{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
-                    [{text:'Search',switch_inline_query:''},{text:'Link',callback_data:'POP'}]
-                ]
-            }
-        })
-    }else if(length == 2){
-        ctx.reply(`<b>Selamat datang, ini channel kami.</b>`,{
-            parse_mode:'HTML',
-            reply_markup:{
-                inline_keyboard:[
+                    [{text:'Search',switch_inline_query:''},{text:'Link',callback_data:'POP'}],
                     [{text:'Ginger Candy File', url: 'https://t.me/gingercandyfiles'}]
                 ]
             }

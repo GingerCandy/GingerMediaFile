@@ -41,6 +41,7 @@ bot.start(async(ctx)=>{
             reply_markup:{
                 inline_keyboard:[
                     [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
+                    [{text:'Channel', url: 'https://t.me/gingercandyfiles'}],
                     [{text:'Owner1', url: 'https://t.me/SoraHearts'}],
                     [{text:'Owner2', url: 'https://t.me/Gingercandy02'}]
                 ]

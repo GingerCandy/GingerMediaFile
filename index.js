@@ -36,7 +36,7 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        ctx.reply(`Halo ${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna dan bot mendukung <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+        ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna dan bot mendukung <a href="t.me/mdtohtmlbot">HTML</a>.`,{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -75,7 +75,7 @@ bot.action('POP',(ctx)=>{
 //help
 
 //bot.command('/help',(ctx)=>{
-//    ctx.reply(`Halo <b>${ctx.from.first_name}</b> \n\nAnda dapat mengirimi saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
+//    ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirimi saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
 //        parse_mode:'HTML',\n
 //        reply_markup:{
 //            inline_keyboard:[

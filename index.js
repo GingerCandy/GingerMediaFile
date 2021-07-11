@@ -42,7 +42,7 @@ bot.start(async(ctx)=>{
                 inline_keyboard:[
                     [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
                     [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
-                    [{text:'Channel', url: 'https://t.me/gingercandyfiles'}]
+                    [{text:'Join Channel', url: 'https://t.me/gingercandyfiles'}]
                 ]
             }
         })
@@ -50,10 +50,10 @@ bot.start(async(ctx)=>{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);
             if(res.type=='video'){
-                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati</b>`,
+                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
             parse_mode:'HTML'})
             }else{
-                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati</b>`,
+                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
             parse_mode:'HTML'})
             }            
         })
@@ -162,7 +162,7 @@ bot.command('send',async(ctx)=>{
         }
         if (ctx.from.id == process.env.ADMIN) {
             broadcast(text)
-            ctx.reply('Penyiaran dimulai (Pesan disiarkan dari terakhir bergabung hingga pertama)')
+            ctx.reply('Penyiaran dimulai (Pesan disiarkan dari terakhir bergabung hingga pertama).')
 
         }else{
             ctx.replyWithAnimation('https://media.giphy.com/media/fnuSiwXMTV3zmYDf6k/giphy.gif')
@@ -226,10 +226,10 @@ bot.on('document', async (ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} \n\nKetik /start untuk mengirim kembali dokumen`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} \n\nKetik /start untuk mengirim kembali dokumen.`)
             ctx.replyWithDocument(document.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
@@ -259,10 +259,10 @@ bot.on('video', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
@@ -293,7 +293,7 @@ bot.on('audio', async(ctx) => {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara.`)
             ctx.replyWithDocument(audio.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`

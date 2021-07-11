@@ -68,14 +68,14 @@ bot.start(async(ctx)=>{
 //DEFINING POP CALLBACK
 bot.action('POP',(ctx)=>{
     ctx.deleteMessage()
-    ctx.reply('send me a file')
+    ctx.reply('Kirim bot file')
 })
 
 //help
 
 bot.command('/help',(ctx)=>{
-    ctx.reply(`Halo <b>${ctx.from.first_name}</b> Anda dapat mengirimi saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna\n\n(<code>Anggap ini sebagai versi awal setelah memperbaiki tertentu bug kami akan membuat bot ini opensource</code>)`,{
-        parse_mode:'HTML',
+    ctx.reply(`Halo <b>${ctx.from.first_name}</b> \n\nAnda dapat mengirimi saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna\n\n(<code>Anggap ini sebagai versi awal setelah memperbaiki tertentu bug kami akan membuat bot ini opensource</code>)`,{
+        parse_mode:'HTML',\n
         reply_markup:{
             inline_keyboard:[
                 [{text:'🎲Clone',url:'t.me/filesaverhelp'}]

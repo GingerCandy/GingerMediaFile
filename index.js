@@ -67,7 +67,7 @@ bot.start(async(ctx)=>{
 //DEFINING POP CALLBACK
 bot.action('POP',(ctx)=>{
     ctx.deleteMessage()
-    ctx.reply('Kirim bot video, dokumen, suara')
+    ctx.reply('Kirim bot video, dokumen dan suara.')
 })
 
 //help

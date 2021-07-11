@@ -36,7 +36,7 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna dan bot mendukung <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+        ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -50,10 +50,10 @@ bot.start(async(ctx)=>{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);
             if(res.type=='video'){
-                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\nKetik /start untuk mengirim kembali video`,
+                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati</b>`,
             parse_mode:'HTML'})
             }else{
-                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\nKetik /start untuk mengirim kembali dokumen`,
+                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati</b>`,
             parse_mode:'HTML'})
             }            
         })
@@ -67,13 +67,13 @@ bot.start(async(ctx)=>{
 //DEFINING POP CALLBACK
 bot.action('POP',(ctx)=>{
     ctx.deleteMessage()
-    ctx.reply('Kirim bot file')
+    ctx.reply('Kirim bot video, dokumen, suara')
 })
 
 //help
 
 //bot.command('/help',(ctx)=>{
-//    ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirimi saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
+//    ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirim saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
 //        parse_mode:'HTML',\n
 //        reply_markup:{
 //            inline_keyboard:[
@@ -229,7 +229,7 @@ bot.on('document', async (ctx) => {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} \n\nKetik /start untuk mengirim kembali dokumen`)
             ctx.replyWithDocument(document.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
@@ -262,7 +262,7 @@ bot.on('video', async(ctx) => {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
@@ -293,7 +293,7 @@ bot.on('audio', async(ctx) => {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara`)
             ctx.replyWithDocument(audio.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`

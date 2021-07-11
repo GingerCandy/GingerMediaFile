@@ -50,10 +50,10 @@ bot.start(async(ctx)=>{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);
             if(res.type=='video'){
-                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n Ketik /start untuk mengirim kembali`,
+                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\nKetik /start untuk mengirim kembali video`,
             parse_mode:'HTML'})
             }else{
-                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n Ketik /start untuk mengirim kembali`,
+                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\nKetik /start untuk mengirim kembali dokumen`,
             parse_mode:'HTML'})
             }            
         })
@@ -162,7 +162,7 @@ bot.command('send',async(ctx)=>{
         }
         if (ctx.from.id == process.env.ADMIN) {
             broadcast(text)
-            ctx.reply('Penyiaran dimulai -(Pesan disiarkan dari terakhir bergabung hingga pertama)')
+            ctx.reply('Penyiaran dimulai (Pesan disiarkan dari terakhir bergabung hingga pertama)')
 
         }else{
             ctx.replyWithAnimation('https://media.giphy.com/media/fnuSiwXMTV3zmYDf6k/giphy.gif')

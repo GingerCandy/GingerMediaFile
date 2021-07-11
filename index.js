@@ -37,7 +37,7 @@ bot.start(async(ctx)=>{
 
     if(length == 1){
         ctx.reply(`<b>Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna.</b>`,{
-            parse_mode:'HTML'
+            parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
                     [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],

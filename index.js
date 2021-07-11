@@ -36,7 +36,7 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        ctx.reply(`<b>Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan. Saya juga dapat membuat file tersedia untuk semua pengguna.</b>`,{
+        ctx.reply(`<b>Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Mendukung HTML</b>`,{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -71,21 +71,22 @@ bot.action('POP',(ctx)=>{
     ctx.reply('Kirim bot file')
 })
 
+
 //help
 
-bot.command('/help',(ctx)=>{
-    ctx.reply(`Halo <b>${ctx.from.first_name}</b> \n\nAnda dapat mengirimi saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
-        parse_mode:'HTML',\n
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'🎲Clone',url:'t.me/filesaverhelp'}]
-            ]
-        }    
-    })
-    if(ctx.from.id==process.env.ADMIN){
-        ctx.reply('https://telegra.ph/Filesaver-Admin-commands-06-05')
-    }
-})
+//bot.command('/help',(ctx)=>{
+//    ctx.reply(`Halo <b>${ctx.from.first_name}</b> \n\nAnda dapat mengirimi saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
+//        parse_mode:'HTML',\n
+//        reply_markup:{
+//            inline_keyboard:[
+//                [{text:'🎲Clone',url:'t.me/filesaverhelp'}]
+//            ]
+//        }    
+//    })
+//    if(ctx.from.id==process.env.ADMIN){
+//        ctx.reply('https://telegra.ph/Filesaver-Admin-commands-06-05')
+//    }
+//})
 
 //remove files with file_id
 

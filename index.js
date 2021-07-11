@@ -72,13 +72,6 @@ bot.action('POP',(ctx)=>{
 })
 
 bot.command('/sendfile',(ctx)=>{
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    console.log(msgArray.length);
-    let length = msgArray.length
-    msgArray.shift()
-    let query = msgArray.join(' ')
-
     user2 ={
         first_name:ctx.from.first_name,
         userId:ctx.from.id

@@ -98,7 +98,7 @@ bot.command('rem', (ctx) => {
     console.log(text);
     if(ctx.from.id ==process.env.ADMIN){
         saver.removeFile(text)
-        ctx.reply('✅Dihapus')
+        ctx.reply('✅ Dihapus')
     }
 })
 
@@ -107,7 +107,7 @@ bot.command('rem', (ctx) => {
 bot.command('clear',(ctx)=>{
     if(ctx.from.id ==process.env.ADMIN){
         saver.deleteCollection()
-        ctx.reply('✅Dihapus')
+        ctx.reply('✅ Dihapus')
     }
     
 })
@@ -123,7 +123,7 @@ bot.command('remall', (ctx) => {
     let id = parseInt(text)
     if(ctx.from.id ==process.env.ADMIN|| ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         saver.removeUserFile(id)
-        ctx.reply('✅Dihapus')
+        ctx.reply('✅ Dihapus')
     }
 })
 
@@ -157,7 +157,7 @@ bot.command('send',async(ctx)=>{
 
                 }
             }
-            ctx.reply(`<b>✅Jumlah pengguna aktif:</b>${userId.length - totalFail.length}\n❌<b>Total siaran yang gagal:</b>${totalFail.length}`,{
+            ctx.reply(`<b>✅ Jumlah pengguna aktif:</b>${userId.length - totalFail.length}\n❌ <b>Total siaran yang gagal:</b>${totalFail.length}`,{
                 parse_mode:'HTML'
             })
 
@@ -207,7 +207,7 @@ bot.command('unban', (ctx) => {
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.unBan(userId).then((res) => {
-            ctx.reply('✅Selesai')
+            ctx.reply('✅ Selesai')
         })
     }
 })
@@ -228,7 +228,7 @@ bot.on('document', async (ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
@@ -261,7 +261,7 @@ bot.on('video', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
@@ -292,7 +292,7 @@ bot.on('audio', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
@@ -310,7 +310,7 @@ bot.on('audio', async(ctx) => {
 bot.command('stats',async(ctx)=>{
     stats = await saver.getUser().then((res)=>{
         if(ctx.from.id==process.env.ADMIN){
-            ctx.reply(`📊Total user: <b> ${res.length}</b>`,{parse_mode:'HTML'})
+            ctx.reply(`📊 Total user: <b> ${res.length}</b>`,{parse_mode:'HTML'})
         }
         
     })
@@ -332,7 +332,7 @@ bot.on('inline_query',async(ctx)=>{
                     caption:item.caption,
                     reply_markup:{
                         inline_keyboard:[
-                            [{text:"🔎Mencari lagi",switch_inline_query:''}]
+                            [{text:"🔎 Mencari",switch_inline_query:''}]
                         ]
                     }
                 }
@@ -341,7 +341,7 @@ bot.on('inline_query',async(ctx)=>{
             ctx.answerInlineQuery(result)
         })
     }else{
-        console.log('Kueri tidak ditemukan');
+        console.log('query not found');
     }
     
 })

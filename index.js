@@ -55,7 +55,7 @@ bot.start(async(ctx)=>{
             }else if(res.type=='photo'){
                 ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                 parse_mode:'HTML'})
-            }else{
+            }else if(res.type='document'){
                 ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                 parse_mode:'HTML'})
             }            
@@ -217,7 +217,8 @@ bot.on('document', async (ctx) => {
         file_id: document.file_id,
         caption: ctx.message.caption,
         file_size: document.file_size,
-        uniqueId: document.file_unique_id
+        uniqueId: document.file_unique_id,
+        type: 'document'
     }
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
@@ -250,6 +251,7 @@ bot.on('video', async(ctx) => {
         uniqueId: video.file_unique_id,
         type: 'video'
     }
+    console.log(fileDetails.caption);
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
@@ -278,6 +280,7 @@ bot.on('photo', async(ctx) => {
         uniqueId: photo[1].file_unique_id,
         type: 'photo'
     }
+    console.log(fileDetails.caption);
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
@@ -308,6 +311,7 @@ bot.on('audio', async(ctx) => {
         uniqueId: audio.file_unique_id,
         type: 'audio'
     }
+    console.log(fileDetails.caption);
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {

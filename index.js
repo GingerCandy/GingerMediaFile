@@ -285,7 +285,6 @@ bot.on('photo', async(ctx) => {
         userId:ctx.from.id,
         file_id: photo.file_id,
         caption: ctx.message.caption,
-        file_size: photo.file_size,
         uniqueId: photo.file_unique_id,
         type: 'photo'
     }

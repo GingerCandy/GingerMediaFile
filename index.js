@@ -52,6 +52,9 @@ bot.start(async(ctx)=>{
             if(res.type=='video'){
                 ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
             parse_mode:'HTML'})
+            }else if(res.type=='photo'){
+                ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+            parse_mode:'HTML'})
             }else{
                 ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
             parse_mode:'HTML'})
@@ -67,7 +70,7 @@ bot.start(async(ctx)=>{
 //DEFINING POP CALLBACK
 bot.action('POP',(ctx)=>{
     ctx.deleteMessage()
-    ctx.reply('Kirim bot video, dokumen dan suara.')
+    ctx.reply('Kirim bot video, photo, dokumen dan suara.')
 })
 
 //help
@@ -272,6 +275,38 @@ bot.on('video', async(ctx) => {
 
 })
 
+//photo files
+
+bot.on('photo', async(ctx) => {
+    video = ctx.message.photo
+    console.log(ctx);
+    fileDetails = {
+        file_name: photo.file_name,
+        userId:ctx.from.id,
+        file_id: photo.file_id,
+        caption: ctx.message.caption,
+        file_size: photo.file_size,
+        uniqueId: photo.file_unique_id,
+        type: 'photo'
+    }
+    console.log(fileDetails.caption);
+
+    await saver.checkBan(`${ctx.from.id}`).then((res) => {
+        console.log(res);
+        if (res == true) {
+            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
+        } else {
+            saver.saveFile(fileDetails)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
+            ctx.replyWithPhoto(photo.file_id, {
+                chat_id: process.env.LOG_CHANNEL,
+                caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+            })
+        }
+    })
+
+})
+
 //audio files
 
 bot.on('audio', async(ctx) => {
@@ -290,7 +325,7 @@ bot.on('audio', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara.`)

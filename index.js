@@ -281,7 +281,6 @@ bot.on('photo', async(ctx) => {
     photo = ctx.message.photo
     console.log(ctx);
     fileDetails = {
-        file_name: photo.file_name,
         userId:ctx.from.id,
         file_id: photo.file_id,
         caption: ctx.message.caption,

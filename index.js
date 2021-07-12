@@ -90,7 +90,7 @@ bot.action('POP',(ctx)=>{
 //})
 
 bot.command('/help',(ctx)=>{
-    ctx.reply(`Nama: ${ctx.from.first_name}\n\nNamapengguna: ${ctx.from.username}\n\nID: ${ctx.from.chat_id}`,{
+    ctx.reply(`Nama: ${ctx.from.first_name} \n\nNamapengguna: ${ctx.from.username} \n\nID: ${ctx.from.chat_id}`,{
         parse_mode:'HTML',\n
         reply_markup:{
             inline_keyboard:[

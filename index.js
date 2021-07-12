@@ -75,7 +75,7 @@ bot.action('POP',(ctx)=>{
 
 //help
 
-bot.command('/help',(ctx)=>{
+bot.command('/getid',(ctx)=>{
     ctx.reply(`Nama: <b>${ctx.from.first_name}</b>\nnusername: <b>${ctx.from.username}</b>\nID: <b>${ctx.from.chat_id}</b>`,{
         parse_mode:'HTML'  
     })

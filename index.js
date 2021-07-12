@@ -53,7 +53,7 @@ bot.start(async(ctx)=>{
                 ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
             parse_mode:'HTML'})
             }else if(res.type=='photo'){
-                if(caption: ${res.caption} == 'NULL'){
+                if(${ctx.message.caption} == 'NULL'){
                   ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
                   parse_mode:'HTML'})
                 }else{

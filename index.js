@@ -36,7 +36,7 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        ctx.reply(`${ctx.from.fullname} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+        ctx.reply(`${ctx.from.name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -76,7 +76,7 @@ bot.action('POP',(ctx)=>{
 //help
 
 bot.command('/getid',(ctx)=>{
-    ctx.reply(`<b>Name:</b> ${ctx.from.full_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
+    ctx.reply(`<b>Name:</b> ${ctx.from.name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
         parse_mode:'HTML'  
     })
 })
@@ -227,7 +227,7 @@ bot.on('document', async (ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} \n\nKetik /start untuk mengirim kembali dokumen.`)
             ctx.replyWithDocument(document.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.full_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.name}\nID file: ${document.file_id}`
 
             })
         }
@@ -260,7 +260,7 @@ bot.on('video', async(ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.full_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.name}\nID file: ${document.file_id}`
             })
         }
     })
@@ -290,7 +290,7 @@ bot.on('photo', async(ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id} \n\nKetik /start untuk mengirim kembali photo.`)
             ctx.replyWithPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.full_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.name}\nID file: ${document.file_id}`
             })
         }
     })
@@ -321,7 +321,7 @@ bot.on('audio', async(ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara.`)
             ctx.replyWithDocument(audio.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.full_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama lengkap: ${ctx.from.name}\nID file: ${document.file_id}`
             })
         }
     })

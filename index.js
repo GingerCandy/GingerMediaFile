@@ -89,17 +89,6 @@ bot.action('POP',(ctx)=>{
 //    }
 //})
 
-bot.command('getid',(ctx)=>{
-    ctx.reply(`Nama: <b>${ctx.from.first_name}</b> \n\nIdentitas: <b>${ctx.from.username}</b> \n\nID saya:<b>${ctx.chat_id}</b> \n\n`,{
-        parse_mode:'HTML',\n
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'🎲Clone',url:'t.me/filesaverhelp'}]
-            ]
-        }   
-    })
-})
-
 //remove files with file_id
 
 bot.command('rem', (ctx) => {

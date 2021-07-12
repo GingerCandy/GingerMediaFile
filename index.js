@@ -91,7 +91,7 @@ bot.action('POP',(ctx)=>{
 
 //getid
 
-bot.command('/getid',(ctx)=>{
+bot.command('/help',(ctx)=>{
     ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirim saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
         parse_mode:'HTML',\n
         reply_markup:{

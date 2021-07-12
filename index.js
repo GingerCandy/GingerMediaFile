@@ -250,8 +250,6 @@ bot.on('video', async(ctx) => {
         uniqueId: video.file_unique_id,
         type: 'video'
     }
-    console.log(fileDetails.caption);
-
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
@@ -261,7 +259,7 @@ bot.on('video', async(ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${video.file_id}`
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
             })
         }
     })
@@ -280,8 +278,6 @@ bot.on('photo', async(ctx) => {
         uniqueId: photo[1].file_unique_id,
         type: 'photo'
     }
-    console.log(fileDetails.caption);
-
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
@@ -312,7 +308,6 @@ bot.on('audio', async(ctx) => {
         uniqueId: audio.file_unique_id,
         type: 'audio'
     }
-    console.log(fileDetails.caption);
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {

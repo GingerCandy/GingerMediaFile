@@ -88,15 +88,12 @@ bot.action('POP',(ctx)=>{
 //        ctx.reply('https://telegra.ph/Filesaver-Admin-commands-06-05')
 //    }
 //})
-<<<<<<< HEAD
-=======
 
 bot.command('/getid',(ctx)=>{
     ctx.reply(`Nama: <b>${ctx.from.first_name}</b> \n\nIdentitas: <b>${ctx.from.username}</b> \n\nID saya:<b>${ctx.chat_id}</b> \n\n`,{
         parse_mode:'HTML',\n   
     })
 })
->>>>>>> 474c248 (Upload file)
 
 //remove files with file_id
 

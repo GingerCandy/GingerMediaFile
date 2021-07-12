@@ -221,6 +221,7 @@ bot.on('document', async (ctx) => {
         uniqueId: document.file_unique_id,
         type: 'document'
     }
+    console.log(fileDetails.caption);
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {

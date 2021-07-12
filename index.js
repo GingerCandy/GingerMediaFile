@@ -57,7 +57,7 @@ bot.start(async(ctx)=>{
                   parse_mode:'HTML'})
             }else{
                 ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-            parse_mode:'HTML'})
+                parse_mode:'HTML'})
             }            
         })
     }

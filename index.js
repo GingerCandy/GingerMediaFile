@@ -260,11 +260,11 @@ bot.on('video', async(ctx) => {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`,{
             parse_mode: 'HTML',
-            disable-web-page-preview: 'false'})
+            disable-web-page-preview: 'false'
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
-            })
+            })})
         }
     })
 

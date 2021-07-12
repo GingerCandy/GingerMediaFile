@@ -89,6 +89,22 @@ bot.action('POP',(ctx)=>{
 //    }
 //})
 
+//getid
+
+bot.command('/getid',(ctx)=>{
+    ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirim saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
+        parse_mode:'HTML',\n
+        reply_markup:{
+            inline_keyboard:[
+                [{text:'🎲Clone',url:'t.me/filesaverhelp'}]
+            ]
+        }    
+    })
+    if(ctx.from.id==process.env.ADMIN){
+        ctx.reply('https://telegra.ph/Filesaver-Admin-commands-06-05')
+    }
+})
+
 //remove files with file_id
 
 bot.command('rem', (ctx) => {

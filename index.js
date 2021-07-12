@@ -278,7 +278,7 @@ bot.on('video', async(ctx) => {
 //photo files
 
 bot.on('photo', async(ctx) => {
-    photo = ctx.message.photo
+    photo = ctx.message.photo[1]
     console.log(ctx);
     fileDetails = {
         userId:ctx.from.id,

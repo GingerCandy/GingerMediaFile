@@ -42,7 +42,7 @@ bot.start(async(ctx)=>{
                 inline_keyboard:[
                     [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
                     [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
-                    [{text:'Join Channel', url: 'https://t.me/gingercandyfiles'}]
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                 ]
             }
         })

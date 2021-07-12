@@ -235,7 +235,7 @@ bot.on('document', async (ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} \n\nKetik /start untuk mengirim kembali dokumen.`)
             ctx.replyWithDocument(document.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama depan:</b> ${ctx.from.first_name}\n<b>ID file:</b> ${document.file_id}`
 
             })
         }
@@ -268,7 +268,7 @@ bot.on('video', async(ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama depan:</b> ${ctx.from.first_name}\n<b>ID file:</b> ${document.file_id}`
             })
         }
     })
@@ -298,7 +298,7 @@ bot.on('photo', async(ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id} \n\nKetik /start untuk mengirim kembali photo.`)
             ctx.replyWithPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama depan:</b> ${ctx.from.first_name}\n<b>ID file:</b> ${document.file_id}`
             })
         }
     })
@@ -329,7 +329,7 @@ bot.on('audio', async(ctx) => {
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara.`)
             ctx.replyWithDocument(audio.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama depan:</b> ${ctx.from.first_name}\n<b>ID file:</b> ${document.file_id}`
             })
         }
     })

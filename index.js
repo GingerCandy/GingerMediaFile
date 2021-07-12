@@ -90,7 +90,7 @@ bot.action('POP',(ctx)=>{
 //})
 
 bot.command('/getid',(ctx)=>{
-    ctx.reply(`Nama: <b>${ctx.from.first_name}`,{
+    ctx.reply(`Nama: <b>${ctx.from.first_name}</b>`,{
         parse_mode:'HTML',\n
         reply_markup:{
             inline_keyboard:[

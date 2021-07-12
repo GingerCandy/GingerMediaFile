@@ -297,7 +297,7 @@ bot.on('photo', async(ctx) => {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo.file_unique_id} \n\nKetik /start untuk mengirim kembali photo.`)
             ctx.replyWithPhoto(photo.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`

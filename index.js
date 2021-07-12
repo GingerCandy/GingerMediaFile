@@ -76,7 +76,7 @@ bot.action('POP',(ctx)=>{
 //help
 
 bot.command('/help',(ctx)=>{
-    ctx.reply(`<b>${ctx.from.first_name}</b>`,{
+    ctx.reply(`Nama: <b>${ctx.from.first_name}</b>\n\nnusername: <b>${ctx.from.username}</b>\n\nID: <b>${ctx.from.chat_id}</b>`,{
         parse_mode:'HTML',
         reply_markup:{
             inline_keyboard:[

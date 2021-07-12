@@ -76,17 +76,9 @@ bot.action('POP',(ctx)=>{
 //help
 
 bot.command('/help',(ctx)=>{
-    ctx.reply(`Nama: <b>${ctx.from.first_name}</b>\n\nnusername: <b>${ctx.from.username}</b>\n\nID: <b>${ctx.from.chat_id}</b>`,{
-        parse_mode:'HTML',
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'🎲Clone',url:'t.me/filesaverhelp'}]
-            ]
-        }    
+    ctx.reply(`Nama: <b>${ctx.from.first_name}</b>\nnusername: <b>${ctx.from.username}</b>\nID: <b>${ctx.from.chat_id}</b>`,{
+        parse_mode:'HTML'  
     })
-    if(ctx.from.id==process.env.ADMIN){
-        ctx.reply('https://telegra.ph/Filesaver-Admin-commands-06-05')
-    }
 })
 
 //remove files with file_id

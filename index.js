@@ -36,8 +36,7 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        ctx.replyWithPhoto('photos.getUserPhotos')
-        ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+        ctx.replyWithPhoto(https://images4.imagebam.com/3e/67/3f/ME1WOMT_o.jpg,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -45,7 +44,7 @@ bot.start(async(ctx)=>{
                     [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
                     [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                 ]
-            }
+            }}
         })
     }else{
         file = await saver.getFile(query).then((res)=>{

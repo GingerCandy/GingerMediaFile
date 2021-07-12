@@ -27,12 +27,13 @@ bot.start(async(ctx)=>{
     let length = msgArray.length
     msgArray.shift()
     let query = msgArray.join(' ')
+    chatvideo = `https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
 
     user ={
         first_name:ctx.from.first_name,
         userId:ctx.from.id
     }
-
+    
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
@@ -50,7 +51,7 @@ bot.start(async(ctx)=>{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);
             if(res.type=='video'){
-                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                ctx.replyWithVideo(chatvideo,res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
             parse_mode:'HTML'})
             }else if(res.type=='photo'){
                 ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,

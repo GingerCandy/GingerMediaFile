@@ -76,7 +76,7 @@ bot.action('POP',(ctx)=>{
 //help
 
 //bot.command('/help',(ctx)=>{
-//    ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirim saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
+//    ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirim saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`),{
 //        parse_mode:'HTML',\n
 //        reply_markup:{
 //            inline_keyboard:[
@@ -90,7 +90,7 @@ bot.action('POP',(ctx)=>{
 //})
 
 bot.command('/help',(ctx)=>{
-    ctx.reply(`${ctx.from.first_name} \n\nAnda dapat mengirim saya file dan saya akan menyimpan dan membagikan tautan untuk file itu untuk digunakan di dalam telegram\nAnda juga dapat menggunakan saya untuk mencari file yang disumbangkan oleh berbagai pengguna.`,{
+    ctx.reply(`Nama: ${ctx.from.first_name}\n\nNamapengguna: ${ctx.from.username}\n\nID: ${ctx.from.chat_id}`,{
         parse_mode:'HTML',\n
         reply_markup:{
             inline_keyboard:[

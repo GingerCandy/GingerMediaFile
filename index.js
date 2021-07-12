@@ -36,13 +36,7 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        ctx.replyWithPhoto('https://images4.imagebam.com/3e/67/3f/ME1WOMT_o.jpg',{caption: `<b>Selamat menikmati apa yang kami berikan.</b>`,
-            parse_mode:'HTML',
-            reply_markup:{
-                inline_keyboard:[
-                    [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                ]
-             })
+        ctx.replyWithPhoto('https://images4.imagebam.com/3e/67/3f/ME1WOMT_o.jpg',{caption: `<b>Selamat menikmati apa yang kami berikan.</b>`})
         ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
             parse_mode:'HTML',
             reply_markup:{

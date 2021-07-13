@@ -1,89 +1,98 @@
-# filesaver
-Bot generates sharable link inside telegram for documents and make files public via inline search
+# RatuFileSaver
+Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, suara, dokumen dan membuat file publik melalui pencarian inline.
 
-<a href="https://heroku.com/deploy?template=https://github.com/Amalrajanj/filesaver">
+
+<a href="https://heroku.com/deploy?template=https://github.com/BimoSora/RatuFileSaver">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
-<br><br>
+<br>
+Ganti tautan dengan template github Anda.
+</br>
+
+<br>
 <a href="https://youtu.be/zw_ijvhzomI">
-Click here to watch how to host
+Klik di sini untuk menonton cara meng-host
 </a>
 <br>
-required details 
+Detail yang diperlukan.
 
-<code>TOKEN</code> - Get bot token from bot father
+<code>TOKEN</code> - Dapatkan Token Bot dari Bot father.
 
-<code>DOMAIN</code> - Same as app name that you enter in heroku
+<code>DOMAIN</code> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.
 
-<code>ADMIN</code> - your account id(if you cant find it use bots like @getidsbot )
+<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).
 
-<code>BOTUSERNAME</code> - your bot username without '@'
+<code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.
 
-<code>DB_URL</code> - create an account on https://www.mongodb.com/cloud/atlas , database name - mediaFile ,collection name - fileBackup.Click connect and choose 'connect your application'.Copy the link and replace "< password >" with password of user having acess to db and replace "myFirstDatabase" to "mediaFile"
+<code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - mediaFile ,nama collection - fileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "mediaFile".
 
-<code>LOG_CHANNEL</code> - create a private channel and get channel ID (if you cant get channel id forward any message from channel to @getidsbot it may look something like -1001234567899)  
+<code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
 <hr>
 
-<h1>Here are some of the admin commands and usage</h1>
+<h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
 
 
-1.How to ban and unban users
+1. Bagaimana pengguna melarang dan unban.
 
 
-<code>/ban</code> userID
+<code>/ban</code> userID.
 
-<code>/unban</code> userID
+<code>/unban</code> userID.
 
-(Get userID from log channel)
-
-
-<h2>How to remove files from bot</h2>
+(Dapatkan UserID dari saluran log).
 
 
-you can remove files 3 ways
-
- ⚫ Remove individual files with file_id
-
- ⚫ Remove all files send by a user
-
- ⚫ Remove all files send to the bot
+<h2>Cara Menghapus File Dari Bot.</h2>
 
 
-    Remove individual files with file_id
+Anda dapat menghapus file 3 cara.
 
-<code>/rem</code> file_id
+  ⚫ Hapus file individual dengan file_id.
 
-(This will remove files one by one as you give file_id,Get file_id from log channel)
+  ⚫ Hapus semua file Kirim oleh pengguna.
 
-
-    Remove all files send by a user
-
-<code>/remall</code> userID
-
-(You can remove all files send by a particular user if user is sending abusive contents or spam ,Get the userID from log channel)
+  ⚫ Hapus semua file Kirim ke Bot.
 
 
-    Remove all files send to b0t
+    Hapus file individual dengan file_id.
+
+<code>/rem</code> file_id.
+
+(Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log).
+
+
+    Hapus semua file Kirim oleh pengguna.
+
+<code>/remall</code> userID.
+
+(Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log).
+
+
+    Hapus semua file Kirim ke B0T.
 
 <code>/clear</code>
 
-(This will remove all files send to the bot permenantly)
+(Ini akan menghapus semua file yang dikirim ke bot secara permanen).
+
+<h2>Kirim pesan ke pengguna</h2>
+
+<code>/send</code> Pesan Anda akan .
+
+(Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).
 
 
-<h2>Send message to users</h2>
-
-<code>/send</code> your message to be broadcasted
-
-(You can broadcast text messages to your users ,the message will be send from last joined user to first joined user to reduce spam.Try not to send too many messages at a single time if you have a large number of users)
-
-
-<h2>How to know total bot users</h2>
+<h2>Cara Mengetahui Total Pengguna Bot.</h2>
 
 <code>/stats</code>
 
-(You will get total users started your bot,Real time data will be updated after a succesfull broadcast)
+(Anda akan mendapatkan total pengguna memulai bot Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil).
 
 
 
-<b>If you wish to support me follow me on github as a token of support</b>
+<b>Jika Anda ingin mendukung saya, ikuti saya di GitHub sebagai token dukungan.</b>
 
+Tambahan
+1. Ada join channel/grup terlebih dahulu saat start, pastikan id channel/grup di ganti pada index.js dan bot harus jadi admin di grup/channel.
+2. Terdapat penambahan untuk menghilangkan null supaya tidak terlihat saat tampil.
+3. Ada get ID untuk cek ID akun Anda.
+4. Ada pesan bot belum dimasukkan ke channel/grup tujuan.

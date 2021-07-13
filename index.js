@@ -78,7 +78,7 @@ bot.start(async(ctx)=>{
                 parse_mode:'HTML'})
             }else if(res.type=='document'){
                 if (!res.caption)
-                return ctx.replyWitreplyWithDocumenthVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
                 parse_mode:'HTML'})
 
                 ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,

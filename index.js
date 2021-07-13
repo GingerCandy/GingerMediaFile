@@ -28,6 +28,8 @@ bot.start(async(ctx)=>{
     msgArray.shift()
     let query = msgArray.join(' ')
 
+    chatId:ctx.chat.id
+
     user ={
         first_name:ctx.from.first_name,
         userId:ctx.from.id
@@ -36,7 +38,8 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        ctx.replyWithPhoto(chat.id,res.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+        bot.getUserProfilePhotos(userId, 0, 1).then(function(data){
+        ctx.replyWithPhoto(chatId,res.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -44,7 +47,7 @@ bot.start(async(ctx)=>{
                     [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
                     [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                 ]
-            }
+            }}
         })
     }else{
         file = await saver.getFile(query).then((res)=>{

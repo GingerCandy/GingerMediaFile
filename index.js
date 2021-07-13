@@ -386,7 +386,7 @@ bot.on('photo', async(ctx) => {
             ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
         var member2 = await bot.telegram.getChatMember(-1001590114102, ctx.from.id)
-          console.log(member);
+          console.log(member2);
           if (!member2 || member2.status == 'left'){
              ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
                   parse_mode:'HTML',

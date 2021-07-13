@@ -182,7 +182,6 @@ bot.action('POP',(ctx)=>{
 bot.command('/getid',(ctx)=>{
     ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
           parse_mode:'HTML'
-    )
 })
 
 

@@ -177,8 +177,7 @@ bot.action('POP',(ctx)=>{
 })
 
 //check account
-
-bot.command('getid',(ctx)=>{
+bot.command('/getid',async(ctx)=>{
    var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
       console.log(profile2);
       if (!profile2 || profile2.total_count == 0){
@@ -193,7 +192,6 @@ bot.command('getid',(ctx)=>{
 })
 
 //remove files with file_id
-
 bot.command('rem', (ctx) => {
     msg = ctx.message.text
     let msgArray = msg.split(' ')
@@ -207,7 +205,6 @@ bot.command('rem', (ctx) => {
 })
 
 //remove whole collection(remove all files)
-
 bot.command('clear',(ctx)=>{
     if(ctx.from.id ==process.env.ADMIN){
         saver.deleteCollection()
@@ -217,7 +214,6 @@ bot.command('clear',(ctx)=>{
 })
 
 //removing all files sent by a user
-
 bot.command('remall', (ctx) => {
     msg = ctx.message.text
     let msgArray = msg.split(' ')
@@ -232,7 +228,6 @@ bot.command('remall', (ctx) => {
 })
 
 //broadcasting message to bot users(from last joined to first)
-
 bot.command('send',async(ctx)=>{
     msg = ctx.message.text
     let msgArray = msg.split(' ')
@@ -278,7 +273,6 @@ bot.command('send',async(ctx)=>{
 })
 
 //ban user with user id
-
 bot.command('ban', (ctx) => {
     msg = ctx.message.text
     let msgArray = msg.split(' ')
@@ -297,7 +291,6 @@ bot.command('ban', (ctx) => {
 })
 
 //unban user with user id
-
 bot.command('unban', (ctx) => {
     msg = ctx.message.text
     let msgArray = msg.split(' ')
@@ -317,7 +310,6 @@ bot.command('unban', (ctx) => {
 })
 
 //saving documents to db and generating link
-
 bot.on('document', async (ctx) => {
     document = ctx.message.document
     console.log(ctx);
@@ -348,7 +340,6 @@ bot.on('document', async (ctx) => {
 })
 
 //video files
-
 bot.on('video', async(ctx) => {
     video = ctx.message.video
     console.log(ctx);
@@ -379,7 +370,6 @@ bot.on('video', async(ctx) => {
 })
 
 //photo files
-
 bot.on('photo', async(ctx) => {
     photo = ctx.message.photo
     console.log(ctx);
@@ -408,7 +398,6 @@ bot.on('photo', async(ctx) => {
 })
 
 //audio files
-
 bot.on('audio', async(ctx) => {
     audio = ctx.message.audio
     console.log(ctx);
@@ -439,7 +428,6 @@ bot.on('audio', async(ctx) => {
 })
 
 //checking bot status only for admins 
-
 bot.command('stats',async(ctx)=>{
     stats = await saver.getUser().then((res)=>{
         if(ctx.from.id==process.env.ADMIN){

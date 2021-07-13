@@ -275,9 +275,6 @@ bot.on('document', async (ctx) => {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
             })
-            }catch(error){
-             ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
-            }
         }
     })
 })
@@ -302,16 +299,30 @@ bot.on('video', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
-            try{
+
+        try {
+        var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+        console.log(member);
+        if (!member || member.status == 'left'){
+            ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
+                parse_mode:'HTML',
+                reply_markup:{
+                    inline_keyboard:[
+                        [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
+                    ]
+                }
+            })
+        }else{
+
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
             })
-            }catch(error){
-             ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
-            }
+         }catch(error){
+         ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
+         }
         }
     })
 
@@ -335,16 +346,12 @@ bot.on('photo', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
-            try{
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id} \n\nKetik /start untuk mengirim kembali photo.`)
             ctx.replyWithPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.fisrt_name}\nID file: ${document.file_id}`
             })
-            }catch(error){
-             ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
-            }
         }
     })
 
@@ -370,16 +377,12 @@ bot.on('audio', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
-            try
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara.`)
             ctx.replyWithDocument(audio.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
             })
-            }catch(error){
-             ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
-            }
         }
     })
 

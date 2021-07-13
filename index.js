@@ -38,7 +38,7 @@ bot.start(async(ctx)=>{
     if(length == 1){
         var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
         if (!profile || profile.total_count == 0)
-        return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+            return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -49,7 +49,7 @@ bot.start(async(ctx)=>{
             }
         })
 
-        ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+            ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[
@@ -64,25 +64,31 @@ bot.start(async(ctx)=>{
             console.log(res);
             if(res.type=='video'){
                 if (!res.caption)
-                return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                parse_mode:'HTML'})
+                    return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                    parse_mode:'HTML'
+                })
 
-                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                parse_mode:'HTML'})
+                    ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                    parse_mode:'HTML'
+                })
             }else if(res.type=='photo'){
                 if (!res.caption)
-                return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                parse_mode:'HTML'})
-                
-                ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                parse_mode:'HTML'})
+                    return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                    parse_mode:'HTML'
+                })
+                    
+                    ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                    parse_mode:'HTML'
+                })
             }else if(res.type=='document'){
                 if (!res.caption)
-                return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                parse_mode:'HTML'})
+                    return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                    parse_mode:'HTML'
+                })
 
-                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                parse_mode:'HTML'})
+                    ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                    parse_mode:'HTML'
+                })
             }            
         })
     }

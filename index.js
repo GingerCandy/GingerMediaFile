@@ -408,8 +408,6 @@ bot.on('inline_query',async(ctx)=>{
     
 })
 
-
-
 //heroku config
 domain = `${process.env.DOMAIN}.herokuapp.com`
 bot.launch({

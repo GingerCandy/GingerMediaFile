@@ -7,7 +7,7 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk dokumen dan
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 <br>
-ganti tulisan https://github.com/BimoSora/RatuFileSaver dengan template github Anda
+Ganti tautan dengan template github Anda
 </br>
 
 <br>

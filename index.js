@@ -66,10 +66,10 @@ bot.start(async(ctx)=>{
                 ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
             parse_mode:'HTML'})
             }else if(res.type=='photo'){
-                if (!res.caption || res.caption.total_count == "")
+                if (!caption || caption.total_count == "")
                 return ctx.replyWithPhoto(res.file_id,{`\n\n<b>Selamat menikmati.</b>`,
                 parse_mode:'HTML'})
-                
+
                 ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                 parse_mode:'HTML'})
             }else if(res.type=='document'){

@@ -35,7 +35,14 @@ bot.start(async(ctx)=>{
     
     var member = await bot.telegram.getChatMember(-1001250398726, ctx.from.id)
     if (!member || member.status == 'left'){
-        ctx.reply(`belum join`)
+        ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung dulu!', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
+                ]
+            }
+        }
     }else{
 
     //welcoming message on /start and if there is a query available we can send files

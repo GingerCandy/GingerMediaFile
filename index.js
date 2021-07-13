@@ -36,7 +36,7 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        var profile = await telegram.getUserProfilePhotos(userId)
+        var profile = await bot.telegram.getUserProfilePhotos(userId)
         ctx.replyWithPhoto(chat.id,profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
             parse_mode:'HTML',
             reply_markup:{

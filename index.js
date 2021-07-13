@@ -33,9 +33,8 @@ bot.start(async(ctx)=>{
         userId:ctx.from.id
     }
     
-    const joinstart = await bot.telegram.getChatMember(-1001250398726,ctx.from.id)
-    const r = joinstart.result.status
-    if(r == 'left'){
+    conts member = await bot.telegram.getChatMember(-1001250398726, ctx.from.id)
+    if (member && (member.status == 'left')){
         ctx.reply(`belum join`)
     }else{
 

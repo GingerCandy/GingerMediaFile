@@ -2,9 +2,8 @@
 # filesaver
 Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk dokumen dan membuat file publik melalui pencarian inline
 
-<a href="https://heroku.com/deploy?template=https://github.com/Amalrajanj/filesaver">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
+https://heroku.com/deploy?template=https://github.com/BimoSora/RatuFileSaver ganti tulisan https://github.com/BimoSora/RatuFileSaver dengan template github Anda
+
 <br><br>
 <a href="https://youtu.be/zw_ijvhzomI">
 Klik di sini untuk menonton cara meng-host

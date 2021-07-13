@@ -33,11 +33,12 @@ bot.start(async(ctx)=>{
         userId:ctx.from.id
     }
     
-    var start = await bot.telegram.getChatMember(ctx.chat.id.1465464304 && ctx.userId)
+    var start = await bot.telegram.getChatMember(ctx.chat.id(465464304) && ctx.userId)
     var r = start.result.status
     if(r == left){
-    return ctx.reply(`belum join`)
-    
+        ctx.reply(`belum join`)
+    }else{
+        
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
@@ -64,7 +65,7 @@ bot.start(async(ctx)=>{
                 ]
             }
         })
-
+    }
     }else{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);

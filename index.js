@@ -37,7 +37,7 @@ bot.start(async(ctx)=>{
 
     if(length == 1){
         var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-        if (ctx.reply(profile.total_count) == 0) return
+        if (profile.total_count == 0) return
         ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
             parse_mode:'HTML',
             reply_markup:{

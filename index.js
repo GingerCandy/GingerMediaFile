@@ -47,7 +47,7 @@ bot.start(async(ctx)=>{
                     [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
                     [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                 ]
-            }}
+            }})
         })
     }else{
         file = await saver.getFile(query).then((res)=>{

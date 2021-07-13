@@ -93,6 +93,6 @@ Anda dapat menghapus file 3 cara
 <b>Jika Anda ingin mendukung saya, ikuti saya di GitHub sebagai token dukungan</b>
 
 Tambahan
-1. Ada join channel/grup terlebih dahulu saat start, pastikan id channel/grup di ganti pada index.js
+1. Ada join channel/grup terlebih dahulu saat start, pastikan id channel/grup di ganti pada index.js dan bot harus jadi admin di grup/channel
 2. Terdapat penambahan untuk menghilangkan null supaya tidak terlihat saat tampil
 3. Ada get ID untuk cek ID akun Anda

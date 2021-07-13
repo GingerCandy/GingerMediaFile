@@ -92,7 +92,7 @@ bot.start(async(ctx)=>{
             //saving user details to the database
             saver.saveUser(user)
 
-    }else(ctx.from.id ==process.env.MEMBER){
+    }else{
     
     try {
         var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)

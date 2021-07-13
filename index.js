@@ -44,10 +44,9 @@ bot.start(async(ctx)=>{
                 ]
             }
         })
+    return ctx.reply(`Bot belum masuk channel/grup`)
     }else{
-
     //welcoming message on /start and if there is a query available we can send files
-
     if(length == 1){
         var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
         if (!profile || profile.total_count == 0)
@@ -106,8 +105,6 @@ bot.start(async(ctx)=>{
     saver.saveUser(user)
 
     }
-
-    return ctx.reply(`Bot belum masuk channel/grup`)
     
 })
 

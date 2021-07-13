@@ -109,6 +109,8 @@ bot.start(async(ctx)=>{
     saver.saveUser(user)
 
     }
+
+    return ctx.reply(`Bot belum masuk channel/grup`)
     
 })
 

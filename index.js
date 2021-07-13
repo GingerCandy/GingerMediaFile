@@ -55,7 +55,7 @@ bot.start(async(ctx)=>{
                     reply_markup:{
                         inline_keyboard:[
                             [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                            [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
+                            [{text:'Owner Bot', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
                             [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                         ]
                     }
@@ -103,10 +103,9 @@ bot.start(async(ctx)=>{
 
             //saving user details to the database
             saver.saveUser(user)
-
         }
     }catch(error){
-        ctx.reply(`${ctx.from.first_name} \n\nBot belum masuk channel/grup pemiliknya`)
+        ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
     }
 })
 

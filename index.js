@@ -306,9 +306,7 @@ bot.on('video', async(ctx) => {
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
             })
         }
-    }
-)
-
+    })
 })
 
 //photo files
@@ -337,7 +335,6 @@ bot.on('photo', async(ctx) => {
             })
         }
     })
-
 })
 
 //audio files
@@ -368,7 +365,6 @@ bot.on('audio', async(ctx) => {
             })
         }
     })
-
 })
 
 //checking bot status only for admins 

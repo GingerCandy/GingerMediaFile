@@ -23,7 +23,7 @@ Detail yang diperlukan.
 
 <code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).
 
-<code>BOTUSERNAME</code> - your bot username without '@'.
+<code>BOTUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.
 
 <code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - mediaFile ,nama collection - fileBackup.Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "mediaFile".
 

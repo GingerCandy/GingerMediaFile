@@ -179,6 +179,15 @@ bot.action('POP',(ctx)=>{
 //check account
 
 bot.command('/getid',(ctx)=>{
+
+   msg = ctx.message.text
+   let msgArray = msg.split(' ')
+   console.log(msgArray.length);
+   let length = msgArray.length
+   msgArray.shift()
+   let query = msgArray.join(' ')
+
+   if(length == 1){
    var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
       console.log(profile2);
       if (!profile2 || profile2.total_count == 0){
@@ -190,6 +199,7 @@ bot.command('/getid',(ctx)=>{
          parse_mode:'HTML'
       })
       }
+   }
 })
 
 //remove files with file_id

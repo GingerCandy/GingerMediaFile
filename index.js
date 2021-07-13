@@ -180,13 +180,15 @@ bot.action('POP',(ctx)=>{
 
 bot.command('/getid',(ctx)=>{
    var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-      if (!profile2 || profile2.total_count == 0)
-      return ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
+      if (!profile2 || profile2.total_count == 0){
+      ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
          parse_mode:'HTML'  
       })
+      }else{
       ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
          parse_mode:'HTML'
       })
+      }
 })
 
 //remove files with file_id

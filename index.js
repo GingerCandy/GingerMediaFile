@@ -33,7 +33,7 @@ bot.start(async(ctx)=>{
         userId:ctx.from.id
     }
     
-    var member = await bot.telegram.getChatMember(-1001250398726, ctx.from.id)
+    var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
     if (!member || member.status == 'left'){
         ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
             parse_mode:'HTML',

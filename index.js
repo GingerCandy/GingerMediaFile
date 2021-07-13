@@ -181,15 +181,9 @@ bot.action('POP',(ctx)=>{
 //check account
 
 bot.command('/getid',(ctx)=>{
-    if (!profile || profile.total_count == 0)
       ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
          parse_mode:'HTML'  
       })
-    }else{
-      ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption:`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
-         parse_mode:'HTML'  
-      })
-    }
 })
 
 //remove files with file_id

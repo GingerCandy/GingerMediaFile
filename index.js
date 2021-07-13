@@ -299,7 +299,7 @@ bot.on('video', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
         } else {
-
+            saver.saveFile(fileDetails)
         try {
         var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
         console.log(member);
@@ -313,8 +313,6 @@ bot.on('video', async(ctx) => {
                 }
             })
         }else{
-
-            saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,

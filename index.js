@@ -34,6 +34,7 @@ bot.start(async(ctx)=>{
     }
     
     var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member);
     if (!member || member.status == 'left'){
         ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
             parse_mode:'HTML',
@@ -60,7 +61,6 @@ bot.start(async(ctx)=>{
                 ]
             }
         })
-
             ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
             parse_mode:'HTML',
             reply_markup:{
@@ -79,7 +79,6 @@ bot.start(async(ctx)=>{
                     return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
                     parse_mode:'HTML'
                 })
-
                     ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                     parse_mode:'HTML'
                 })
@@ -88,7 +87,6 @@ bot.start(async(ctx)=>{
                     return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
                     parse_mode:'HTML'
                 })
-                    
                     ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                     parse_mode:'HTML'
                 })
@@ -97,7 +95,6 @@ bot.start(async(ctx)=>{
                     return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
                     parse_mode:'HTML'
                 })
-
                     ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                     parse_mode:'HTML'
                 })

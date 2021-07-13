@@ -95,7 +95,7 @@ bot.start(async(ctx)=>{
     }else{
     
     try {
-          var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+          var member = await bot.telegram.getChatMember(-1001590114102, ctx.from.id)
           console.log(member);
           if (!member || member.status == 'left'){
               ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
@@ -181,8 +181,8 @@ bot.action('POP',(ctx)=>{
 
 bot.command('/getid',(ctx)=>{
     ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
-          parse_mode:'HTML'
-    }
+        parse_mode:'HTML'  
+    })
 })
 
 

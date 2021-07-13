@@ -44,7 +44,6 @@ bot.start(async(ctx)=>{
                 ]
             }
         })
-    return ctx.reply(`Bot belum masuk channel/grup`)
     }else{
     //welcoming message on /start and if there is a query available we can send files
     if(length == 1){

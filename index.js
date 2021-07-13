@@ -34,140 +34,140 @@ bot.start(async(ctx)=>{
     }
 
     if(ctx.from.id ==process.env.ADMIN){
-            //welcoming message on /start and if there is a query available we can send files
-            if(length == 1){
-                var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-                if (!profile || profile.total_count == 0)
-                    return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
-                    parse_mode:'HTML',
-                    reply_markup:{
-                        inline_keyboard:[
-                            [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                            [{text:'Owner Bot', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
-                            [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                        ]
-                    }
-                })
-                    ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
-                    parse_mode:'HTML',
-                    reply_markup:{
-                        inline_keyboard:[
-                            [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                            [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
-                            [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                        ]
-                    }
-                })
-            }else{
-                file = await saver.getFile(query).then((res)=>{
-                    console.log(res);
-                    if(res.type=='video'){
-                        if (!res.caption)
-                            return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                            ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                    }else if(res.type=='photo'){
-                        if (!res.caption)
-                            return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                            ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                    }else if(res.type=='document'){
-                        if (!res.caption)
-                            return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                            ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                    }            
-                })
-            }
+          //welcoming message on /start and if there is a query available we can send files
+          if(length == 1){
+              var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+              if (!profile || profile.total_count == 0)
+                  return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+                  parse_mode:'HTML',
+                  reply_markup:{
+                      inline_keyboard:[
+                          [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
+                          [{text:'Owner Bot', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
+                          [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                      ]
+                  }
+              })
+                  ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                  parse_mode:'HTML',
+                  reply_markup:{
+                      inline_keyboard:[
+                          [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
+                          [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
+                          [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                      ]
+                  }
+              })
+          }else{
+              file = await saver.getFile(query).then((res)=>{
+                  console.log(res);
+                  if(res.type=='video'){
+                      if (!res.caption)
+                          return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                          parse_mode:'HTML'
+                      })
+                          ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                          parse_mode:'HTML'
+                      })
+                  }else if(res.type=='photo'){
+                      if (!res.caption)
+                          return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                          parse_mode:'HTML'
+                      })
+                          ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                          parse_mode:'HTML'
+                      })
+                  }else if(res.type=='document'){
+                      if (!res.caption)
+                          return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                          parse_mode:'HTML'
+                      })
+                          ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                          parse_mode:'HTML'
+                      })
+                  }            
+              })
+          }
 
-            //saving user details to the database
-            saver.saveUser(user)
+          //saving user details to the database
+          saver.saveUser(user)
 
     }else{
     
     try {
-        var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
-        console.log(member);
-        if (!member || member.status == 'left'){
-            ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
-                    ]
-                }
-            })
-        }else{
-            //welcoming message on /start and if there is a query available we can send files
-            if(length == 1){
-                var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-                if (!profile || profile.total_count == 0)
-                    return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
-                    parse_mode:'HTML',
-                    reply_markup:{
-                        inline_keyboard:[
-                            [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                            [{text:'Owner Bot', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
-                            [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                        ]
-                    }
-                })
-                    ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
-                    parse_mode:'HTML',
-                    reply_markup:{
-                        inline_keyboard:[
-                            [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                            [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
-                            [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                        ]
-                    }
-                })
-            }else{
-                file = await saver.getFile(query).then((res)=>{
-                    console.log(res);
-                    if(res.type=='video'){
-                        if (!res.caption)
-                            return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                            ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                    }else if(res.type=='photo'){
-                        if (!res.caption)
-                            return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                            ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                    }else if(res.type=='document'){
-                        if (!res.caption)
-                            return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                            ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-                            parse_mode:'HTML'
-                        })
-                    }            
-                })
-            }
+          var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+          console.log(member);
+          if (!member || member.status == 'left'){
+              ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
+                  parse_mode:'HTML',
+                  reply_markup:{
+                      inline_keyboard:[
+                          [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
+                      ]
+                  }
+              })
+          }else{
+              //welcoming message on /start and if there is a query available we can send files
+              if(length == 1){
+                  var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                  if (!profile || profile.total_count == 0)
+                      return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+                      parse_mode:'HTML',
+                      reply_markup:{
+                          inline_keyboard:[
+                              [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
+                              [{text:'Owner Bot', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
+                              [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                          ]
+                      }
+                  })
+                      ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                      parse_mode:'HTML',
+                      reply_markup:{
+                          inline_keyboard:[
+                              [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
+                              [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
+                              [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                          ]
+                      }
+                  })
+              }else{
+                  file = await saver.getFile(query).then((res)=>{
+                      console.log(res);
+                      if(res.type=='video'){
+                          if (!res.caption)
+                              return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                              parse_mode:'HTML'
+                          })
+                              ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                              parse_mode:'HTML'
+                          })
+                      }else if(res.type=='photo'){
+                          if (!res.caption)
+                              return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                              parse_mode:'HTML'
+                          })
+                              ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                              parse_mode:'HTML'
+                          })
+                      }else if(res.type=='document'){
+                          if (!res.caption)
+                              return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                              parse_mode:'HTML'
+                          })
+                              ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                              parse_mode:'HTML'
+                          })
+                      }            
+                  })
+              }
 
-            //saving user details to the database
-            saver.saveUser(user)
-        }
-    }catch(error){
-        ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
-    }
+              //saving user details to the database
+              saver.saveUser(user)
+          }
+       }catch(error){
+           ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
+       }
     }
 })
 

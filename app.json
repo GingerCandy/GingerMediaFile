@@ -1,8 +1,8 @@
 {
-	"name": "filesaver",
+	"name": "RatuFileSaver",
 	"description": "Ratu File Saver",
 	"repository": "https://github.com/BimoSora/RatuFileSaver",
-    "logo": "https://node-js-sample.herokuapp.com/node.png",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg",
 	"keywords": ["telegram","filesaver","bot","nodejs"],
 	"env": {
 		"TOKEN": {

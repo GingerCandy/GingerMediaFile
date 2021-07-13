@@ -266,17 +266,18 @@ bot.on('document', async (ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
+            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
-            try {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} \n\nKetik /start untuk mengirim kembali dokumen.`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
             ctx.replyWithDocument(document.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+
             })
         }
     })
+
 })
 
 //video files
@@ -297,16 +298,18 @@ bot.on('video', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
+            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} \n\nKetik /start untuk mengirim kembali video.`)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
             ctx.replyWithVideo(video.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${video.file_id}`
+
             })
         }
     })
+
 })
 
 //photo files
@@ -325,16 +328,18 @@ bot.on('photo', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
+            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id} \n\nKetik /start untuk mengirim kembali photo.`)
-            ctx.replyWithPhoto(photo[1].file_id, {
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
+            ctx.replyWithPhotoPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.fisrt_name}\nID file: ${document.file_id}`
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+
             })
         }
     })
+
 })
 
 //audio files
@@ -355,16 +360,18 @@ bot.on('audio', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.')
+            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
             saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id} \n\nKetik /start untuk mengirim kembali suara.`)
-            ctx.replyWithDocument(audio.file_id, {
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
+            ctx.replyWithAudio(audio.file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
+
             })
         }
     })
+
 })
 
 //checking bot status only for admins 

@@ -293,21 +293,6 @@ bot.on('video', async(ctx) => {
         uniqueId: video.file_unique_id,
         type: 'video'
     }
-
-        try {
-        var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
-        console.log(member);
-        if (!member || member.status == 'left'){
-            ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
-                    ]
-                }
-            })
-        }else{
-
     console.log(fileDetails.caption);
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
@@ -322,9 +307,6 @@ bot.on('video', async(ctx) => {
             })
         }
     }
-         }catch(error){
-         ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
-         }
 )
 
 })

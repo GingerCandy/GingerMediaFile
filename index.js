@@ -179,16 +179,15 @@ bot.action('POP',(ctx)=>{
 //check account
 bot.command('/getid',async(ctx)=>{
    var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-      console.log(profile2);
-      if (!profile2 || profile2.total_count == 0){
+   if (!profile2 || profile2.total_count == 0){
       ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
          parse_mode:'HTML'  
       })
-      }else{
+   }else{
       ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
          parse_mode:'HTML'
       })
-      }
+   }
 })
 
 //remove files with file_id
@@ -386,12 +385,26 @@ bot.on('photo', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
+
+        var member = await bot.telegram.getChatMember(-1001590114102, ctx.from.id)
+          console.log(member);
+          if (!member || member.status == 'left'){
+             ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
+                  parse_mode:'HTML',
+                  reply_markup:{
+                      inline_keyboard:[
+                          [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
+                      ]
+                  }
+             })
+          }else{
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
             ctx.replyWithPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
             })
+          }
         }
     })
 

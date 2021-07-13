@@ -394,7 +394,7 @@ bot.on('photo', async(ctx) => {
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
-            ctx.replyWithPhotoPhoto(photo[1].file_id, {
+            ctx.replyWithPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}`
 

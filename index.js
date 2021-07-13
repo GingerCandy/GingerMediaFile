@@ -63,8 +63,12 @@ bot.start(async(ctx)=>{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);
             if(res.type=='video'){
+                if (!res.caption)
+                return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                parse_mode:'HTML'})
+
                 ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
-            parse_mode:'HTML'})
+                parse_mode:'HTML'})
             }else if(res.type=='photo'){
                 if (!res.caption)
                 return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
@@ -73,6 +77,10 @@ bot.start(async(ctx)=>{
                 ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                 parse_mode:'HTML'})
             }else if(res.type=='document'){
+                if (!res.caption)
+                return ctx.replyWitreplyWithDocumenthVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                parse_mode:'HTML'})
+
                 ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
                 parse_mode:'HTML'})
             }            

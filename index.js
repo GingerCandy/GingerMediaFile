@@ -177,7 +177,7 @@ bot.action('POP',(ctx)=>{
 })
 
 //check account
-bot.command('/getid',async(ctx)=>{
+bot.command('getid',async(ctx)=>{
    var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
    if (!profile2 || profile2.total_count == 0){
       ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
@@ -197,7 +197,7 @@ bot.command('rem', (ctx) => {
     msgArray.shift()
     let text = msgArray.join(' ')
     console.log(text);
-    if(ctx.from.id ==process.env.ADMIN){
+    if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         saver.removeFile(text)
         ctx.reply('✅ Dihapus')
     }
@@ -220,7 +220,7 @@ bot.command('remall', (ctx) => {
     let text = msgArray.join(' ')
     console.log(text);
     let id = parseInt(text)
-    if(ctx.from.id ==process.env.ADMIN|| ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+    if(ctx.from.id ==process.env.ADMIN){
         saver.removeUserFile(id)
         ctx.reply('✅ Dihapus')
     }
@@ -260,12 +260,12 @@ bot.command('send',async(ctx)=>{
             })
 
         }
-        if (ctx.from.id == process.env.ADMIN) {
+        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             broadcast(text)
             ctx.reply('Penyiaran dimulai (Pesan disiarkan dari terakhir bergabung hingga pertama).')
 
         }else{
-            ctx.replyWithAnimation('https://media.giphy.com/media/fnuSiwXMTV3zmYDf6k/giphy.gif')
+            ctx.reply(`Perintah hanya bisa digunakan oleh Admin`) 
         }
 
     })
@@ -281,7 +281,7 @@ bot.command('ban', (ctx) => {
     userId = {
         id: text
     }
-    if(ctx.from.id ==process.env.ADMIN){
+    if(ctx.from.id ==process.env.ADMIN|| ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         saver.banUser(userId).then((res) => {
             ctx.reply('Dilarang')
         })
@@ -299,9 +299,8 @@ bot.command('unban', (ctx) => {
     userId = {
         id: text
     }
-    
 
-    if(ctx.from.id ==process.env.ADMIN){
+    if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         saver.unBan(userId).then((res) => {
             ctx.reply('✅ Selesai')
         })

@@ -28,8 +28,6 @@ bot.start(async(ctx)=>{
     msgArray.shift()
     let query = msgArray.join(' ')
 
-    chatId:ctx.chat.id
-
     user ={
         first_name:ctx.from.first_name,
         userId:ctx.from.id
@@ -38,8 +36,8 @@ bot.start(async(ctx)=>{
     //welcoming message on /start and if there is a query available we can send files
 
     if(length == 1){
-        bot.telegram.getUserProfilePhotos(userId, 0, 1).then(function(data){
-        ctx.replyWithPhoto(chatId,data.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+        ctx.telegram.getUserProfilePhotos(userId, 0, 1).then(function(data){
+        ctx.replyWithPhoto(chat.id,data.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
             parse_mode:'HTML',
             reply_markup:{
                 inline_keyboard:[

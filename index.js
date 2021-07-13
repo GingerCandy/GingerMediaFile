@@ -185,7 +185,6 @@ bot.command('/getid',(ctx)=>{
     })
 })
 
-
 //remove files with file_id
 
 bot.command('rem', (ctx) => {

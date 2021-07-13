@@ -385,25 +385,12 @@ bot.on('photo', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
-        var member2 = await bot.telegram.getChatMember(-1001590114102, ctx.from.id)
-          console.log(member2);
-          if (!member2 || member2.status == 'left'){
-             ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
-                  parse_mode:'HTML',
-                  reply_markup:{
-                      inline_keyboard:[
-                          [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
-                      ]
-                  }
-             })
-          }else{
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
             ctx.replyWithPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,
                 caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
             })
-          }
         }
     })
 

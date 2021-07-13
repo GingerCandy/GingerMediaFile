@@ -1,5 +1,5 @@
 module.exports={
-    FILE_COLLECTION : 'fileBackup',
+    FILE_COLLECTION : 'RatuFileBackup',
     USER_COLLECTION : 'user',
     BANNED_COLLECTION :'banned'
 }

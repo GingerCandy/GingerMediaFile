@@ -37,6 +37,18 @@ bot.start(async(ctx)=>{
 
     if(length == 1){
         var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        if (profile.photos[0][0].file_id == "NULL"){
+        ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
+                    [{text:'Owner 1', url: 'https://t.me/SoraHearts'},{text:'Owner 2', url: 'https://t.me/Gingercandy02'}],
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        )
+        }else{
         ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
             parse_mode:'HTML',
             reply_markup:{
@@ -47,6 +59,7 @@ bot.start(async(ctx)=>{
                 ]
             }
         })
+        }
     }else{
         file = await saver.getFile(query).then((res)=>{
             console.log(res);

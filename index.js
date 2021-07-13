@@ -385,7 +385,7 @@ bot.on('photo', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
         } else {
-
+        saver.saveFile(fileDetails)
         var member = await bot.telegram.getChatMember(-1001590114102, ctx.from.id)
           console.log(member);
           if (!member || member.status == 'left'){
@@ -398,7 +398,6 @@ bot.on('photo', async(ctx) => {
                   }
              })
           }else{
-            saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
             ctx.replyWithPhoto(photo[1].file_id, {
                 chat_id: process.env.LOG_CHANNEL,

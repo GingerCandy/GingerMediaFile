@@ -16,6 +16,7 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
+var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
 
 //BOT
 
@@ -109,7 +110,7 @@ bot.start(async(ctx)=>{
           }else{
               //welcoming message on /start and if there is a query available we can send files
               if(length == 1){
-                  var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                  
                   if (!profile || profile.total_count == 0)
                       return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                       parse_mode:'HTML',
@@ -180,9 +181,15 @@ bot.action('POP',(ctx)=>{
 //check account
 
 bot.command('/getid',(ctx)=>{
-     ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
+    if (!profile || profile.total_count == 0)
+      ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
          parse_mode:'HTML'  
       })
+    }else{
+      ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption:`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
+         parse_mode:'HTML'  
+      })
+    }
 })
 
 //remove files with file_id

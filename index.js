@@ -387,26 +387,30 @@ bot.on('photo', async(ctx) => {
         type: 'photo'
     }
     console.log(fileDetails.caption);
-    var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
-    console.log(member3);
-    if (!member3 || member3.status == 'left'){
+    try{
+    var member6 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member6);
+    if (!member6 || member6.status == 'left'){
         ctx.reply(`Masuk dulu yuk`)
     }else{
-    await saver.checkBan(`${ctx.from.id}`).then((res) => {
-        console.log(res);
-        if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
-        } else {
-            saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
-            ctx.replyWithPhoto(photo[1].file_id, {
-                chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
-            })
-        }
-    })
+        await saver.checkBan(`${ctx.from.id}`).then((res) => {
+            console.log(res);
+            if (res == true) {
+                ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            } else {
+                saver.saveFile(fileDetails)
+                ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
+                ctx.replyWithPhoto(photo[1].file_id, {
+                    chat_id: process.env.LOG_CHANNEL,
+                    caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
+                })
+            }
+        })
 
-}
+    }
+    }catch(error){
+        ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
+    }
 
 })
 

@@ -103,7 +103,7 @@ bot.start(async(ctx)=>{
                   parse_mode:'HTML',
                   reply_markup:{
                       inline_keyboard:[
-                          [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
+                          [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                       ]
                   }
               })
@@ -111,7 +111,7 @@ bot.start(async(ctx)=>{
                   parse_mode:'HTML',
                   reply_markup:{
                       inline_keyboard:[
-                          [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
+                          [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                       ]
                   }
               })

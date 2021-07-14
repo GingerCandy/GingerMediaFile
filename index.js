@@ -94,7 +94,7 @@ bot.start(async(ctx)=>{
     }else{
     
     try {
-          var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+          var member = await bot.telegram.getChatMember(channel_id, ctx.from.id)
           console.log(member);
           if (!member || member.status == 'left'){
              var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)

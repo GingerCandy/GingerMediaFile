@@ -16,6 +16,9 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
+//ID Channel/Group
+const channelId = -1001590114101;
+
 // inline keyboard
 const inKey = [
   [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
@@ -26,8 +29,6 @@ const inKey = [
 const inKey2 = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
-
-const channelId = -1001590114101;
 
 //BOT START
 bot.start(async(ctx)=>{

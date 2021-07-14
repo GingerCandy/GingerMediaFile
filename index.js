@@ -27,6 +27,8 @@ const inKey2 = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
 
+const channelId = -1001590114101;
+
 //BOT START
 bot.start(async(ctx)=>{
 
@@ -93,7 +95,7 @@ bot.start(async(ctx)=>{
         saver.saveUser(user)
     }else{
         try {
-        var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+        var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
         console.log(member);
         if (!member || member.status == 'left'){
            var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)

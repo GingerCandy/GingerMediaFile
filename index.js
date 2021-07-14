@@ -27,10 +27,11 @@ bot.start(async(ctx)=>{
     msgArray.shift()
     let query = msgArray.join(' ')
 
+    channelId:ctx.chat.id
+
     user ={
         first_name:ctx.from.first_name,
         userId:ctx.from.id,
-        channelId: ctx.chat.id
     }
 
     if(ctx.from.id ==process.env.ADMIN){
@@ -95,7 +96,7 @@ bot.start(async(ctx)=>{
     }else{
     
     try {
-        await saver.checkChan(`${ctx.chat.id}`).then((res) => {
+        await saver.checkCan(`${ctx.chat.id}`).then((res) => {
         console.log(res);
         if (res == true) {
           var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
@@ -178,6 +179,7 @@ bot.start(async(ctx)=>{
               //saving user details to the database
               saver.saveUser(user)
           }
+       }else{
        }catch(error){
            ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
        }

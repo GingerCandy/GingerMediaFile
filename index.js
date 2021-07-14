@@ -331,7 +331,6 @@ bot.on('document', async (ctx) => {
 
     var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
     console.log(member3);
-    try{
     if (!member3 || member3.status == 'left'){
         var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
         if (!profile6 || profile6.total_count == 0)

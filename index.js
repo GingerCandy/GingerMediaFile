@@ -16,6 +16,7 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
+// inline keyboard
 const inKey = [
   [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
   [{text:'Owner BOT', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
@@ -512,17 +513,13 @@ bot.on('audio', async(ctx) => {
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
             ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
         }else{

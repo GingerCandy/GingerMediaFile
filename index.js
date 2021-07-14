@@ -17,8 +17,7 @@ db.connect((err) => {
 })
 
 function myData() { 
-   return
-   reply_markup:{
+   return  
      inline_keyboard:[
           [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
           [{text:'Owner Bot', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],

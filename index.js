@@ -29,7 +29,8 @@ bot.start(async(ctx)=>{
 
     user ={
         first_name:ctx.from.first_name,
-        userId:ctx.from.id
+        userId:ctx.from.id,
+        channelId: ctx.chat.id
     }
 
     if(ctx.from.id ==process.env.ADMIN){
@@ -94,7 +95,10 @@ bot.start(async(ctx)=>{
     }else{
     
     try {
-          var member = await bot.telegram.getChatMember(ctx.channel_id, ctx.from.id)
+        await saver.checkChan(`${ctx.chat.id}`).then((res) => {
+        console.log(res);
+        if (res == true) {
+          var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
           console.log(member);
           if (!member || member.status == 'left'){
              var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)

@@ -179,7 +179,7 @@ bot.start(async(ctx)=>{
               //saving user details to the database
               saver.saveUser(user)
           }
-       }else{
+       }
        }catch(error){
            ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
        }

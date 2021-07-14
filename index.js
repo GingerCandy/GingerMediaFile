@@ -27,8 +27,6 @@ const inKey2 = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
 
-var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-
 //BOT START
 bot.start(async(ctx)=>{
 
@@ -47,7 +45,7 @@ bot.start(async(ctx)=>{
     if(ctx.from.id ==process.env.ADMIN){
         //welcoming message on /start and if there is a query available we can send files
         if(length == 1){
-            
+            var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile || profile.total_count == 0)
                 return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                 parse_mode:'HTML',
@@ -98,15 +96,15 @@ bot.start(async(ctx)=>{
         var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
         console.log(member);
         if (!member || member.status == 'left'){
-            
-           if (!profile || profile.total_count == 0)
+           var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+           if (!profile2 || profile2.total_count == 0)
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -115,15 +113,15 @@ bot.start(async(ctx)=>{
         }else{
             //welcoming message on /start and if there is a query available we can send files
             if(length == 1){
-                
-                if (!profile || profile.total_count == 0)
+                var profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                if (!profile3 || profile3.total_count == 0)
                     return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                         parse_mode:'HTML',
                         reply_markup:{
                             inline_keyboard:inKey
                         }
                     })
-                    ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                    ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
                         parse_mode:'HTML',
                         reply_markup:{
                             inline_keyboard:inKey

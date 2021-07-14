@@ -24,7 +24,7 @@ const inKey = [
 
 conts inKey2 = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-]
+];
 
 //BOT START
 bot.start(async(ctx)=>{

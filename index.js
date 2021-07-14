@@ -27,6 +27,8 @@ const inKey2 = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
 
+const captionData = '${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.';
+
 //BOT START
 bot.start(async(ctx)=>{
 
@@ -47,7 +49,7 @@ bot.start(async(ctx)=>{
         if(length == 1){
             var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile || profile.total_count == 0)
-                return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+                return ctx.reply(`captionData`,{
                 parse_mode:'HTML',
                 reply_markup:{
                    inline_keyboard:inKey

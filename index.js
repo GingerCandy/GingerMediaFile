@@ -21,7 +21,7 @@ var joinchannel = inline_keyboard:[
                        [{text:'Owner BOT', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
                   ];
-var joinchannel2 = string(joinchannel);
+var joinchannel2 = String(joinchannel);
 
 //BOT START
 bot.start(async(ctx)=>{

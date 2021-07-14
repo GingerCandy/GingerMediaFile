@@ -102,14 +102,6 @@ module.exports={
         })
     },
 
-    checkChan:(query)=>{
-        return new Promise(async(resolve,reject)=>{
-            db.get().collection(collection.CHANNEL_COLLECTION).findOne({channelId:query}).then((res)=>{
-                resolve(res)
-            })
-        })
-    },
-
     //remove the whole collection to remove all files
 
     deleteCollection:()=>{

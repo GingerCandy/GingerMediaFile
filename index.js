@@ -16,8 +16,6 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
-console.log(myData());
-
 //BOT START
 bot.start(async(ctx)=>{
 

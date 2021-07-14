@@ -328,7 +328,7 @@ bot.on('document', async (ctx) => {
         uniqueId: document.file_unique_id,
         type: 'document'
     }
-    try{
+
     var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
     console.log(member3);
     if (!member3 || member3.status == 'left'){
@@ -350,6 +350,7 @@ bot.on('document', async (ctx) => {
                 ]
             }
         })
+    }else{
         console.log(fileDetails.caption);
         await saver.checkBan(`${ctx.from.id}`).then((res) => {
             console.log(res);
@@ -365,11 +366,6 @@ bot.on('document', async (ctx) => {
             }
         })
     }
-    }
-    catch(error){
-        ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
-    }
-
 })
 
 //video files

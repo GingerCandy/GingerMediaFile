@@ -394,6 +394,7 @@ bot.on('photo', async(ctx) => {
         } else {
             var member2 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
             console.log(member2);
+            saver.saveFile(fileDetails)
             if (!member2 || member2.status == 'left'){
 
                 var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -416,7 +417,6 @@ bot.on('photo', async(ctx) => {
                 })
 
             }else{
-                saver.saveFile(fileDetails)
                 ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
                 ctx.replyWithPhoto(photo[1].file_id, {
                     chat_id: process.env.LOG_CHANNEL,

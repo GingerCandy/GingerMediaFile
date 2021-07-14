@@ -329,19 +329,42 @@ bot.on('document', async (ctx) => {
         type: 'document'
     }
     console.log(fileDetails.caption);
-    await saver.checkBan(`${ctx.from.id}`).then((res) => {
-        console.log(res);
-        if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
-        } else {
-            saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
-            ctx.replyWithDocument(document.file_id, {
-                chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
-            })
-        }
-    })
+    var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member3);
+    if (!member3 || member3.status == 'left'){
+        var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        if (!profile5 || profile5.total_count == 0)
+        return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+        ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+    }else{
+        await saver.checkBan(`${ctx.from.id}`).then((res) => {
+            console.log(res);
+            if (res == true) {
+                ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            } else {
+                saver.saveFile(fileDetails)
+                ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
+                ctx.replyWithDocument(document.file_id, {
+                    chat_id: process.env.LOG_CHANNEL,
+                    caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
+                })
+            }
+        })
+    }
 
 })
 
@@ -359,19 +382,43 @@ bot.on('video', async(ctx) => {
         type: 'video'
     }
     console.log(fileDetails.caption);
-    await saver.checkBan(`${ctx.from.id}`).then((res) => {
-        console.log(res);
-        if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
-        } else {
-            saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
-            ctx.replyWithVideo(video.file_id, {
-                chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
-            })
-        }
-    })
+    var member4 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member4);
+    if (!member4 || member4.status == 'left'){
+        var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        if (!profile6 || profile6.total_count == 0)
+        return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+        ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+    }else{
+        await saver.checkBan(`${ctx.from.id}`).then((res) => {
+            console.log(res);
+            if (res == true) {
+                ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            } else {
+                saver.saveFile(fileDetails)
+                ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
+                ctx.replyWithVideo(video.file_id, {
+                    chat_id: process.env.LOG_CHANNEL,
+                    caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
+                })
+            }
+        })
+
+    }
 
 })
 
@@ -387,9 +434,9 @@ bot.on('photo', async(ctx) => {
         type: 'photo'
     }
     console.log(fileDetails.caption);
-    var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
-    console.log(member3);
-    if (!member3 || member3.status == 'left'){
+    var member5 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member5);
+    if (!member5 || member5.status == 'left'){
         var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
         if (!profile7 || profile7.total_count == 0)
         return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
@@ -441,19 +488,42 @@ bot.on('audio', async(ctx) => {
         type: 'audio'
     }
     console.log(fileDetails.caption);
-    await saver.checkBan(`${ctx.from.id}`).then((res) => {
-        console.log(res);
-        if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
-        } else {
-            saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
-            ctx.replyWithAudio(audio.file_id, {
-                chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
-            })
-        }
-    })
+    var member7 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member7);
+    if (!member7 || member7.status == 'left'){
+        var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        if (!profile8 || profile8.total_count == 0)
+        return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+        ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+    }else{
+        await saver.checkBan(`${ctx.from.id}`).then((res) => {
+            console.log(res);
+            if (res == true) {
+                ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            } else {
+                saver.saveFile(fileDetails)
+                ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
+                ctx.replyWithAudio(audio.file_id, {
+                    chat_id: process.env.LOG_CHANNEL,
+                    caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
+                })
+            }
+        })
+    }
 
 })
 

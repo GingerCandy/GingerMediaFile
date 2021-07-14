@@ -96,15 +96,15 @@ bot.start(async(ctx)=>{
         var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
         console.log(member);
         if (!member || member.status == 'left'){
-            var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-            if (!profile2 || profile2.total_count == 0)
+            var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+            if (!profile || profile.total_count == 0)
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2

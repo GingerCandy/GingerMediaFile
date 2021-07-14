@@ -31,7 +31,7 @@ bot.start(async(ctx)=>{
         userId:ctx.from.id
     }
 
-   var myData = await (${ctx.from.first_name})
+   var myData = (${ctx.from.first_name})
 
     if(ctx.from.id ==process.env.ADMIN){
         //welcoming message on /start and if there is a query available we can send files

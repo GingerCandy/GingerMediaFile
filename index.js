@@ -27,11 +27,9 @@ bot.start(async(ctx)=>{
     msgArray.shift()
     let query = msgArray.join(' ')
 
-    channelId:ctx.chat.id
-
-    user ={
+     user ={
         first_name:ctx.from.first_name,
-        userId:ctx.from.id,
+        userId:ctx.from.id
     }
 
     if(ctx.from.id ==process.env.ADMIN){

@@ -99,7 +99,7 @@ bot.start(async(ctx)=>{
           if (!member || member.status == 'left'){
              var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
              if (!profile2 || profile2.total_count == 0)
-              return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk join, silakan join dulu!`,{
+              return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                   parse_mode:'HTML',
                   reply_markup:{
                       inline_keyboard:[
@@ -107,7 +107,7 @@ bot.start(async(ctx)=>{
                       ]
                   }
               })
-              ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk join, silakan join dulu!`,
+              ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                   parse_mode:'HTML',
                   reply_markup:{
                       inline_keyboard:[

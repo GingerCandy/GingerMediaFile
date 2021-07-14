@@ -31,7 +31,7 @@ bot.start(async(ctx)=>{
         userId:ctx.from.id
     }
 
-    conts myData = function() {
+    const myData = function() {
         console.log(${ctx.from.first_name});
     }
 

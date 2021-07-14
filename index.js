@@ -16,8 +16,7 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
-//BOT
-
+//BOT start
 bot.start(async(ctx)=>{
 
     msg = ctx.message.text

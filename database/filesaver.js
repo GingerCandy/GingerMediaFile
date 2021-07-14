@@ -93,7 +93,7 @@ module.exports={
 
     //CheckChannel
 
-    checkBan:(id)=>{
+    checkChan:(id)=>{
         return new Promise(async(resolve,reject)=>{
             await db.get().collection(collection.CHANNEL_COLLECTION).findOne({id:id}).then((res)=>{
                 console.log(res);

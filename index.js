@@ -365,7 +365,7 @@ bot.on('document', async (ctx) => {
             }
         })
     }
-
+    }
     catch(error){
         ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
     }

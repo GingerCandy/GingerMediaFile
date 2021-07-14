@@ -97,7 +97,17 @@ bot.start(async(ctx)=>{
           var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
           console.log(member);
           if (!member || member.status == 'left'){
-              ctx.reply(`${ctx.from.first_name} \n\n Anda belum masuk join, silakan join dulu!`,{
+             var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+             if (!profile2 || profile2.total_count == 0)
+              return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk join, silakan join dulu!`,{
+                  parse_mode:'HTML',
+                  reply_markup:{
+                      inline_keyboard:[
+                          [{text:'Gabung Channel', url: 'https://t.me/joinchat/sJHfeRe7SQU3YjNh'}]
+                      ]
+                  }
+              })
+              ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk join, silakan join dulu!`,
                   parse_mode:'HTML',
                   reply_markup:{
                       inline_keyboard:[
@@ -108,8 +118,8 @@ bot.start(async(ctx)=>{
           }else{
               //welcoming message on /start and if there is a query available we can send files
               if(length == 1){
-                  var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-                  if (!profile || profile.total_count == 0)
+                  var profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                  if (!profile3 || profile3.total_count == 0)
                       return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                       parse_mode:'HTML',
                       reply_markup:{
@@ -120,7 +130,7 @@ bot.start(async(ctx)=>{
                           ]
                       }
                   })
-                      ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                      ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
                       parse_mode:'HTML',
                       reply_markup:{
                           inline_keyboard:[
@@ -178,13 +188,13 @@ bot.action('POP',(ctx)=>{
 
 //check account
 bot.command('getid',async(ctx)=>{
-   var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-   if (!profile2 || profile2.total_count == 0){
+   var profile4 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+   if (!profile4 || profile4.total_count == 0){
       ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
          parse_mode:'HTML'  
       })
    }else{
-      ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
+      ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
          parse_mode:'HTML'
       })
    }

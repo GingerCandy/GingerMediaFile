@@ -334,7 +334,7 @@ bot.on('document', async (ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
+            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
@@ -364,7 +364,7 @@ bot.on('video', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
+            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
@@ -392,7 +392,7 @@ bot.on('photo', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
+            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
@@ -422,7 +422,7 @@ bot.on('audio', async(ctx) => {
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
-            ctx.reply('⚠YOU ARE BANNED FOR MISUSING BOT, CONTACT ADMIN TO APPEAL')
+            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
             saver.saveFile(fileDetails)
             ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)

@@ -107,7 +107,7 @@ bot.start(async(ctx)=>{
                       ]
                   }
               })
-              ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk join, silakan join dulu!`,
+              ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk join, silakan join dulu!`,
                   parse_mode:'HTML',
                   reply_markup:{
                       inline_keyboard:[

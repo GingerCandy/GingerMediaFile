@@ -96,10 +96,7 @@ bot.start(async(ctx)=>{
     }else{
     
     try {
-        await saver.checkCan(`${ctx.chat.id}`).then((res) => {
-        console.log(res);
-        if (res == true) {
-          var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
+          var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
           console.log(member);
           if (!member || member.status == 'left'){
              var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -179,7 +176,6 @@ bot.start(async(ctx)=>{
               //saving user details to the database
               saver.saveUser(user)
           }
-       }
        }catch(error){
            ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
        }

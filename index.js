@@ -391,7 +391,24 @@ bot.on('photo', async(ctx) => {
     var member6 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
     console.log(member6);
     if (!member6 || member6.status == 'left'){
-        ctx.reply(`Masuk dulu yuk`)
+        var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        if (!profile7 || profile7.total_count == 0)
+        return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+        ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
     }else{
         await saver.checkBan(`${ctx.from.id}`).then((res) => {
             console.log(res);

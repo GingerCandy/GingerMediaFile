@@ -32,7 +32,7 @@ bot.start(async(ctx)=>{
     }
 
     var namestart = function(){
-       console.log("${ctx.from.first_name}");
+       'Baca';
     }
 
     if(ctx.from.id ==process.env.ADMIN){

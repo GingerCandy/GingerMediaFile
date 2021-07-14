@@ -22,6 +22,10 @@ const inKey = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
 
+conts inKey2 = [
+  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+]
+
 //BOT START
 bot.start(async(ctx)=>{
 
@@ -51,11 +55,7 @@ bot.start(async(ctx)=>{
                 ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                        [{text:'Owner BOT', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey
                 }
             })
         }else{
@@ -100,17 +100,13 @@ bot.start(async(ctx)=>{
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
             ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
         }else{
@@ -121,21 +117,13 @@ bot.start(async(ctx)=>{
                     return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                         parse_mode:'HTML',
                         reply_markup:{
-                            inline_keyboard:[
-                                [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                                [{text:'Owner BOT', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
-                                [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                            ]
+                            inline_keyboard:inKey
                         }
                     })
                     ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
                         parse_mode:'HTML',
                         reply_markup:{
-                            inline_keyboard:[
-                                [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-                                [{text:'Owner BOT', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
-                                [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                            ]
+                            inline_keyboard:inKey
                         }
                     })
                 }else{
@@ -347,17 +335,13 @@ bot.on('document', async (ctx) => {
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
             ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
         }else{
@@ -410,17 +394,13 @@ bot.on('video', async(ctx) => {
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
             ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
         }else{
@@ -472,17 +452,13 @@ bot.on('photo', async(ctx) => {
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
             ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
-                    inline_keyboard:[
-                        [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
-                    ]
+                    inline_keyboard:inKey2
                 }
             })
         }else{

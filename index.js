@@ -387,25 +387,28 @@ bot.on('photo', async(ctx) => {
         type: 'photo'
     }
     console.log(fileDetails.caption);
+
+    var member2 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member2);
+    if (!member2 || member2.status == 'left'){
+        ctx.reply(`Masuk dulu yuk`)
+    }else{
+
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
             ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
-            var member2 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
-            console.log(member2);
-            if (!member2 || member2.status == 'left'){
-                ctx.reply(`Masuk dulu yuk`)
-            }else{
-                saver.saveFile(fileDetails)
-                ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
-                ctx.replyWithPhoto(photo[1].file_id, {
-                    chat_id: process.env.LOG_CHANNEL,
-                    caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
-                })
-            }
+            saver.saveFile(fileDetails)
+            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
+            ctx.replyWithPhoto(photo[1].file_id, {
+                chat_id: process.env.LOG_CHANNEL,
+                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
+            })
         }
     })
+
+    }
 
 })
 

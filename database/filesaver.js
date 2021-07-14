@@ -91,27 +91,20 @@ module.exports={
         })
     },
 
-    //CheckChannel
-
-    checkChan:(id)=>{
-        return new Promise(async(resolve,reject)=>{
-            await db.get().collection(collection.CHANNEL_COLLECTION).findOne({id:id}).then((res)=>{
-                console.log(res);
-                if(res){
-                    resolve(true)
-                }else{
-                    resolve(false)
-                }
-            })
-        })
-    },
-
     //unban the user with user ID
 
     unBan:(id)=>{
         return new Promise(async(resolve,reject)=>{
            await db.get().collection(collection.BANNED_COLLECTION).deleteOne(id).then((res)=>{
                 console.log(res);
+                resolve(res)
+            })
+        })
+    },
+
+    checkChan:(query)=>{
+        return new Promise(async(resolve,reject)=>{
+            db.get().collection(collection.CHANNEL_COLLECTION).findOne({channelId:query}).then((res)=>{
                 resolve(res)
             })
         })

@@ -328,20 +328,47 @@ bot.on('document', async (ctx) => {
         uniqueId: document.file_unique_id,
         type: 'document'
     }
-    console.log(fileDetails.caption);
-    await saver.checkBan(`${ctx.from.id}`).then((res) => {
-        console.log(res);
-        if (res == true) {
-            ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
-        } else {
-            saver.saveFile(fileDetails)
-            ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
-            ctx.replyWithDocument(document.file_id, {
-                chat_id: process.env.LOG_CHANNEL,
-                caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
-            })
-        }
-    })
+
+    var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+    console.log(member3);
+    try{
+    if (!member3 || member3.status == 'left'){
+        var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+        if (!profile6 || profile6.total_count == 0)
+        return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+        ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            parse_mode:'HTML',
+            reply_markup:{
+                inline_keyboard:[
+                    [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+                ]
+            }
+        })
+        console.log(fileDetails.caption);
+        await saver.checkBan(`${ctx.from.id}`).then((res) => {
+            console.log(res);
+            if (res == true) {
+                ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+            } else {
+                saver.saveFile(fileDetails)
+                ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
+                ctx.replyWithDocument(document.file_id, {
+                    chat_id: process.env.LOG_CHANNEL,
+                    caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
+                })
+            }
+        })
+    }
+    catch(error){
+        ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
+    }
 
 })
 
@@ -387,13 +414,6 @@ bot.on('photo', async(ctx) => {
         type: 'photo'
     }
     console.log(fileDetails.caption);
-
-    var member2 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
-    console.log(member2);
-    if (!member2 || member2.status == 'left'){
-        ctx.reply(`Masuk dulu yuk`)
-    }else{
-
     await saver.checkBan(`${ctx.from.id}`).then((res) => {
         console.log(res);
         if (res == true) {
@@ -407,8 +427,6 @@ bot.on('photo', async(ctx) => {
             })
         }
     })
-
-    }
 
 })
 

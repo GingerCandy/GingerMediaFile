@@ -91,6 +91,21 @@ module.exports={
         })
     },
 
+    //CheckChannel
+
+    checkBan:(id)=>{
+        return new Promise(async(resolve,reject)=>{
+            await db.get().collection(collection.CHANNEL_COLLECTION).findOne({id:id}).then((res)=>{
+                console.log(res);
+                if(res){
+                    resolve(true)
+                }else{
+                    resolve(false)
+                }
+            })
+        })
+    },
+
     //unban the user with user ID
 
     unBan:(id)=>{

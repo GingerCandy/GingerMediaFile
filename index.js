@@ -31,8 +31,8 @@ bot.start(async(ctx)=>{
         userId:ctx.from.id
     }
 
-    const myData = function(){
-     ${ctx.from.first_name})
+    var myData = function(){
+     console.log('${ctx.from.first_name}');
    }
 
     if(ctx.from.id ==process.env.ADMIN){

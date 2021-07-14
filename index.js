@@ -16,7 +16,7 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
-function myData(){
+var myData = function{
     console.log("Hallo");
 }
 

@@ -392,7 +392,7 @@ bot.on('photo', async(ctx) => {
         if (res == true) {
             ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
         } else {
-            var member = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+            var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
             console.log(member3);
             if (!member3 || member3.status == 'left'){
                 ctx.reply(`Masuk dulu yuk`)

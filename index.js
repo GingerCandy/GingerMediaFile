@@ -330,7 +330,7 @@ bot.on('document', async (ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
         })
     }else{
-        var member3 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+        var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
         console.log(member3);
         if (!member3 || member3.status == 'left'){
             var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -389,7 +389,7 @@ bot.on('video', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
         })
     }else{
-        var member4 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+        var member4 = await bot.telegram.getChatMember(channelId, ctx.from.id)
         console.log(member4);
         if (!member4 || member4.status == 'left'){
             var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -447,7 +447,7 @@ bot.on('photo', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
         })
     }else{
-        var member5 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+        var member5 = await bot.telegram.getChatMember(channelId, ctx.from.id)
         console.log(member5);
         if (!member5 || member5.status == 'left'){
             var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -507,7 +507,7 @@ bot.on('audio', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
         })
     }else{
-        var member7 = await bot.telegram.getChatMember(-1001590114101, ctx.from.id)
+        var member7 = await bot.telegram.getChatMember(channelId, ctx.from.id)
         console.log(member7);
         if (!member7 || member7.status == 'left'){
             var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)

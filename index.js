@@ -106,7 +106,7 @@ bot.start(async(ctx)=>{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile.photos2[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2

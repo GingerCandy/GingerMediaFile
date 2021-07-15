@@ -568,7 +568,7 @@ bot.on('inline_query',async(ctx)=>{
                     caption:item.caption,
                     reply_markup:{
                         inline_keyboard:[
-                            [{text:"🔎Search",switch_inline_query:''}]
+                            [{text:"🔎Pencarian",switch_inline_query:''}]
                         ]
                     }
                 }

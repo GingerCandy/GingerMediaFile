@@ -30,7 +30,7 @@ const inKey2 = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
 
-const myData = ${ctx.from.first_name};
+const myData = `${ctx.from.first_name}`;
 
 //BOT START
 bot.start(async(ctx)=>{

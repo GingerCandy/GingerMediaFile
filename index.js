@@ -17,7 +17,7 @@ db.connect((err) => {
 })
 
 //ID Channel/Group
-const channelId = -1001590114101;z
+const channelId = -1001590114101;
 
 // inline keyboard
 const inKey = [

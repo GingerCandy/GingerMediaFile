@@ -16,8 +16,9 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
-//ID Channel/Group
+//ID Channel/Group/BOT
 const channelId = -1001590114101;
+const botId = -1820890891;
 
 //Function
 function first_name2(ctx){
@@ -132,7 +133,7 @@ bot.start(async(ctx)=>{
         saver.saveUser(user)
     }else{
         try {
-        var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
+        var member = await bot.telegram.getChatMember(channelId, botId)
         console.log(member);
         if (!member || member.status == 'left'){
            var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -376,37 +377,42 @@ bot.on('document', async (ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
         })
     }else{
-        var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
-        console.log(member3);
-        if (!member3 || member3.status == 'left'){
-            var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-            if (!profile5 || profile5.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-            ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-        }else{
-            await saver.checkBan(`${ctx.from.id}`).then((res) => {
-                console.log(res);
-                if (res == true) {
-                    ctx.reply(`${messagebanned2}`)
-                } else {
-                    saver.saveFile(fileDetails)
-                    ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
-                    ctx.replyWithDocument(document.file_id, {
-                        chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
-                    })
-                }
-            })
+        try{
+            var member3 = await bot.telegram.getChatMember(channelId, botId)
+            console.log(member3);
+            if (!member3 || member3.status == 'left'){
+                var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                if (!profile5 || profile5.total_count == 0)
+                return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+                ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+            }else{
+                await saver.checkBan(`${ctx.from.id}`).then((res) => {
+                    console.log(res);
+                    if (res == true) {
+                        ctx.reply(`${messagebanned2}`)
+                    } else {
+                        saver.saveFile(fileDetails)
+                        ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
+                        ctx.replyWithDocument(document.file_id, {
+                            chat_id: process.env.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
+                        })
+                    }
+                })
+            }
+        }
+        catch(error){
+            ctx.reply(`${messagebotnoaddgroup2}`)
         }
     }
 
@@ -439,38 +445,43 @@ bot.on('video', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
         })
     }else{
-        var member4 = await bot.telegram.getChatMember(channelId, ctx.from.id)
-        console.log(member4);
-        if (!member4 || member4.status == 'left'){
-            var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-            if (!profile6 || profile6.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-            ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-        }else{
-            await saver.checkBan(`${ctx.from.id}`).then((res) => {
-                console.log(res);
-                if (res == true) {
-                    ctx.reply(`${messagebanned2}`)
-                } else {
-                    saver.saveFile(fileDetails)
-                    ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
-                    ctx.replyWithVideo(video.file_id, {
-                        chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
-                    })
-                }
-            })
+        try{
+            var member4 = await bot.telegram.getChatMember(channelId, botId)
+            console.log(member4);
+            if (!member4 || member4.status == 'left'){
+                var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                if (!profile6 || profile6.total_count == 0)
+                return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+                ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+            }else{
+                await saver.checkBan(`${ctx.from.id}`).then((res) => {
+                    console.log(res);
+                    if (res == true) {
+                        ctx.reply(`${messagebanned2}`)
+                    } else {
+                        saver.saveFile(fileDetails)
+                        ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
+                        ctx.replyWithVideo(video.file_id, {
+                            chat_id: process.env.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
+                        })
+                    }
+                })
 
+            }
+        }
+        catch(error){
+            ctx.reply(`${messagebotnoaddgroup2}`)
         }
     }
 
@@ -501,38 +512,43 @@ bot.on('photo', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
         })
     }else{
-        var member5 = await bot.telegram.getChatMember(channelId, ctx.from.id)
-        console.log(member5);
-        if (!member5 || member5.status == 'left'){
-            var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-            if (!profile7 || profile7.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-            ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-        }else{
-            await saver.checkBan(`${ctx.from.id}`).then((res) => {
-                console.log(res);
-                if (res == true) {
-                    ctx.reply(`${messagebanned2}`)
-                } else {
-                    saver.saveFile(fileDetails)
-                    ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
-                    ctx.replyWithPhoto(photo[1].file_id, {
-                        chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
-                    })
-                }
-            })
+        try{
+            var member5 = await bot.telegram.getChatMember(channelId, botId)
+            console.log(member5);
+            if (!member5 || member5.status == 'left'){
+                var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                if (!profile7 || profile7.total_count == 0)
+                return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+                ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+            }else{
+                await saver.checkBan(`${ctx.from.id}`).then((res) => {
+                    console.log(res);
+                    if (res == true) {
+                        ctx.reply(`${messagebanned2}`)
+                    } else {
+                        saver.saveFile(fileDetails)
+                        ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
+                        ctx.replyWithPhoto(photo[1].file_id, {
+                            chat_id: process.env.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
+                        })
+                    }
+                })
 
+            }
+        }
+        catch(error){
+            ctx.reply(`${messagebotnoaddgroup2}`)
         }
     }
 
@@ -565,37 +581,42 @@ bot.on('audio', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
         })
     }else{
-        var member6 = await bot.telegram.getChatMember(channelId, ctx.from.id)
-        console.log(member7);
-        if (!member6 || member6.status == 'left'){
-            var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
-            if (!profile8 || profile8.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-            ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
-                parse_mode:'HTML',
-                reply_markup:{
-                    inline_keyboard:inKey2
-                }
-            })
-        }else{
-            await saver.checkBan(`${ctx.from.id}`).then((res) => {
-                console.log(res);
-                if (res == true) {
-                    ctx.reply(`${messagebanned2}`)
-                } else {
-                    saver.saveFile(fileDetails)
-                    ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
-                    ctx.replyWithAudio(audio.file_id, {
-                        chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
-                    })
-                }
-            })
+        try{
+            var member6 = await bot.telegram.getChatMember(channelId, botId)
+            console.log(member7);
+            if (!member6 || member6.status == 'left'){
+                var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+                if (!profile8 || profile8.total_count == 0)
+                return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+                ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
+                    parse_mode:'HTML',
+                    reply_markup:{
+                        inline_keyboard:inKey2
+                    }
+                })
+            }else{
+                await saver.checkBan(`${ctx.from.id}`).then((res) => {
+                    console.log(res);
+                    if (res == true) {
+                        ctx.reply(`${messagebanned2}`)
+                    } else {
+                        saver.saveFile(fileDetails)
+                        ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
+                        ctx.replyWithAudio(audio.file_id, {
+                            chat_id: process.env.LOG_CHANNEL,
+                            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
+                        })
+                    }
+                })
+            }
+        }
+        catch(error){
+            ctx.reply(`${messagebotnoaddgroup2}`)
         }
     }
 

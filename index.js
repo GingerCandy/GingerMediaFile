@@ -218,11 +218,7 @@ bot.action('POP',(ctx)=>{
 })
 
 bot.action2('CLOSE',(ctx)=>{
-    let k = 0;
-    for(let i = 0; i <= 100; i++ ){
-        k =  ctx.message.message_id-i;
-        ctx.deleteMessage(k)
-    }
+    ctx.deleteMessage()
 })
 
 //check account

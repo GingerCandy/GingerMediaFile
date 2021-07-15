@@ -556,7 +556,6 @@ bot.command('stats',async(ctx)=>{
 
 
 //getting files as inline result
-
 bot.on('inline_query',async(ctx)=>{
     query = ctx.inlineQuery.query
     if(query.length>0){
@@ -570,7 +569,7 @@ bot.on('inline_query',async(ctx)=>{
                     caption:item.caption,
                     reply_markup:{
                         inline_keyboard:[
-                            [{text:"🔎 Mencari",switch_inline_query:''}]
+                            [{text:"🔎Search again",switch_inline_query:''}]
                         ]
                     }
                 }

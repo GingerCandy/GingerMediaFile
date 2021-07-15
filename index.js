@@ -19,6 +19,7 @@ db.connect((err) => {
 //ID Channel/Group
 const channelId = -1001590114101;
 
+//Function
 function first_name2(ctx){
     return `${ctx.from.first_name ? ctx.from.first_name : ""}`;
 }

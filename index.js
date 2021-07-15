@@ -22,7 +22,7 @@ const channelId = -1001590114101;
 function first_name2(ctx){
     return `${ctx.from.first_name ? ctx.from.first_name : ""}`;
 }
-var first_name3 = first_name2(ctx);
+const first_name3 = await first_name2(ctx);
 
 // inline keyboard
 const inKey = [

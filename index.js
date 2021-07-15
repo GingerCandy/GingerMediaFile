@@ -54,7 +54,7 @@ bot.start(async(ctx)=>{
         if(length == 1){
             var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile || profile.total_count == 0)
-            return ctx.reply(myData(),{
+            ctx.reply(myData(),{
                 parse_mode:'HTML',
                 reply_markup:{
                    inline_keyboard:inKey

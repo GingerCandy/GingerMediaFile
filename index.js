@@ -22,7 +22,6 @@ const channelId = -1001590114101;
 function first_name2(ctx){
     return `${ctx.from.first_name ? ctx.from.first_name : ""}`;
 }
-const first_name3 = await first_name2(ctx);
 
 // inline keyboard
 const inKey = [
@@ -49,6 +48,8 @@ bot.start(async(ctx)=>{
         first_name:ctx.from.first_name,
         userId:ctx.from.id
     }
+
+    var first_name3 = await first_name2(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         //welcoming message on /start and if there is a query available we can send files

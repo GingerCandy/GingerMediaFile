@@ -18,7 +18,7 @@ db.connect((err) => {
 
 //ID Channel/Group/BOT
 const channelId = -1001590114101;
-const botId = 1820890891;
+const botId = ctx.from.id;
 
 //Function
 function first_name2(ctx){

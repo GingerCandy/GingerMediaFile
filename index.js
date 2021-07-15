@@ -17,14 +17,7 @@ db.connect((err) => {
 })
 
 //ID Channel/Group
-const channelId = -1001590114101;
-
-var arr = `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`;
-
-function _arrReply(ctx,arr){
-    var opt = {} //ini opt tetap
-    arr.map(text => ctx.reply(text,opt)) 
-}
+const channelId = -1001590114101;z
 
 // inline keyboard
 const inKey = [
@@ -57,14 +50,13 @@ bot.start(async(ctx)=>{
         if(length == 1){
             var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile || profile.total_count == 0)
-            return ctx.reply(_arrReply,{
+                return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                 parse_mode:'HTML',
                 reply_markup:{
                    inline_keyboard:inKey
                 }
             })
-            _arrReply(ctx,text);
-            ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey

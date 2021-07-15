@@ -16,7 +16,7 @@ db.connect((err) => {
     else { console.log('db connected'); }
 })
 
-//ID Channel/Group/BOT
+//ID Channel/Group
 const channelId = -1001590114101;
 
 //Function
@@ -36,13 +36,13 @@ function welcomejoin(ctx){
     return `Anda belum masuk, silakan masuk dulu!`;
 }
 function messagewelcome(ctx){
-    return `Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>`;
+    return `Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`;
 }
 function messagebanned(ctx){
-    return `⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING`;
+    return `⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.`;
 }
 function messagebotnoaddgroup(ctx){
-    return `BOT belum masuk channel/grup pemiliknya`;
+    return `BOT belum masuk channel/grup pemiliknya.`;
 }
 function messagelink(ctx){
     return `Kirim bot video, photo, dokumen dan suara.`;
@@ -51,13 +51,12 @@ function messagelink(ctx){
 // inline keyboard
 const inKey = [
   [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
-  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}],
-  [{text:'Tutup',callback_data:'CLOSE'}]
+  [{text:'Owner BOT', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
+  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
 
 const inKey2 = [
-  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}],
-  [{text:'Tutup',callback_data:'CLOSE'}]
+  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
 
 //BOT START
@@ -133,13 +132,13 @@ bot.start(async(ctx)=>{
         saver.saveUser(user)
     }else{
         try {
-            var botStatus = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id);
+            var botStatus = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member);
             if (!member || member.status == 'left'){
             var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile2 || profile2.total_count == 0)
-                return ctx.reply(`${first_name3} \n\n${welcomejoin2}`,{
+                return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
                     parse_mode:'HTML',
                     reply_markup:{
                         inline_keyboard:inKey2
@@ -156,7 +155,7 @@ bot.start(async(ctx)=>{
                 if(length == 1){
                     var profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                     if (!profile3 || profile3.total_count == 0)
-                        return ctx.reply(`${first_name3} \n\n${messagewelcome2}`,{
+                        return ctx.reply(`${first_name3} ${last_name3} \n\n${messagewelcome2}`,{
                             parse_mode:'HTML',
                             reply_markup:{
                                 inline_keyboard:inKey
@@ -216,10 +215,6 @@ bot.action('POP',(ctx)=>{
     ctx.reply(`${messagelink2}`)
 })
 
-bot.action2('CLOSE',(ctx)=>{
-    ctx.deleteMessage()
-})
-
 //check account
 bot.command('getid',async(ctx)=>{
     var profile4 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -228,11 +223,11 @@ bot.command('getid',async(ctx)=>{
     var username3 = username2(ctx);
     
     if (!profile4 || profile4.total_count == 0){
-        ctx.reply(`<b>Name:</b> ${first_name3} ${last_name3}\n<b>Username:</b> @${username3}\n<b>ID:</b> ${ctx.from.id}`,{
+        ctx.reply(`<b>Name:</b> ${first_name3} ${last_name3}\n<b>Username:</b> @${username3 }\n<b>ID:</b> ${ctx.from.id}`,{
         parse_mode:'HTML'  
         })
     }else{
-        ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${first_name3} ${last_name3}\n<b>Username:</b> @${username3}\n<b>ID:</b> ${ctx.from.id}`,
+        ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${first_name3} ${last_name3} \n<b>Username:</b> @${username3}\n<b>ID:</b> ${ctx.from.id}`,
             parse_mode:'HTML'
         })
     }
@@ -373,17 +368,18 @@ bot.on('document', async (ctx) => {
     var last_name3 = last_name2(ctx);
     var welcomejoin2 = welcomejoin(ctx);
     var messagebanned2 = messagebanned(ctx);
+    // var messagebotnoaddgroup2 = messagebotnoaddgroup(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
-        ctx.replyWithAudio(document.file_id, {
+        ctx.replyWithDocument(document.file_id, {
             chat_id: process.env.LOG_CHANNEL,
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
         })
     }else{
-        try{
-            var botStatus2 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id);
+
+            var botStatus2 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member2 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member2);
             if (!member2 || member2.status == 'left'){
@@ -416,10 +412,6 @@ bot.on('document', async (ctx) => {
                     }
                 })
             }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
     }
 
 })
@@ -442,17 +434,17 @@ bot.on('video', async(ctx) => {
     var last_name3 = last_name2(ctx);
     var welcomejoin2 = welcomejoin(ctx);
     var messagebanned2 = messagebanned(ctx);
+    // var messagebotnoaddgroup2 = messagebotnoaddgroup(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
-        ctx.replyWithAudio(video.file_id, {
+        ctx.replyWithVideo(video.file_id, {
             chat_id: process.env.LOG_CHANNEL,
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3} \nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
         })
     }else{
-        try{
-            var botStatus3 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id);
+            var botStatus3 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member3);
             if (!member3 || member3.status == 'left'){
@@ -486,10 +478,6 @@ bot.on('video', async(ctx) => {
                 })
 
             }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
     }
 
 })
@@ -510,17 +498,17 @@ bot.on('photo', async(ctx) => {
     var last_name3 = last_name2(ctx);
     var welcomejoin2 = welcomejoin(ctx);
     var messagebanned2 = messagebanned(ctx);
+    // var messagebotnoaddgroup2 = messagebotnoaddgroup(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
-        ctx.replyWithAudio(photo[1].file_id, {
+        ctx.replyWithPhoto(photo[1].file_id, {
             chat_id: process.env.LOG_CHANNEL,
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
         })
     }else{
-        try{
-            var botStatus4 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id);
+            var botStatus4 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member4 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member4);
             if (!member4 || member4.status == 'left'){
@@ -554,10 +542,6 @@ bot.on('photo', async(ctx) => {
                 })
 
             }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
     }
 
 })
@@ -580,6 +564,7 @@ bot.on('audio', async(ctx) => {
     var last_name3 = last_name2(ctx);
     var welcomejoin2 = welcomejoin(ctx);
     var messagebanned2 = messagebanned(ctx);
+    // var messagebotnoaddgroup2 = messagebotnoaddgroup(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
@@ -589,10 +574,9 @@ bot.on('audio', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
         })
     }else{
-        try{
-            var botStatus5 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id);
+            var botStatus5 = await ctx.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member5 = await bot.telegram.getChatMember(channelId, ctx.from.id)
-            console.log(member7);
+            console.log(member5);
             if (!member5 || member5.status == 'left'){
                 var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                 if (!profile8 || profile8.total_count == 0)
@@ -623,10 +607,6 @@ bot.on('audio', async(ctx) => {
                     }
                 })
             }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
     }
 
 })

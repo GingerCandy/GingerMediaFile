@@ -23,6 +23,10 @@ function first_name2(ctx){
     return `${ctx.from.first_name ? ctx.from.first_name : ""}`;
 }
 
+function username2(ctx){
+    return `${ctx.from.username ? ctx.from.username : ""}`;
+}
+
 // inline keyboard
 const inKey = [
   [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
@@ -56,7 +60,7 @@ bot.start(async(ctx)=>{
         if(length == 1){
             var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile || profile.total_count == 0)
-                return ctx.reply(`${first_name3}\n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+                return ctx.reply(`${first_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                 parse_mode:'HTML',
                 reply_markup:{
                    inline_keyboard:inKey
@@ -187,12 +191,14 @@ bot.action('POP',(ctx)=>{
 bot.command('getid',async(ctx)=>{
     var profile4 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
     var first_name3 = first_name2(ctx);
+    var username3 = username2(ctx);
+    
     if (!profile4 || profile4.total_count == 0){
-        ctx.reply(`<b>Name:</b> ${first_name3}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
+        ctx.reply(`<b>Name:</b> ${first_name3}\n<b>Username:</b> @${username3}\n<b>ID:</b> ${ctx.from.id}`,{
         parse_mode:'HTML'  
         })
     }else{
-        ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${first_name3}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
+        ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${first_name3}\n<b>Username:</b> @${username3}\n<b>ID:</b> ${ctx.from.id}`,
             parse_mode:'HTML'
         })
     }
@@ -329,6 +335,7 @@ bot.on('document', async (ctx) => {
         type: 'document'
     }
     console.log(fileDetails.caption);
+    var first_name3 = first_name2(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
@@ -388,7 +395,8 @@ bot.on('video', async(ctx) => {
         type: 'video'
     }
     console.log(fileDetails.caption);
-    
+    var first_name3 = first_name2(ctx);
+
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
@@ -446,6 +454,7 @@ bot.on('photo', async(ctx) => {
         type: 'photo'
     }
     console.log(fileDetails.caption);
+    var first_name3 = first_name2(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
@@ -506,6 +515,7 @@ bot.on('audio', async(ctx) => {
         type: 'audio'
     }
     console.log(fileDetails.caption);
+    var first_name3 = first_name2(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)

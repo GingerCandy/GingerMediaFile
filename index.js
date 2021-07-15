@@ -62,7 +62,7 @@ bot.start(async(ctx)=>{
                    inline_keyboard:inKey
                 }
             })
-                ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${first_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey
@@ -107,13 +107,13 @@ bot.start(async(ctx)=>{
         if (!member || member.status == 'left'){
            var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
            if (!profile2 || profile2.total_count == 0)
-            return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -124,13 +124,13 @@ bot.start(async(ctx)=>{
             if(length == 1){
                 var profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                 if (!profile3 || profile3.total_count == 0)
-                    return ctx.reply(`${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+                    return ctx.reply(`${first_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                         parse_mode:'HTML',
                         reply_markup:{
                             inline_keyboard:inKey
                         }
                     })
-                    ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                    ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${first_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
                         parse_mode:'HTML',
                         reply_markup:{
                             inline_keyboard:inKey
@@ -186,12 +186,13 @@ bot.action('POP',(ctx)=>{
 //check account
 bot.command('getid',async(ctx)=>{
     var profile4 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+    var first_name3 = await first_name2(ctx);
     if (!profile4 || profile4.total_count == 0){
-        ctx.reply(`<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
+        ctx.reply(`<b>Name:</b> ${first_name3}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
         parse_mode:'HTML'  
         })
     }else{
-        ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${ctx.from.first_name}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
+        ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${first_name3}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,
             parse_mode:'HTML'
         })
     }
@@ -334,7 +335,7 @@ bot.on('document', async (ctx) => {
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
         ctx.replyWithAudio(document.file_id, {
             chat_id: process.env.LOG_CHANNEL,
-            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
+            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
         })
     }else{
         var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
@@ -342,13 +343,13 @@ bot.on('document', async (ctx) => {
         if (!member3 || member3.status == 'left'){
             var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile5 || profile5.total_count == 0)
-            return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -364,7 +365,7 @@ bot.on('document', async (ctx) => {
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
                     ctx.replyWithDocument(document.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
+                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`
                     })
                 }
             })
@@ -393,7 +394,7 @@ bot.on('video', async(ctx) => {
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
         ctx.replyWithAudio(video.file_id, {
             chat_id: process.env.LOG_CHANNEL,
-            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
+            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
         })
     }else{
         var member4 = await bot.telegram.getChatMember(channelId, ctx.from.id)
@@ -401,13 +402,13 @@ bot.on('video', async(ctx) => {
         if (!member4 || member4.status == 'left'){
             var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile6 || profile6.total_count == 0)
-            return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -423,7 +424,7 @@ bot.on('video', async(ctx) => {
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
                     ctx.replyWithVideo(video.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
+                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`
                     })
                 }
             })
@@ -451,7 +452,7 @@ bot.on('photo', async(ctx) => {
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
         ctx.replyWithAudio(photo[1].file_id, {
             chat_id: process.env.LOG_CHANNEL,
-            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
+            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
         })
     }else{
         var member5 = await bot.telegram.getChatMember(channelId, ctx.from.id)
@@ -459,13 +460,13 @@ bot.on('photo', async(ctx) => {
         if (!member5 || member5.status == 'left'){
             var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile7 || profile7.total_count == 0)
-            return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -481,7 +482,7 @@ bot.on('photo', async(ctx) => {
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
                     ctx.replyWithPhoto(photo[1].file_id, {
                         chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
+                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`
                     })
                 }
             })
@@ -511,7 +512,7 @@ bot.on('audio', async(ctx) => {
         ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
         ctx.replyWithAudio(audio.file_id, {
             chat_id: process.env.LOG_CHANNEL,
-            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
+            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
         })
     }else{
         var member6 = await bot.telegram.getChatMember(channelId, ctx.from.id)
@@ -519,13 +520,13 @@ bot.on('audio', async(ctx) => {
         if (!member6 || member6.status == 'left'){
             var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile8 || profile8.total_count == 0)
-            return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -541,7 +542,7 @@ bot.on('audio', async(ctx) => {
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)
                     ctx.replyWithAudio(audio.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
+                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${first_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
                     })
                 }
             })

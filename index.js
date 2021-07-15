@@ -23,8 +23,6 @@ function first_name2(ctx){
     return `${ctx.from.first_name ? ctx.from.first_name : ""}`;
 }
 
-var first_name3 = await first_name2(ctx);
-
 // inline keyboard
 const inKey = [
   [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
@@ -50,6 +48,8 @@ bot.start(async(ctx)=>{
         first_name:ctx.from.first_name,
         userId:ctx.from.id
     }
+
+    var first_name3 = first_name2(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         //welcoming message on /start and if there is a query available we can send files
@@ -186,6 +186,7 @@ bot.action('POP',(ctx)=>{
 //check account
 bot.command('getid',async(ctx)=>{
     var profile4 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
+    var first_name3 = first_name2(ctx);
     if (!profile4 || profile4.total_count == 0){
         ctx.reply(`<b>Name:</b> ${first_name3}\n<b>Username:</b> @${ctx.from.username}\n<b>ID:</b> ${ctx.from.id}`,{
         parse_mode:'HTML'  

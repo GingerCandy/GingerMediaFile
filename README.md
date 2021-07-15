@@ -103,3 +103,4 @@ HISTORY 1
 3. Ada get ID untuk cek ID akun Anda.
 4. Ada pesan bot belum dimasukkan ke channel/grup tujuan.# GingerMediaFile
 # GingerMediaFile
+# GingerMediaFile

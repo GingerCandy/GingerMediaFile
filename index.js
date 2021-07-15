@@ -22,6 +22,7 @@ const channelId = -1001590114101;
 function first_name2(ctx){
     return `${ctx.from.first_name ? ctx.from.first_name : ""}`;
 }
+var first_name3 = await first_name2(ctx);
 
 // inline keyboard
 const inKey = [
@@ -54,7 +55,6 @@ bot.start(async(ctx)=>{
         if(length == 1){
             var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile || profile.total_count == 0)
-                var first_name3 = await first_name2(ctx); 
                 return ctx.reply(`${first_name3}\n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
                 parse_mode:'HTML',
                 reply_markup:{

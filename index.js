@@ -52,11 +52,13 @@ function messagelink(ctx){
 const inKey = [
   [{text:'Pencarian',switch_inline_query:''},{text:'Tautan',callback_data:'POP'}],
   [{text:'Owner BOT', url: 'https://t.me/SoraHearts'},{text:'Owner Channel', url: 'https://t.me/Gingercandy02'}],
-  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}],
+  [{text:'Tutup',callback_data:'close'}]
 ];
 
 const inKey2 = [
-  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
+  [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}],
+  [{text:'Tutup',callback_data:'close'}]
 ];
 
 //BOT START
@@ -213,6 +215,10 @@ bot.action('POP',(ctx)=>{
     var messagelink2 = messagelink(ctx);
     ctx.deleteMessage()
     ctx.reply(`${messagelink2}`)
+})
+
+bot.action('CLOSE',(ctx)=>{
+    ctx.deleteMessage()
 })
 
 //check account

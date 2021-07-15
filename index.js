@@ -18,7 +18,6 @@ db.connect((err) => {
 
 //ID Channel/Group/BOT
 const channelId = -1001590114101;
-const botId = ctx.from.id;
 
 //Function
 function first_name2(ctx){
@@ -133,7 +132,7 @@ bot.start(async(ctx)=>{
         saver.saveUser(user)
     }else{
         try {
-        var member = await bot.telegram.getChatMember(channelId, botId)
+        var member = await bot.telegram.getChatMember(channelId, ctx.from.id)
         console.log(member);
         if (!member || member.status == 'left'){
            var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -378,7 +377,7 @@ bot.on('document', async (ctx) => {
         })
     }else{
         try{
-            var member3 = await bot.telegram.getChatMember(channelId, botId)
+            var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member3);
             if (!member3 || member3.status == 'left'){
                 var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -446,7 +445,7 @@ bot.on('video', async(ctx) => {
         })
     }else{
         try{
-            var member4 = await bot.telegram.getChatMember(channelId, botId)
+            var member4 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member4);
             if (!member4 || member4.status == 'left'){
                 var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -513,7 +512,7 @@ bot.on('photo', async(ctx) => {
         })
     }else{
         try{
-            var member5 = await bot.telegram.getChatMember(channelId, botId)
+            var member5 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member5);
             if (!member5 || member5.status == 'left'){
                 var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
@@ -582,7 +581,7 @@ bot.on('audio', async(ctx) => {
         })
     }else{
         try{
-            var member6 = await bot.telegram.getChatMember(channelId, botId)
+            var member6 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member7);
             if (!member6 || member6.status == 'left'){
                 var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)

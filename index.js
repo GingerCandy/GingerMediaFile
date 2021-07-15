@@ -19,7 +19,7 @@ db.connect((err) => {
 //ID Channel/Group
 const channelId = -1001590114101;
 
-function myData(){
+var myData = function(){
     return `${ctx.from.first_name} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`;
 }
 

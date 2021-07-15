@@ -508,9 +508,9 @@ bot.on('audio', async(ctx) => {
             caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama depan: ${ctx.from.first_name}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`
         })
     }else{
-        var member7 = await bot.telegram.getChatMember(channelId, ctx.from.id)
+        var member6 = await bot.telegram.getChatMember(channelId, ctx.from.id)
         console.log(member7);
-        if (!member7 || member7.status == 'left'){
+        if (!member6 || member6.status == 'left'){
             var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile8 || profile8.total_count == 0)
             return ctx.reply(`${ctx.from.first_name} \n\nAnda belum masuk, silakan masuk dulu!`,{
@@ -554,7 +554,6 @@ bot.command('stats',async(ctx)=>{
     })
 })
 
-
 //getting files as inline result
 bot.on('inline_query',async(ctx)=>{
     query = ctx.inlineQuery.query
@@ -569,7 +568,7 @@ bot.on('inline_query',async(ctx)=>{
                     caption:item.caption,
                     reply_markup:{
                         inline_keyboard:[
-                            [{text:"🔎Search again",switch_inline_query:''}]
+                            [{text:"🔎Search",switch_inline_query:''}]
                         ]
                     }
                 }

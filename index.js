@@ -29,7 +29,6 @@ const inKey = [
 const inKey2 = [
   [{text:'Gabung Channel', url: 'https://t.me/gingercandyfiles'}]
 ];
-kalau mau seperti ini dibuat param.
 
 //BOT START
 bot.start(async(ctx)=>{

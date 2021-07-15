@@ -8,7 +8,7 @@ const state = {
 
 module.exports.connect = function (done) {
         const url = process.env.DB_URL
-        const dbname = 'RatuMediaFile'
+        const dbname = 'GingerMediaFile'
 
     MongoClient.connect(url,{ useUnifiedTopology: true } , (err, data) => {
         if (err) return done(err)

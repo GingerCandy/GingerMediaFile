@@ -2,7 +2,7 @@
 Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, suara, dokumen dan membuat file publik melalui pencarian inline.
 
 
-<a href="https://heroku.com/deploy?template=https://github.com/BimoSora/RatuFileSaver">
+<a href="https://heroku.com/deploy?template=https://github.com/BimoSora/GingerFileMedia">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 <br>

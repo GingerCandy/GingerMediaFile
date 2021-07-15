@@ -45,7 +45,7 @@ function messagebotnoaddgroup(ctx){
     return `BOT belum masuk channel/grup pemiliknya.`;
 }
 function messagelink(ctx){
-    return `Kirim bot video, photo, dokumen dan suara.`;
+    return `Kirim BOT video, photo, dokumen dan suara.`;
 }
 
 // inline keyboard

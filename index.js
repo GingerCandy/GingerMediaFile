@@ -217,7 +217,7 @@ bot.action('POP',(ctx)=>{
     ctx.reply(`${messagelink2}`)
 })
 
-bot.action('CLOSE',(ctx)=>{
+bot.action2('CLOSE',(ctx)=>{
     ctx.deleteMessage()
 })
 

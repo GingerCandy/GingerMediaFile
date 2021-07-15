@@ -22,13 +22,29 @@ const channelId = -1001590114101;
 function first_name2(ctx){
     return `${ctx.from.first_name ? ctx.from.first_name : ""}`;
 }
-
 function last_name2(ctx){
     return `${ctx.from.last_name ? ctx.from.last_name : ""}`;
 }
-
 function username2(ctx){
     return `${ctx.from.username ? ctx.from.username : ""}`;
+}
+function captionbuild(ctx){
+    return `<b>Selamat menikmati.</b>`;
+}
+function welcomejoin(ctx){
+    return `Anda belum masuk, silakan masuk dulu!`;
+}
+function messagewelcome(ctx){
+    return `Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>`;
+}
+function messagebanned(ctx){
+    return `⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING`;
+}
+function messagebotnoaddgroup(ctx){
+    return `BOT belum masuk channel/grup pemiliknya`;
+}
+function messagelink(ctx){
+    return `Kirim bot video, photo, dokumen dan suara.`;
 }
 
 // inline keyboard
@@ -59,19 +75,23 @@ bot.start(async(ctx)=>{
 
     var first_name3 = first_name2(ctx);
     var last_name3 = last_name2(ctx);
+    var captionbuild2 = captionbuild(ctx);
+    var welcomejoin2 = welcomejoin(ctx);
+    var messagewelcome2 = messagewelcome(ctx);
+    var messagebotnoaddgroup2 = messagebotnoaddgroup(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         //welcoming message on /start and if there is a query available we can send files
         if(length == 1){
             var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile || profile.total_count == 0)
-                return ctx.reply(`${first_name3} ${last_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+                return ctx.reply(`${first_name3} ${last_name3} \n\n${messagewelcome2}`,{
                 parse_mode:'HTML',
                 reply_markup:{
                    inline_keyboard:inKey
                 }
             })
-                ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${messagewelcome2}`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey
@@ -82,26 +102,26 @@ bot.start(async(ctx)=>{
             console.log(res);
             if(res.type=='video'){
                 if (!res.caption)
-                    return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                    return ctx.replyWithVideo(res.file_id,{caption: `\n\n${captionbuild2}`,
                         parse_mode:'HTML'
                     })
-                    ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                    ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n${captionbuild2}`,
                         parse_mode:'HTML'
                     })
                 }else if(res.type=='photo'){
                     if (!res.caption)
-                        return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                        return ctx.replyWithPhoto(res.file_id,{caption: `\n\n${captionbuild2}`,
                         parse_mode:'HTML'
                     })
-                        ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                        ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n${captionbuild2}`,
                         parse_mode:'HTML'
                     })
                 }else if(res.type=='document'){
                     if (!res.caption)
-                        return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                        return ctx.replyWithDocument(res.file_id,{caption: `\n\n${captionbuild2}`,
                         parse_mode:'HTML'
                     })
-                        ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                        ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n${captionbuild2}`,
                         parse_mode:'HTML'
                     })
                 }            
@@ -116,13 +136,13 @@ bot.start(async(ctx)=>{
         if (!member || member.status == 'left'){
            var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
            if (!profile2 || profile2.total_count == 0)
-            return ctx.reply(`${first_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} \n\n${welcomejoin2}`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -133,13 +153,13 @@ bot.start(async(ctx)=>{
             if(length == 1){
                 var profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                 if (!profile3 || profile3.total_count == 0)
-                    return ctx.reply(`${first_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,{
+                    return ctx.reply(`${first_name3} \n\n${messagewelcome2}`,{
                         parse_mode:'HTML',
                         reply_markup:{
                             inline_keyboard:inKey
                         }
                     })
-                    ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\nSaya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="t.me/mdtohtmlbot">HTML</a>.`,
+                    ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${messagewelcome2}`,
                         parse_mode:'HTML',
                         reply_markup:{
                             inline_keyboard:inKey
@@ -150,26 +170,26 @@ bot.start(async(ctx)=>{
                         console.log(res);
                         if(res.type=='video'){
                             if (!res.caption)
-                                return ctx.replyWithVideo(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                                return ctx.replyWithVideo(res.file_id,{caption: `\n\n${captionbuild2}`,
                                 parse_mode:'HTML'
                             })
-                                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                                ctx.replyWithVideo(res.file_id,{caption: `${res.caption} \n\n${captionbuild2}`,
                                 parse_mode:'HTML'
                             })
                         }else if(res.type=='photo'){
                             if (!res.caption)
-                                return ctx.replyWithPhoto(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                                return ctx.replyWithPhoto(res.file_id,{caption: `\n\n${captionbuild2}`,
                                 parse_mode:'HTML'
                             })
-                                ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                                ctx.replyWithPhoto(res.file_id,{caption: `${res.caption} \n\n${captionbuild2}`,
                                 parse_mode:'HTML'
                             })
                         }else if(res.type=='document'){
                             if (!res.caption)
-                                return ctx.replyWithDocument(res.file_id,{caption: `\n\n<b>Selamat menikmati.</b>`,
+                                return ctx.replyWithDocument(res.file_id,{caption: `\n\n${captionbuild2}`,
                                 parse_mode:'HTML'
                             })
-                                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n<b>Selamat menikmati.</b>`,
+                                ctx.replyWithDocument(res.file_id,{caption: `${res.caption} \n\n${captionbuild2}`,
                                 parse_mode:'HTML'
                             })
                         }            
@@ -181,15 +201,16 @@ bot.start(async(ctx)=>{
             }
         }
         catch(error){
-            ctx.reply(`Bot belum masuk channel/grup pemiliknya`)
+            ctx.reply(`${messagebotnoaddgroup2}`)
         }
     }
 })
 
 //DEFINING POP CALLBACK
 bot.action('POP',(ctx)=>{
+    var messagelink2 = messagelink(ctx);
     ctx.deleteMessage()
-    ctx.reply('Kirim bot video, photo, dokumen dan suara.')
+    ctx.reply(`${messagelink2}`)
 })
 
 //check account
@@ -343,6 +364,8 @@ bot.on('document', async (ctx) => {
     console.log(fileDetails.caption);
     var first_name3 = first_name2(ctx);
     var last_name3 = last_name2(ctx);
+    var welcomejoin2 = welcomejoin(ctx);
+    var messagebanned2 = messagebanned(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
@@ -357,13 +380,13 @@ bot.on('document', async (ctx) => {
         if (!member3 || member3.status == 'left'){
             var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile5 || profile5.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -373,7 +396,7 @@ bot.on('document', async (ctx) => {
             await saver.checkBan(`${ctx.from.id}`).then((res) => {
                 console.log(res);
                 if (res == true) {
-                    ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+                    ctx.reply(`${messagebanned2}`)
                 } else {
                     saver.saveFile(fileDetails)
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`)
@@ -404,6 +427,8 @@ bot.on('video', async(ctx) => {
     console.log(fileDetails.caption);
     var first_name3 = first_name2(ctx);
     var last_name3 = last_name2(ctx);
+    var welcomejoin2 = welcomejoin(ctx);
+    var messagebanned2 = messagebanned(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
@@ -418,13 +443,13 @@ bot.on('video', async(ctx) => {
         if (!member4 || member4.status == 'left'){
             var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile6 || profile6.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -434,7 +459,7 @@ bot.on('video', async(ctx) => {
             await saver.checkBan(`${ctx.from.id}`).then((res) => {
                 console.log(res);
                 if (res == true) {
-                    ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+                    ctx.reply(`${messagebanned2}`)
                 } else {
                     saver.saveFile(fileDetails)
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`)
@@ -464,6 +489,8 @@ bot.on('photo', async(ctx) => {
     console.log(fileDetails.caption);
     var first_name3 = first_name2(ctx);
     var last_name3 = last_name2(ctx);
+    var welcomejoin2 = welcomejoin(ctx);
+    var messagebanned2 = messagebanned(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
@@ -478,13 +505,13 @@ bot.on('photo', async(ctx) => {
         if (!member5 || member5.status == 'left'){
             var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile7 || profile7.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -494,7 +521,7 @@ bot.on('photo', async(ctx) => {
             await saver.checkBan(`${ctx.from.id}`).then((res) => {
                 console.log(res);
                 if (res == true) {
-                    ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+                    ctx.reply(`${messagebanned2}`)
                 } else {
                     saver.saveFile(fileDetails)
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`)
@@ -526,6 +553,8 @@ bot.on('audio', async(ctx) => {
     console.log(fileDetails.caption);
     var first_name3 = first_name2(ctx);
     var last_name3 = last_name2(ctx);
+    var welcomejoin2 = welcomejoin(ctx);
+    var messagebanned2 = messagebanned(ctx);
 
     if(ctx.from.id ==process.env.ADMIN){
         saver.saveFile(fileDetails)
@@ -540,13 +569,13 @@ bot.on('audio', async(ctx) => {
         if (!member6 || member6.status == 'left'){
             var profile8 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
             if (!profile8 || profile8.total_count == 0)
-            return ctx.reply(`${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,{
+            return ctx.reply(`${first_name3} ${last_name3} \n\n${welcomejoin2}`,{
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
                 }
             })
-            ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\nAnda belum masuk, silakan masuk dulu!`,
+            ctx.replyWithPhoto(profile8.photos[0][0].file_id,{caption: `${first_name3} ${last_name3} \n\n${welcomejoin2}`,
                 parse_mode:'HTML',
                 reply_markup:{
                     inline_keyboard:inKey2
@@ -556,7 +585,7 @@ bot.on('audio', async(ctx) => {
             await saver.checkBan(`${ctx.from.id}`).then((res) => {
                 console.log(res);
                 if (res == true) {
-                    ctx.reply('⚠ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING')
+                    ctx.reply(`${messagebanned2}`)
                 } else {
                     saver.saveFile(fileDetails)
                     ctx.reply(`https://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`)

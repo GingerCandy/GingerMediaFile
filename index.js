@@ -222,6 +222,7 @@ bot.action2('CLOSE',(ctx)=>{
     for(let i = 0; i <= 100; i++ ){
         k =  ctx.message.message_id-i;
         ctx.deleteMessage(k)
+    }
 })
 
 //check account

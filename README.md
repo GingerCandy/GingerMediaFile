@@ -91,6 +91,7 @@ Anda dapat menghapus file 3 cara.
 <b>Jika Anda ingin mendukung saya, ikuti saya di GitHub sebagai token dukungan.</b>
 
 //Update
+
 HISTORY 2
 1. Function teks disederhanakan.
 2. Mendeteksi jika belum ada nama akun akan dikosongkan.

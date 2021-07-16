@@ -80,7 +80,7 @@ bot.start(async(ctx)=>{
     var messagebotnoaddgroup2 = messagebotnoaddgroup(ctx);
 
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id ==process.env.ADMIN){
+        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             //welcoming message on /start and if there is a query available we can send files
             if(length == 1){
                 var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)

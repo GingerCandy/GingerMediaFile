@@ -394,7 +394,7 @@ bot.on('document', async (ctx) => {
         }
         ctx.replyWithDocument(document.file_id, {
             chat_id: process.env.LOG_CHANNEL,
-            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`,
+            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                 parse_mode:'HTML'
         })
     }else{
@@ -430,9 +430,9 @@ bot.on('document', async (ctx) => {
                     }
                     ctx.replyWithDocument(document.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
-                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`,
+                        caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                         parse_mode:'HTML'
-                       })
+                    })
                 }
             })
         }
@@ -467,7 +467,7 @@ bot.on('video', async(ctx) => {
         }
         ctx.replyWithVideo(video.file_id, {
             chat_id: process.env.LOG_CHANNEL,
-            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${audio.file_unique_id}`,
+            caption: `${ctx.message.caption}\n\nDari: ${ctx.from.id}\nNama: ${first_name3} ${last_name3}\nID file: ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
             parse_mode:'HTML'
         })
     }else{

@@ -3,14 +3,13 @@ const { Telegraf } = require('telegraf')
 const bot = new Telegraf(process.env.TOKEN)
 
 
-//database 
-
+//database
 const db = require('./config/connection')
 const collection = require('./config/collection')
 const saver = require('./database/filesaver')
 
 
-//DATABASE CONNECTION 
+//DATABASE CONNECTION
 db.connect((err) => {
     if (err) { console.log('error connection db' + err); }
     else { console.log('db connected'); }
@@ -226,7 +225,7 @@ bot.command('getid',async(ctx)=>{
     if(ctx.chat.type == 'private') {
         if (!profile4 || profile4.total_count == 0){
             ctx.reply(`<b>Name:</b> ${first_name3} ${last_name3}\n<b>Username:</b> @${username3 }\n<b>ID:</b> ${ctx.from.id}`,{
-            parse_mode:'HTML'  
+                parse_mode:'HTML'  
             })
         }else{
             ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${first_name3} ${last_name3} \n<b>Username:</b> @${username3}\n<b>ID:</b> ${ctx.from.id}`,

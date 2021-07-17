@@ -29,7 +29,7 @@ function username2(ctx){
     return `${ctx.from.username ? ctx.from.username : ""}`;
 }
 function captionbuild(ctx){
-    return `<b>Selamat menikmati.</b>`;
+    return `<b>wajib join channel ke 2 @gingercandy22 selamat menikmati.</b>`;
 }
 function welcomejoin(ctx){
     return `Anda belum masuk, silakan masuk dulu!`;

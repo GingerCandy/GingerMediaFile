@@ -96,6 +96,7 @@ HISTORY 2
 1. Function teks disederhanakan.
 2. Mendeteksi jika belum ada nama akun akan dikosongkan.
 3. Admin bisa menggunakan BOT tanpa masuk channel/grup.
+4. Ada log channel untuk mengetahui siapa yang ngirim dan apa deskripsi filenya.
 
 HISTORY 1
 1. Ada join channel/grup terlebih dahulu saat start, pastikan id channel/grup di ganti pada index.js dan bot harus jadi admin di grup/channel.

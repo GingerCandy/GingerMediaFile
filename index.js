@@ -445,12 +445,12 @@ bot.on('document', async (ctx) => {
                         if (!ctx.message.caption)
                         return ctx.replyWithDocument(document.file_id, {
                             chat_id: process.env.LOG_CHANNEL,
-                            caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name3} ${last_name3}\n\n<b>Nama file:</b> ${document.file_name} KB\n<b>Size:</b> ${document.file_size}\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                            caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name3} ${last_name3}\n\n<b>Nama file:</b> ${document.file_name}\n<b>Size:</b> ${document.file_size} KB\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithDocument(document.file_id, {
                             chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name3} ${last_name3}\n\n<b>Nama file:</b> ${document.file_name} KB\n<b>Size:</b> ${document.file_size}\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                            caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name3} ${last_name3}\n\n<b>Nama file:</b> ${document.file_name}\n<b>Size:</b> ${document.file_size}KB\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                             parse_mode:'HTML'
                         })
                     }

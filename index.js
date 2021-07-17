@@ -302,7 +302,10 @@ bot.command('send',async(ctx)=>{
             async function broadcast(text) {
                 for (const users of userId) {
                     try {
-                        await bot.telegram.sendMessage(users, String(text))
+                        await bot.telegram.sendMessage(users, String(text),{
+                            parse_mode:'HTML'
+                          }
+                        )
                     } catch (err) {
                         saver.updateUser(users)
                         totalFail.push(users)

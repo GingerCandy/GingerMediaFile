@@ -782,13 +782,13 @@ bot.on('inline_query',async(ctx)=>{
     query = ctx.inlineQuery.query
         if(query.length>0){
             let searchResult = saver.getfileInline(query).then((res)=>{
-                let result = res.map((item,index)=>{
+                let result = res.map((ctx,index)=>{
                     return {
                         type:'document',
-                        id:item._id,
-                        title:item.file_name,
-                        document_file_id:item.file_id,
-                        caption:item.caption,
+                        id:ctx._id,
+                        title:ctx.file_name,
+                        document_file_id:ctx.file_id,
+                        caption:ctx.caption,
                         reply_markup:{
                             inline_keyboard:[
                                 [{text:"Pencarian",switch_inline_query:''}]

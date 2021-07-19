@@ -212,11 +212,24 @@ bot.start(async(ctx)=>{
 bot.action('POP',(ctx)=>{
     var messagelink2 = messagelink(ctx);
     ctx.deleteMessage()
-    ctx.reply(`${messagelink2}`)
+    ctx.reply(`${messagelink2}`,{
+        parse_mode: 'HTML'
+    })
+})
+
+bot.command('reload',async(ctx)=>{
+    var botStatus = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
+    var memberstatus = await bot.telegram.getChatMember(channelId, ctx.from.id)
+        console.log(memberstatus);
+    if(ctx.chat.type == 'supergroup') {
+        if (!memberstatus || memberstatus.status == 'administrator' || memberstatus.status == 'creator' || memberstatus.status == 'left'){
+             ctx.reply('BOT dimulai ulang')
+        }
+    }
 })
 
 //check account
-bot.command('getid',async(ctx)=>{
+bot.command('getid',async(ctx)=>{   
     var profile4 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
     var first_name3 = first_name2(ctx);
     var last_name3 = last_name2(ctx);
@@ -410,7 +423,7 @@ bot.on('document', async (ctx) => {
             parse_mode:'HTML'
         })
     }else{
-        try{
+        //try{
             var botStatus2 = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member2 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member2);
@@ -457,11 +470,11 @@ bot.on('document', async (ctx) => {
                         })
                     }
                 })
-            }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
+            }   
+        //}
+        //catch(error){
+        //    ctx.reply(`${messagebotnoaddgroup2}`)
+        //}
     }
 
 })
@@ -506,7 +519,7 @@ bot.on('video', async(ctx) => {
             parse_mode:'HTML'
         })
     }else{
-        try{
+        //try{
             var botStatus3 = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member3 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member3);
@@ -554,10 +567,10 @@ bot.on('video', async(ctx) => {
                     }
                 })
             }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
+        //}
+        //catch(error){
+        //    ctx.reply(`${messagebotnoaddgroup2}`)
+        //}
     }
 
 })
@@ -602,7 +615,7 @@ bot.on('photo', async(ctx) => {
             parse_mode:'HTML'
         })
     }else{
-        try{
+        //try{
             var botStatus4 = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member4 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member4);
@@ -650,10 +663,10 @@ bot.on('photo', async(ctx) => {
                     }
                 })
             }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
+        //}
+        //catch(error){
+        //    ctx.reply(`${messagebotnoaddgroup2}`)
+        //}
     }
 
 })
@@ -698,7 +711,7 @@ bot.on('audio', async(ctx) => {
             parse_mode:'HTML'
         })
     }else{
-        try{
+        //try{
             var botStatus5 = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
             var member5 = await bot.telegram.getChatMember(channelId, ctx.from.id)
             console.log(member5);
@@ -746,10 +759,10 @@ bot.on('audio', async(ctx) => {
                     }
                 })
             }
-        }
-        catch(error){
-            ctx.reply(`${messagebotnoaddgroup2}`)
-        }
+        //}
+        //catch(error){
+        //    ctx.reply(`${messagebotnoaddgroup2}`)
+        //}
     }
 
 })

@@ -780,7 +780,6 @@ bot.command('stats',async(ctx)=>{
 //getting files as inline result
 bot.on('inline_query',async(ctx)=>{
     query = ctx.inlineQuery.query
-    
         if(query.length>0){
             let searchResult = saver.getfileInline(query).then((res)=>{
                 let result = res.map((item,index)=>{

@@ -30,7 +30,7 @@ function username2(ctx){
     return `${ctx.from.username ? ctx.from.username : ""}`;
 }
 
-//caption share link
+//caption click link
 function captionbuild(ctx){
     return `<b>wajib join channel ke 2 @gingercandy22 selamat menikmati.</b>`;
 }

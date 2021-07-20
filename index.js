@@ -783,7 +783,7 @@ bot.on('inline_query',async(ctx)=>{
     console.log(query);
     if(query.length>0){
         // pastikan input sesuai regex
-        const type_reg = /(document|video|photo)?\s(\w*)/;
+        const type_reg = /(document|video|audio)?\s(\w*)/;
         var reg_veriv = type_reg.exec(query)
 
         if(!reg_veriv) return;

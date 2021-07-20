@@ -502,7 +502,7 @@ bot.on('video', async(ctx) => {
     if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
         saver.saveFile(fileDetails)
         if(ctx.chat.type == 'private') {
-            ctx.reply(`<b>Nama file:</b>${video.file_name}\n<b>Size:</b> ${video.file_size} KB\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
+            ctx.reply(`<b>Nama file:</b> ${video.file_name}\n<b>Size:</b> ${video.file_size} KB\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
                 parse_mode: 'HTML',
                 reply_to_message_id: ctx.message.message_id
             })
@@ -548,7 +548,7 @@ bot.on('video', async(ctx) => {
                     } else {
                         saver.saveFile(fileDetails)
                         if(ctx.chat.type == 'private') {
-                            ctx.reply(`<b>Nama file:</b>${video.file_name}\n<b>Size:</b> ${video.file_size} KB\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
+                            ctx.reply(`<b>Nama file:</b> ${video.file_name}\n<b>Size:</b> ${video.file_size} KB\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
                                 parse_mode: 'HTML',
                                 reply_to_message_id: ctx.message.message_id
                             })
@@ -780,30 +780,27 @@ bot.command('stats',async(ctx)=>{
 //getting files as inline result
 bot.on('inline_query',async(ctx)=>{
     query = ctx.inlineQuery.query
-        if(query.length>0){
-            let searchResult = saver.getfileInline(query).then((res)=>{
-                let result = res.map((ctx,index)=>{
-                    return {
-                        type:'document',
-                        id:ctx._id,
-                        title:ctx.file_name,
-                        document_file_id:ctx.file_id,
-                        caption:ctx.caption,
-                        reply_markup:{
-                            inline_keyboard:[
-                                [{text:"Pencarian",switch_inline_query:''}]
-                            ]
-                        }
+    if(query.length>0){
+        let searchResult = saver.getfileInline(query).then((res)=>{
+            let result = res.map((ctx,index)=>{
+                return {
+                    type:'document',
+                    id:ctx._id,
+                    title:ctx.file_name,
+                    document_file_id:ctx.file_id,
+                    caption:ctx.caption,
+                    reply_markup:{
+                        inline_keyboard:[
+                            [{text:"Pencarian",switch_inline_query:''}]
+                        ]
                     }
-                })
-            
-                ctx.answerInlineQuery(result)
-            })
-        }else{
-            console.log('query not found');
-        }
-
-    
+                }
+            })    
+            ctx.answerInlineQuery(result)
+        })
+    }else{
+        console.log('query not found');
+    } 
 })
 
 //heroku config

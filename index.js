@@ -343,43 +343,24 @@ bot.command('send',async(ctx)=>{
 })
 
 //ban user with user id
-bot.on('inline_query',async(ctx)=>{
-    query = ctx.inlineQuery.query
-    console.log(query);
-    if(query.length>0){
-        // pastikan input sesuai regex
-        const type_reg = /(document|video|photo)?\s(\w*)/;
-        var reg_veriv = type_reg.exec(query)
+bot.command('ban', (ctx) => {
+    msg = ctx.message.text
+    let msgArray = msg.split(' ')
+    msgArray.shift()
+    let text = msgArray.join(' ')
+    console.log(text)
+    userId = {
+        id: text
+    }
 
-        if(!reg_veriv) return;
-        if(!reg_veriv[1])return;
-
-        var file_type = reg_veriv[1];
-        var keyword = reg_veriv[2];
-
-        let searchResult = saver.getfileInline(keyword).then((res)=>{
-            let result = res.filter(e => e.type == file_type).map((ctx,index)=>{
-                    var data = {
-                        type:ctx.type,
-                        id:ctx._id,
-                        title:ctx.file_name,
-                        caption:ctx.caption,
-                        reply_markup:{
-                            inline_keyboard:[
-                                [{text:"Pencarian",switch_inline_query:''}]
-                            ]
-                        }
-                    }
-                    data[`${ctx.type}_file_id`] = ctx.file_id;
-                    return data;
-                }
-            )
-            console.log(result);
-            ctx.answerInlineQuery(result)
-        })
-    }else{
-        console.log('query not found');
-    } 
+    if(ctx.chat.type == 'private') {
+        if(ctx.from.id ==process.env.ADMIN|| ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            saver.banUser(userId).then((res) => {
+                ctx.reply('Dilarang')
+            })
+        }
+    }
+    
 })
 
 //unban user with user id
@@ -799,22 +780,36 @@ bot.command('stats',async(ctx)=>{
 //getting files as inline result
 bot.on('inline_query',async(ctx)=>{
     query = ctx.inlineQuery.query
+    console.log(query);
     if(query.length>0){
-        let searchResult = saver.getfileInline(query).then((res)=>{
-            let result = res.map((ctx,index)=>{
-                return {
-                    type:'document',
-                    id:ctx._id,
-                    title:ctx.file_name,
-                    document_file_id:ctx.file_id,
-                    caption:ctx.caption,
-                    reply_markup:{
-                        inline_keyboard:[
-                            [{text:"Pencarian",switch_inline_query:''}]
-                        ]
+        // pastikan input sesuai regex
+        const type_reg = /(document|video|photo)?\s(\w*)/;
+        var reg_veriv = type_reg.exec(query)
+
+        if(!reg_veriv) return;
+        if(!reg_veriv[1])return;
+
+        var file_type = reg_veriv[1];
+        var keyword = reg_veriv[2];
+
+        let searchResult = saver.getfileInline(keyword).then((res)=>{
+            let result = res.filter(e => e.type == file_type).map((ctx,index)=>{
+                    var data = {
+                        type:ctx.type,
+                        id:ctx._id,
+                        title:ctx.file_name,
+                        caption:ctx.caption,
+                        reply_markup:{
+                            inline_keyboard:[
+                                [{text:"Pencarian",switch_inline_query:''}]
+                            ]
+                        }
                     }
+                    data[`${ctx.type}_file_id`] = ctx.file_id;
+                    return data;
                 }
-            })    
+            )
+            console.log(result);
             ctx.answerInlineQuery(result)
         })
     }else{

@@ -131,8 +131,6 @@ bot.start(async(ctx)=>{
                     }            
                 })
             }
-            //saving user details to the database
-            saver.saveUser(user)
         }else{
             try {
                 var botStatus = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
@@ -200,15 +198,14 @@ bot.start(async(ctx)=>{
                                 }            
                             })
                         }
-
-                        //saving user details to the database
-                        saver.saveUser(user)
                     }
                 }
             catch(error){
                 ctx.reply(`${messagebotnoaddgroup(ctx)}`)
             }
         }
+        //saving user details to the database
+        saver.saveUser(user)
     }
 })
 

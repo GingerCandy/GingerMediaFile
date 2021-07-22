@@ -38,7 +38,7 @@ function today2(ctx){
     var hours2 = today2.getHours();
     var minutes2 = today2.getMinutes();
     var seconds2 = today2.getSeconds();
-    return today2 = mm + '/' + dd + '/' + yyyy + '-' + hours + ':' + minutes + ':' + seconds;
+    return today2 = mm2 + '/' + dd2 + '/' + yyyy2 + '-' + hours2 + ':' + minutes2 + ':' + seconds2;
 }
 
 //Function

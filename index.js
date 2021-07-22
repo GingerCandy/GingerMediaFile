@@ -313,7 +313,8 @@ bot.command('send',async(ctx)=>{
                 for (const users of userId) {
                     try {
                         await bot.telegram.sendMessage(users, String(text),{
-                            parse_mode:'HTML'
+                            parse_mode:'HTML',
+                            disable_web_page_preview: true
                           }
                         )
                     } catch (err) {

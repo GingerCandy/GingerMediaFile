@@ -93,8 +93,8 @@ Anda dapat menghapus file 3 cara.
 //Update
 
 HISTORY 3
-1. Perbaikan penulisan file_name
-2. Perbaikan pencarian media
+1. Perbaikan penulisan file_name.
+2. Perbaikan pencarian media.
 
 HISTORY 2
 1. Function teks disederhanakan.

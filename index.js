@@ -768,6 +768,45 @@ bot.on('photo', async(ctx) => {
 
 })
 
+//getting files as inline result
+bot.on('inline_query',async(ctx)=>{
+    query = ctx.inlineQuery.query
+    if(query.length>0){
+        // pastikan input sesuai regex
+        const type_reg = /(document|video|photo)?\s(\w*)/;
+        var reg_veriv = type_reg.exec(query)
+
+        if(!reg_veriv) return;
+        if(!reg_veriv[1])return;
+
+        var file_type = reg_veriv[1];
+        var keyword = reg_veriv[2];
+
+
+        let searchResult = saver.getfileInline(keyword).then((res)=>{
+            let result = res.filter(e => e.type == file_type).map((ctx,index)=>{
+                    var data = {
+                        type:ctx.type,
+                        id:ctx._id,
+                        title:ctx.file_name,
+                        caption:ctx.caption,
+                        reply_markup:{
+                            inline_keyboard:[
+                                [{text:"Pencarian",switch_inline_query:''}]
+                            ]
+                        }
+                    }
+                    data[`${ctx.type}_file_id`] = ctx.file_id;
+                    return data;
+                }
+            )
+            ctx.answerInlineQuery(result)
+        })
+    }else{
+        console.log('query not found');
+    } 
+})
+
 //heroku config
 domain = `${process.env.DOMAIN}.herokuapp.com`
 bot.launch({

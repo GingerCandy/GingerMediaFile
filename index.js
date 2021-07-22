@@ -230,8 +230,8 @@ bot.action('POP',(ctx)=>{
 })
 
 bot.command('reload',async(ctx)=>{
-    var botStatus = await bot.telegram.getChatMember(channelId, ctx.botInfo.id)
-    var memberstatus = await bot.telegram.getChatMember(channelId, ctx.from.id)
+    var botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+    var memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
         console.log(memberstatus);
     if(ctx.chat.type == 'supergroup') {
         if (!memberstatus || memberstatus.status == 'administrator' || memberstatus.status == 'creator' || memberstatus.status == 'left'){

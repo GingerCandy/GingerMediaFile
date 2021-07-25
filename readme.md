@@ -92,6 +92,10 @@ Anda dapat menghapus file 3 cara.
 
 //Update
 
+HISTORY 4
+1. BOT mendukung kick, ban, unban dan ada pesan pribadi.
+2. BOT mendukung pin dan unpin.
+
 HISTORY 3
 1. Perbaikan penulisan file_name.
 2. Perbaikan pencarian media.

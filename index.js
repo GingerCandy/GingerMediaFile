@@ -917,6 +917,15 @@ bot.on('photo', async(ctx) => {
 
 })
 
+bot.command('stats',async(ctx)=>{
+    stats = await saver.getUser().then((res)=>{
+        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            ctx.reply(`📊Total pengguna: <b> ${res.length}</b>`,{parse_mode:'HTML'})
+        }
+        
+    })
+})
+
 //getting files as inline result
 bot.on('inline_query',async(ctx)=>{
     query = ctx.inlineQuery.query

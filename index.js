@@ -58,7 +58,7 @@ function welcomejoin(ctx){
     return `Anda belum masuk, silakan masuk dulu!`;
 }
 function messagewelcome(ctx){
-    return `Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href="https://core.telegram.org/bots/api#html-style">HTML</a>. \n\n${today(ctx)}`;
+    return `Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href='https://core.telegram.org/bots/api#html-style'>HTML</a>. \n\n${today(ctx)}`;
 }
 function messagebanned(ctx){
     return `⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.`;

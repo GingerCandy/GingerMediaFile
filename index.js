@@ -522,8 +522,19 @@ bot.command('unban', (ctx) => {
 bot.on('document', async (ctx) => {
     document = ctx.message.document
     console.log(ctx);
+
+       fileDetails1 = {
+           file_name: document.file_name,
+           userId:ctx.from.id,
+           file_id: document.file_id,
+           caption: ctx.message.caption,
+           file_size: document.file_size,
+           uniqueId: document.file_unique_id,
+           type: 'document'
+       }
+       console.log(fileDetails1.caption);
     
-    if(document.file_name == undefined){
+    if(fileDetails1.file_name == undefined){
        fileDetails2 = {
            file_name: today2(ctx),
            userId:ctx.from.id,
@@ -548,7 +559,7 @@ bot.on('document', async (ctx) => {
     }
 
     if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
-        if(!fileDetails.file_name){
+        if(!fileDetails1.file_name){
             saver.saveFile(fileDetails2)
             if(ctx.chat.type == 'private') {
                 ctx.reply(`<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
@@ -619,7 +630,7 @@ bot.on('document', async (ctx) => {
                         ctx.reply(`${messagebanned(ctx)}`)
                     }
                 }else{
-                    if(!fileDetails.file_name){
+                    if(!fileDetails1.file_name){
                         saver.saveFile(fileDetails2)
                         if(ctx.chat.type == 'private') {
                             ctx.reply(`<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
@@ -676,7 +687,18 @@ bot.on('video', async(ctx) => {
     video = ctx.message.video
     console.log(ctx);
 
-    if(video.file_name == undefined){
+      fileDetails1 = {
+           file_name: video.file_name,
+           userId:ctx.from.id,
+           file_id: video.file_id,
+           caption: ctx.message.caption,
+           file_size: video.file_size,
+           uniqueId: video.file_unique_id,
+           type: 'video'
+       }
+       console.log(fileDetails1.caption);
+
+    if(fileDetails1.file_name == undefined){
        fileDetails2 = {
            file_name: today2(ctx),
            userId:ctx.from.id,
@@ -704,7 +726,7 @@ bot.on('video', async(ctx) => {
     }
 
     if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
-        if(!fileDetails.file_name){
+        if(!fileDetails1.file_name){
             saver.saveFile(fileDetails2)
             if(ctx.chat.type == 'private') {
                 ctx.reply(`<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{
@@ -775,7 +797,7 @@ bot.on('video', async(ctx) => {
                         ctx.reply(`${messagebanned(ctx)}`)
                     }
                 }else{
-                    if(!fileDetails.file_name){
+                    if(!fileDetails1.file_name){
                         saver.saveFile(fileDetails2)
                         if(ctx.chat.type == 'private') {
                             ctx.reply(`<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,{

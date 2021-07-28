@@ -290,24 +290,40 @@ bot.command('ban',async(ctx)=>{
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         if (!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator' || memberstatus.status == 'left'){
             if (ctx.message.reply_to_message == undefined){
-                let args = ctx.message.text.split(" ").slice(1)
+
+                const str = ctx.message.text;
+                const words = str.split(/ +/g);
+                const command = words.shift().slice(1);
+                const userId = words.shift();
+                const caption = words.join(" ");
+
                 await bot.telegram.callApi('banChatMember', {
                 chat_id: ctx.message.chat.id,
-                user_id: args[0]
+                user_id: userId
                 }).then(result=>{
                     console.log(result)
-                    ctx.reply(`[${args[0]}] melanggar peraturan grup!`)
-                    bot.telegram.sendMessage(args[0], `Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                    ctx.reply(`[${userId}] ${caption}}`,{
+                        reply_to_message_id: ctx.message.message_id
+                    })
+                    bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
                 })
             }
+
+            const str = ctx.message.text;
+            const words = str.split(/ +/g);
+            const command = words.shift().slice(1);
+            const caption = words.join(" ");
+
             await bot.telegram.callApi('banChatMember', {
             chat_id: ctx.message.chat.id,
             user_id: ctx.message.reply_to_message.from.id
             }).then(result=>{
                 console.log(result)
                 let replyUsername = ctx.message.reply_to_message.from.username ? ctx.message.reply_to_message.from.username : ctx.message.reply_to_message.from.first_name ? ctx.message.reply_to_message.from.first_name : ctx.message.reply_to_message.from.id;
-                ctx.reply(`${replyUsername} melanggar peraturan grup!`)
-                bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                ctx.reply(`${replyUsername} ${caption}`,{
+                    reply_to_message_id: ctx.message.message_id
+                })
+                bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
             })
         }
     }
@@ -323,14 +339,18 @@ bot.command('unban',async(ctx)=>{
                 let args = ctx.message.text.split(" ").slice(1)
                 await bot.telegram.unbanChatMember(ctx.chat.id, args[0]).then(result=>{
                     console.log(result)
-                    ctx.reply(`[${args[0]}] tidak diblokir, boleh masuk kembali!`)
+                    ctx.reply(`[${args[0]}] tidak diblokir, boleh masuk kembali!`,{
+                        reply_to_message_id: ctx.message.message_id
+                    })
                     bot.telegram.sendMessage(args[0], `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
                 })
             }
             await bot.telegram.unbanChatMember(ctx.chat.id, ctx.message.reply_to_message.from.id).then(result=>{
                 console.log(result)
                 let replyUsername = ctx.message.reply_to_message.from.username ? ctx.message.reply_to_message.from.username : ctx.message.reply_to_message.from.first_name ? ctx.message.reply_to_message.from.first_name : ctx.message.reply_to_message.from.id;
-                ctx.reply(`${replyUsername} tidak diblokir, boleh masuk kembali!`)
+                ctx.reply(`${replyUsername} tidak diblokir, boleh masuk kembali!`,{
+                    reply_to_message_id: ctx.message.message_id
+                })
                 bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
             })
         }
@@ -344,7 +364,7 @@ bot.command('pin',async(ctx)=>{
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         if (!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator' || memberstatus.status == 'left'){
             await bot.telegram.pinChatMessage(ctx.chat.id, ctx.message.reply_to_message.message_id,{
-                disable_notification: false
+                disable_notification: false,
             }).then(result=>{
                 console.log(result)
             })
@@ -361,6 +381,40 @@ bot.command('unpin',async(ctx)=>{
             await bot.telegram.unpinChatMessage(ctx.chat.id, ctx.message.reply_to_message.message_id).then(result=>{
                 console.log(result)
             })
+        }
+    }
+})
+
+bot.command('send',async(ctx)=>{
+    var botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+    var memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
+    console.log(memberstatus);
+
+    if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
+        if (!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator' || memberstatus.status == 'left'){
+            if (ctx.message.reply_to_message == undefined){
+
+                const str = ctx.message.text;
+                const words = str.split(/ +/g);
+                const command = words.shift().slice(1);
+                const userId = words.shift();
+                const caption = words.join(" ");
+
+                ctx.reply ('Pesan terkirim!',{
+                    reply_to_message_id: ctx.message.message_id
+                })
+                bot.telegram.sendMessage(userId, `${caption}`)
+            }
+
+            const str = ctx.message.text;
+            const words = str.split(/ +/g);
+            const command = words.shift().slice(1);
+            const caption = words.join(" ");
+
+            ctx.reply ('Pesan terkirim!',{
+                reply_to_message_id: ctx.message.message_id
+            })
+            bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption}`)
         }
     }
 })

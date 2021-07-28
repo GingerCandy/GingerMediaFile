@@ -33,7 +33,7 @@ Detail yang diperlukan.
 
     Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
 
-<code>/ban</code> userID.
+<code>/ban</code> userID caption jika ada.
 
 <code>/unban</code> userID.
 
@@ -47,6 +47,11 @@ Detail yang diperlukan.
 <code>/pin</code> reply ke pesan yang mau di pin.
 
 <code>/unpin</code> reply ke pesan yang mau di unpin.
+
+
+    Bagaimana cara kirim pesan peringatan ke pengguna dari grup.
+
+<code>/send</code> userID pesan. kirim peringatan ke pengguna melalui grup.
  
 
 <h2>Cara Menghapus File Dari Bot.</h2>
@@ -98,6 +103,9 @@ Anda dapat menghapus file 3 cara.
 <b>Jika Anda ingin mendukung saya, ikuti saya di GitHub sebagai dukungan.</b>
 
 //Update
+
+HISTORY 5
+1. Kirim pesan ke pengguna melalui grup.
 
 HISTORY 4
 1. BOT mendukung kick, ban, unban dan ada pesan pribadi.

@@ -34,8 +34,10 @@ Detail yang diperlukan.
     Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
 
 <code>/ban</code> userID caption jika ada.
+<code>/banchat</code> userID (pribadi). 
 
 <code>/unban</code> userID.
+<code>/unban</code> userID (pribadi).
 
 <code>/kick</code> userID.
 
@@ -88,7 +90,7 @@ Anda dapat menghapus file 3 cara.
 
 <h2>Kirim pesan ke pengguna</h2>
 
-<code>/send</code> Pesan Anda akan dikirim ke pengguna.
+<code>/broadcast</code> Pesan Anda akan dikirim ke pengguna.
 
 (Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).
 

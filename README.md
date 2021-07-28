@@ -37,7 +37,7 @@ Detail yang diperlukan.
 <code>/banchat</code> userID (pribadi). 
 
 <code>/unban</code> userID.
-<code>/unban</code> userID (pribadi).
+<code>/unbanchat</code> userID (pribadi).
 
 <code>/kick</code> userID.
 

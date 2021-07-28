@@ -481,7 +481,7 @@ bot.command('remall', (ctx) => {
 })
 
 //broadcasting message to bot users(from last joined to first)
-bot.command('send',async(ctx)=>{
+bot.command('broadcast',async(ctx)=>{
     msg = ctx.message.text
     let msgArray = msg.split(' ')
     msgArray.shift()
@@ -532,7 +532,7 @@ bot.command('send',async(ctx)=>{
 })
 
 //ban user with user id
-bot.command('ban', (ctx) => {
+bot.command('banchat', (ctx) => {
     msg = ctx.message.text
     let msgArray = msg.split(' ')
     msgArray.shift()
@@ -553,7 +553,7 @@ bot.command('ban', (ctx) => {
 })
 
 //unban user with user id
-bot.command('unban', (ctx) => {
+bot.command('unbanchat', (ctx) => {
     msg = ctx.message.text
     let msgArray = msg.split(' ')
     msgArray.shift()

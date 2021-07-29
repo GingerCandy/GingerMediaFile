@@ -235,6 +235,19 @@ bot.action('POP',(ctx)=>{
     })
 })
 
+bot.action('COMM',(ctx)=>{
+    ctx.deleteMessage()
+    ctx.reply(`${helpcommand.botcommand}`,{
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+        reply_markup:{
+            inline_keyboard: [
+                [{text:'Kembali',callback_data:'HELP'}]
+            ]
+        }
+    })
+})
+
 //TEST BOT
 bot.hears('ping', (ctx)=>{
     let chatId = ctx.message.from.id;
@@ -470,6 +483,34 @@ bot.command('remall', (ctx) => {
         if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.removeUserFile(id)
             ctx.reply('✅ Dihapus')
+        }
+    }
+})
+
+// send
+bot.command('sendchat',async(ctx)=>{
+    var botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+    var memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
+    console.log(memberstatus);
+
+    if(ctx.chat.type == 'private') {
+        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            const str = ctx.message.text;
+            const words = str.split(/ +/g);
+            const command = words.shift().slice(1);
+            const userId = words.shift();
+            const caption = words.join(" ");
+
+            bot.telegram.sendMessage(userId, `${caption}`)
+        }
+        if (!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator' || memberstatus.status == 'left'){
+            const str = ctx.message.text;
+            const words = str.split(/ +/g);
+            const command = words.shift().slice(1);
+            const userId = words.shift();
+            const caption = words.join(" ");
+
+            bot.telegram.sendMessage(userId, `${caption}`)
         }
     }
 })
@@ -996,7 +1037,19 @@ bot.on('photo', async(ctx) => {
 bot.command('stats',async(ctx)=>{
     stats = await saver.getUser().then((res)=>{
         if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
-            ctx.reply(`📊Total pengguna: <b> ${res.length}</b>`,{parse_mode:'HTML'})
+            ctx.reply(`📊 Total pengguna: <b>${res.length}</b>`,{parse_mode:'HTML'})
+        }
+        
+    })
+    stats = await saver.getMedia().then((res)=>{
+        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            ctx.reply(`📊 Total media: <b>${res.length}</b>`,{parse_mode:'HTML'})
+        }
+
+    })
+    stats = await saver.getBan().then((res)=>{
+        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            ctx.reply(`📊 Total pengguna melanggar: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
         
     })
@@ -1009,13 +1062,12 @@ bot.on('inline_query',async(ctx)=>{
         // pastikan input sesuai regex
         const type_reg = /(document|video|photo)?\s(\w*)/;
         var reg_veriv = type_reg.exec(query)
-
+        
         if(!reg_veriv) return;
         if(!reg_veriv[1])return;
 
         var file_type = reg_veriv[1];
         var keyword = reg_veriv[2];
-
 
         let searchResult = saver.getfileInline(keyword).then((res)=>{
             let result = res.filter(e => e.type == file_type).map((ctx,index)=>{

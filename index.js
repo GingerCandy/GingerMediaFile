@@ -235,19 +235,6 @@ bot.action('POP',(ctx)=>{
     })
 })
 
-bot.action('COMM',(ctx)=>{
-    ctx.deleteMessage()
-    ctx.reply(`${helpcommand.botcommand}`,{
-        parse_mode: 'HTML',
-        disable_web_page_preview: true,
-        reply_markup:{
-            inline_keyboard: [
-                [{text:'Kembali',callback_data:'HELP'}]
-            ]
-        }
-    })
-})
-
 //TEST BOT
 bot.hears('ping', (ctx)=>{
     let chatId = ctx.message.from.id;

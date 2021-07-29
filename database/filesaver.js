@@ -23,6 +23,25 @@ module.exports={
         })
     },
 
+    getMedia:()=>{
+        return new Promise(async(resolve,reject)=>{
+            db.get().collection(collection.FILE_COLLECTION).find().toArray().then((res)=>{
+                resolve(res);
+                
+            })
+        })
+    },
+
+
+    getBan:()=>{
+        return new Promise(async(resolve,reject)=>{
+            db.get().collection(collection.BANNED_COLLECTION).find().toArray().then((res)=>{
+                resolve(res);
+                
+            })
+        })
+    },
+
     //updating user database by removing blocked users details from the database
 
     updateUser:(userId)=>{
@@ -58,7 +77,7 @@ module.exports={
                 console.log(res);
                 resolve(res)
             }) 
-           })
+        })
     },
 
     //removing file with file_id

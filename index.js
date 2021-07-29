@@ -269,7 +269,7 @@ bot.hears('ping', (ctx)=>{
             inline_keyboard: [[{text:'OK',callback_data:'PONG'}]]
         }
     }
-   bot.telegram.sendMessage(chatId, 'pong', opts);
+    return bot.telegram.sendMessage(chatId, 'pong', opts);
 })
 
 bot.action('PONG',(ctx)=>{
@@ -330,7 +330,7 @@ bot.command('ban',async(ctx)=>{
                     ctx.reply(`[${userId}] ${caption}}`,{
                         reply_to_message_id: ctx.message.message_id
                     })
-                    bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                    return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
                 })
             }
 
@@ -348,7 +348,7 @@ bot.command('ban',async(ctx)=>{
                 ctx.reply(`${replyUsername} ${caption}`,{
                     reply_to_message_id: ctx.message.message_id
                 })
-                bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
             })
         }
     }
@@ -367,7 +367,7 @@ bot.command('unban',async(ctx)=>{
                     ctx.reply(`[${args[0]}] tidak diblokir, boleh masuk kembali!`,{
                         reply_to_message_id: ctx.message.message_id
                     })
-                    bot.telegram.sendMessage(args[0], `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
+                    return bot.telegram.sendMessage(args[0], `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
                 })
             }
             await bot.telegram.unbanChatMember(ctx.chat.id, ctx.message.reply_to_message.from.id).then(result=>{
@@ -376,7 +376,7 @@ bot.command('unban',async(ctx)=>{
                 ctx.reply(`${replyUsername} tidak diblokir, boleh masuk kembali!`,{
                     reply_to_message_id: ctx.message.message_id
                 })
-                bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
+                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
             })
         }
     }
@@ -425,7 +425,7 @@ bot.command('send',async(ctx)=>{
                 const userId = words.shift();
                 const caption = words.join(" ");
 
-                bot.telegram.sendMessage(userId, `${caption}`)
+                return bot.telegram.sendMessage(userId, `${caption}`)
             }
 
             const str = ctx.message.text;
@@ -437,7 +437,7 @@ bot.command('send',async(ctx)=>{
                 reply_to_message_id: ctx.message.message_id
             })
 
-            bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption}`)
+            return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption}`)
         }
     }
 })
@@ -521,7 +521,7 @@ bot.command('sendchat',async(ctx)=>{
                 reply_to_message_id: ctx.message.message_id
             })
 
-            bot.telegram.sendMessage(userId, `${caption}`)
+            return bot.telegram.sendMessage(userId, `${caption}`)
         }
         if (!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator' || memberstatus.status == 'left'){
             const str = ctx.message.text;
@@ -534,7 +534,7 @@ bot.command('sendchat',async(ctx)=>{
                 reply_to_message_id: ctx.message.message_id
             })
 
-            bot.telegram.sendMessage(userId, `${caption}`)
+            return bot.telegram.sendMessage(userId, `${caption}`)
         }
     }
 })

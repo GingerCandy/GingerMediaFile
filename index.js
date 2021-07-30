@@ -17,7 +17,7 @@ db.connect((err) => {
 })
 
 //ID Channel/Group
-const channelId = -1001590114101;
+const channelId = -1001363936843;
 
 function today(ctx){
     var today = new Date();

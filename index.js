@@ -327,7 +327,7 @@ bot.command('ban',async(ctx)=>{
                 user_id: userId
                 }).then(result=>{
                     console.log(result)
-                    ctx.reply(`[${userId}] ${caption}}`,{
+                    ctx.reply(`[${userId}] ${caption}`,{
                         reply_to_message_id: ctx.message.message_id
                     })
                     return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
@@ -828,7 +828,7 @@ bot.on('video', async(ctx) => {
         console.log(fileDetails2.caption);
     }else{
         var exstension = video.file_name;
-        var regex = /.(webm|mkv|flv|vob|ogv|ogg|drc|gif|gifv|mng|avi|mts|m2ts|ts|mov|qt|wmv|yuv|rm|rmvb|viv|asf|amv|mp4|m4p|m4v|mpg|mp2|mpeg|mpe|mpv|mpg|mpeg|m2v|m4v|svi|3gp|3g2|mxf|roq|nsv|flv|f4v|f4p|f4a|f4b)/i;
+        var regex = /\.[A-Za-z0-9]+$/gm
         var vidext = exstension.replace(regex, '');
         fileDetails = {
             file_name: vidext,

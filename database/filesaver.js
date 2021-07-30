@@ -59,6 +59,13 @@ module.exports={
         })
     },
 
+    saveFile2:(fileDetails2)=>{
+        db.get().collection(collection.FILE_COLLECTION).createIndex({file_name:"text"})
+        db.get().collection(collection.FILE_COLLECTION).insertOne(fileDetails2).then((res)=>{
+            console.log('file saved');
+        })
+    },
+
     //searching and finding file id from database
 
     getFile:(query)=>{

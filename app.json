@@ -11,23 +11,43 @@
 		},
         "DOMAIN":{
             "description": "Masukkan nama aplikasi Anda",
-            "value":""
+            "value": ""
 	       },
         "DB_URL":{
             "description": "Dapatkan url basis data mongodb dari https://www.mongodb.com/cloud/atlas with database name = mediaFile and collection name = fileBackup",
-            "value":""
+            "value": ""
                },
         "ADMIN":{
             "description": "Masukkan id akun kamu",
-            "value":""
+            "value": ""
         },
         "BOTUSERNAME":{
-            "description":"Masukkan nama pengguna bot Anda tanpa @",
-            "value":""
+            "description": "Masukkan nama pengguna bot Anda tanpa @ dan harus huruf kecil",
+            "value": ""
         },
         "LOG_CHANNEL":{
             "description": "Buat saluran pribadi dan masukkan id saluran untuk memantau file, mendapatkan data pengguna dan file",
-            "value":""
+            "value": ""
+        },
+        "CAPTIONLINK":{
+            "description": "Caption ketika link media yang dikirim di tekan",
+            "value": "<b>Selamat menikmati.</b>"
+        },
+        "WELCOMEJOINBOT":{
+            "description": "Masukkan pesan sebelum pengguna bergabung",
+            "value": "Anda belum masuk, silakan masuk dulu!"
+        },
+        "MESSAGEWELCOMEBOT":{
+            "description": "Masukkan pesan selamat datang ketika pengguna bergabung",
+            "value": "Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href='https://core.telegram.org/bots/api#html-style'>HTML</a>.",
+        },
+        "CHANNELJOIN":{
+            "description": "Masukkan ID channel/grup untuk identifikasi BOT bisa membaca pengguna yang masuk. Penulisan -100idchannel",
+            "value": "-1001398933710"
+        },
+        "LINKCHANNEL":{
+            "description": "Link channel/grup masukkan disini dan ikuti format penulisan di value",
+            "value": "https://t.me/circle18"
         }
         
         	

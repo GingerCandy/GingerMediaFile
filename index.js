@@ -49,7 +49,10 @@ function last_name(ctx){
     return `${ctx.from.last_name ? ctx.from.last_name : ""}`;
 }
 function username(ctx){
-    return `${ctx.from.username ? ctx.from.username : ""}`;
+    return ctx.from.username ? `@${ctx.from.username}` : "";
+}
+function fromid(ctx){
+    return ctx.from.id ? `[${ctx.from.id}]` : `""`;
 }
 function captionbuild(ctx){
     return `<b>wajib join channel ke 2 @gingercandy22 selamat menikmati.</b>`;

@@ -17,7 +17,7 @@ db.connect((err) => {
 })
 
 //ID Channel/Group
-const channelId = -1001363936843;
+const channelId = `${process.env.CHANNELJOIN}`;
 
 function today(ctx){
     var today = new Date();
@@ -55,13 +55,13 @@ function fromid(ctx){
     return ctx.from.id ? `[${ctx.from.id}]` : `""`;
 }
 function captionbuild(ctx){
-    return `<b>wajib join channel ke 2 @gingercandy22 selamat menikmati.</b>`;
+    return `${process.env.CAPTIONLINK}`;
 }
 function welcomejoin(ctx){
-    return `Anda belum masuk, silakan masuk dulu!`;
+    return `${process.env.WELCOMEJOINBOT}\n\n${today(ctx)}`;
 }
 function messagewelcome(ctx){
-    return `Saya akan menyimpan file untuk Anda dan memberikan tautan yang dapat dibagikan, saya juga dapat membuat file tersedia untuk semua pengguna. Bot mendukung pencarian dan <a href='https://core.telegram.org/bots/api#html-style'>HTML</a>. \n\n${today(ctx)}`;
+    return `${process.env.MESSAGEWELCOMEBOT}\n\n${today(ctx)}`;
 }
 function messagebanned(ctx){
     return `⚠ ANDA DILARANG KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.`;
@@ -76,11 +76,11 @@ function messagelink(ctx){
 // inline keyboard
 const inKey = [
   [{text:'🔎 Pencarian',switch_inline_query:''},{text:'📎 Tautan',callback_data:'POP'}],
-  [{text:'📎 Join Channel', url: 'https://t.me/gingerbackup33'}]
+  [{text:'📎 Join', url: `${process.env.LINKCHANNEL}`}]
 ];
 
 const inKey2 = [
-  [{text:'📎 Join Channel', url: 'https://t.me/gingerbackup33'}]
+  [{text:'📎 Join', url: `${process.env.LINKCHANNEL}`}]
 ];
 
 //BOT START

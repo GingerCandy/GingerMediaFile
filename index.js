@@ -73,11 +73,11 @@ function messagelink(ctx){
 // inline keyboard
 const inKey = [
   [{text:'🔎 Pencarian',switch_inline_query:''},{text:'📎 Tautan',callback_data:'POP'}],
-  [{text:'📎 Gabung Channel', url: 'https://t.me/gingerbackup33'}]
+  [{text:'📎 Join Channel', url: 'https://t.me/gingerbackup33'}]
 ];
 
 const inKey2 = [
-  [{text:'📎 Gabung Channel', url: 'https://t.me/gingerbackup33'}]
+  [{text:'📎 Join Channel', url: 'https://t.me/gingerbackup33'}]
 ];
 
 //BOT START

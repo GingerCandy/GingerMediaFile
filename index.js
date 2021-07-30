@@ -458,7 +458,7 @@ bot.command('getid',async(ctx)=>{
     
     if(ctx.chat.type == 'private') {
         if (!profile4 || profile4.total_count == 0){
-            ctx.reply(`<b>Name:</b> ${first_name(ctx)} ${last_name(ctx)}\n<b>Username:</b> @${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,{
+            ctx.reply(`<b>Name:</b> ${first_name(ctx)} ${last_name(ctx)}\n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,{
                 parse_mode:'HTML'  
             })
         }else{

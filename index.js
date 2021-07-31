@@ -237,7 +237,7 @@ bot.action('POP',(ctx)=>{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
-                [{text:'Kembali',callback_data:'HELP'}]
+                [{text:'Batal',callback_data:'STARTUP'}]
             ]
         }
     })

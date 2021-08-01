@@ -942,47 +942,47 @@ bot.on('document', async (ctx) => {
                         ctx.reply(`${messagebanned(ctx)}`)
                     }
                 }else{
-                    if(!fileDetails1.file_name){
-                        saver.saveFile(fileDetails2)
-                        if(ctx.chat.type == 'private') {
-                            ctx.reply(`<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
-                                parse_mode: 'HTML',
-                                disable_web_page_preview: true,
-                                reply_to_message_id: ctx.message.message_id
-                            })
-                        }
-                        if(!ctx.message.caption)
-                            return ctx.replyWithDocument(document.file_id, {
-                                chat_id: process.env.LOG_CHANNEL,
-                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
-                                parse_mode:'HTML'
-                            })
-                            ctx.replyWithDocument(document.file_id, {
-                                chat_id: process.env.LOG_CHANNEL,
-                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
-                                parse_mode:'HTML'
-                            })
-                    }else{
-                        saver.saveFile(fileDetails)
-                        if(ctx.chat.type == 'private') {
-                            ctx.reply(`<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
-                                parse_mode: 'HTML',
-                                disable_web_page_preview: true,
-                                reply_to_message_id: ctx.message.message_id
-                            })
-                        }
-                        if(!ctx.message.caption)
-                            return ctx.replyWithDocument(document.file_id, {
-                                chat_id: process.env.LOG_CHANNEL,
-                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
-                                parse_mode:'HTML'
-                            })
-                            ctx.replyWithDocument(document.file_id, {
-                                chat_id: process.env.LOG_CHANNEL,
-                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:<a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
-                                parse_mode:'HTML'
-                            })
-                        }
+                if(!fileDetails1.file_name){
+                   saver.saveFile(fileDetails2)
+                   if(ctx.chat.type == 'private') {
+                      ctx.reply(`<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
+                      parse_mode: 'HTML',
+                           disable_web_page_preview: true,
+                           reply_to_message_id: ctx.message.message_id
+                         })
+                      }
+                    if(!ctx.message.caption)
+                    return ctx.replyWithDocument(document.file_id, {
+                         chat_id: process.env.LOG_CHANNEL,
+                         caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                         parse_mode:'HTML'
+                     })
+                     ctx.replyWithDocument(document.file_id, {
+                         chat_id: process.env.LOG_CHANNEL,
+                         caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                         parse_mode:'HTML'
+                     })
+                 }else{
+                     saver.saveFile(fileDetails)
+                     if(ctx.chat.type == 'private') {
+                         ctx.reply(`<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
+                              parse_mode: 'HTML',
+                              disable_web_page_preview: true,
+                              reply_to_message_id: ctx.message.message_id
+                         })
+                      }
+                      if(!ctx.message.caption)
+                         return ctx.replyWithDocument(document.file_id, {
+                              chat_id: process.env.LOG_CHANNEL,
+                              caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                              parse_mode:'HTML'
+                          })
+                          ctx.replyWithDocument(document.file_id, {
+                              chat_id: process.env.LOG_CHANNEL,
+                              caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://openmessage?user_id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                              parse_mode:'HTML'
+                          })
+                       }
                     }
                 })
             }   

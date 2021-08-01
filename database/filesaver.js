@@ -12,11 +12,28 @@ module.exports={
         })
     },
 
+
+    saveGroup:(group)=>{
+        db.get().collection(collection.GROUP_COLLECTION).createIndex({groupId:1},{unique:true})
+        db.get().collection(collection.GROUP_COLLECTION).insertOne(group).catch((err)=>{
+            console.log('already existing group');
+        })
+    },
+
     //getting user data for statitics and broadcast purpose
 
     getUser:()=>{
         return new Promise(async(resolve,reject)=>{
             db.get().collection(collection.USER_COLLECTION).find().toArray().then((res)=>{
+                resolve(res);
+                
+            })
+        })
+    },
+
+    getGroup:()=>{
+        return new Promise(async(resolve,reject)=>{
+            db.get().collection(collection.GROUP_COLLECTION).find().toArray().then((res)=>{
                 resolve(res);
                 
             })

@@ -104,14 +104,14 @@ bot.start(async(ctx)=>{
             if(length == 1){
                 var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                 if(!profile || profile.total_count == 0)
-                    return ctx.reply(`${first_name(ctx)} ${last_name(ctx)} \n\n${messagewelcome(ctx)}`,{
+                    return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
                         parse_mode:'HTML',
                         disable_web_page_preview: true,
                         reply_markup:{
                             inline_keyboard:inKey
                         }
                     })
-                    ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${first_name(ctx)} ${last_name(ctx)} \n\n${messagewelcome(ctx)}`,
+                    ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
                         parse_mode:'HTML',
                         disable_web_page_preview: true,
                         reply_markup:{
@@ -156,14 +156,14 @@ bot.start(async(ctx)=>{
                 if(!member || member.status == 'left' || member.status == 'kicked'){
                     var profile2 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                     if(!profile2 || profile2.total_count == 0)
-                        return ctx.reply(`${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,{
+                        return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                             parse_mode:'HTML',
                             disable_web_page_preview: true,
                             reply_markup:{
                                 inline_keyboard:inKey2
                             }
                         })
-                        ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,
+                        ctx.replyWithPhoto(profile2.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,
                             parse_mode:'HTML',
                             disable_web_page_preview: true,
                             reply_markup:{
@@ -175,14 +175,14 @@ bot.start(async(ctx)=>{
                     if(length == 1){
                         var profile3 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                         if(!profile3 || profile3.total_count == 0)
-                            return ctx.reply(`${first_name(ctx)} ${last_name(ctx)} \n\n${messagewelcome(ctx)}`,{
+                            return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
                                 parse_mode:'HTML',
                                 disable_web_page_preview: true,
                                 reply_markup:{
                                     inline_keyboard:inKey
                                 }
                             })
-                            ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `${first_name(ctx)} ${last_name(ctx)} \n\n${messagewelcome(ctx)}`,
+                            ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
                                 parse_mode:'HTML',
                                 disable_web_page_preview: true,
                                 reply_markup:{
@@ -247,14 +247,14 @@ bot.action('STARTUP',async(ctx)=>{
     ctx.deleteMessage()
     var profile = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
     if(!profile || profile.total_count == 0)
-        return ctx.reply(`${first_name(ctx)} ${last_name(ctx)} \n\n${messagewelcome(ctx)}`,{
+        return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
             parse_mode:'HTML',
             disable_web_page_preview: true,
             reply_markup:{
                 inline_keyboard:inKey
             }
         })
-        ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `${first_name(ctx)} ${last_name(ctx)} \n\n${messagewelcome(ctx)}`,
+        ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
             parse_mode:'HTML',
             disable_web_page_preview: true,
             reply_markup:{
@@ -636,11 +636,11 @@ bot.command('getid',async(ctx)=>{
     
     if(ctx.chat.type == 'private') {
         if(!profile4 || profile4.total_count == 0){
-            ctx.reply(`<b>Name:</b> ${first_name(ctx)} ${last_name(ctx)}\n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,{
+            ctx.reply(`<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,{
                 parse_mode:'HTML'  
             })
         }else{
-            ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> ${first_name(ctx)} ${last_name(ctx)} \n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,
+            ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,
                 parse_mode:'HTML'
             })
         }
@@ -883,12 +883,12 @@ bot.on('document', async (ctx) => {
             if(!ctx.message.caption)
                 return ctx.replyWithDocument(document.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                     parse_mode:'HTML'
                 })
                 ctx.replyWithDocument(document.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                     parse_mode:'HTML'
                 })
          }else{
@@ -903,12 +903,12 @@ bot.on('document', async (ctx) => {
             if(!ctx.message.caption)
                 return ctx.replyWithDocument(document.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                     parse_mode:'HTML'
                 })
                 ctx.replyWithDocument(document.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                     parse_mode:'HTML'
                 })
             }
@@ -920,14 +920,14 @@ bot.on('document', async (ctx) => {
             if(!member2 || member2.status == 'left' || member2.status == 'kicked'){
                 var profile5 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                 if(!profile5 || profile5.total_count == 0)
-                    return ctx.reply(`${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,{
+                    return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                         parse_mode:'HTML',
                         disable_web_page_preview: true,
                         reply_markup:{
                             inline_keyboard:inKey2
                         }
                     })
-                    ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,
+                    ctx.replyWithPhoto(profile5.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,
                         parse_mode:'HTML',
                         disable_web_page_preview: true,
                         reply_markup:{
@@ -954,12 +954,12 @@ bot.on('document', async (ctx) => {
                         if(!ctx.message.caption)
                             return ctx.replyWithDocument(document.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                             ctx.replyWithDocument(document.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                     }else{
@@ -974,12 +974,12 @@ bot.on('document', async (ctx) => {
                         if(!ctx.message.caption)
                             return ctx.replyWithDocument(document.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                             ctx.replyWithDocument(document.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
+                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${docext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                         }
@@ -1050,12 +1050,12 @@ bot.on('video', async(ctx) => {
             if(!ctx.message.caption)
                 return ctx.replyWithVideo(video.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                     parse_mode:'HTML'
                 })
                 ctx.replyWithVideo(video.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                     parse_mode:'HTML'
                 })
         }else{
@@ -1070,12 +1070,12 @@ bot.on('video', async(ctx) => {
             if(!ctx.message.caption)
                 return ctx.replyWithVideo(video.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                    caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                     parse_mode:'HTML'
                 })
                 ctx.replyWithVideo(video.file_id, {
                     chat_id: process.env.LOG_CHANNEL,
-                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                    caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                     parse_mode:'HTML'
                 })
         }
@@ -1087,14 +1087,14 @@ bot.on('video', async(ctx) => {
             if(!member3 || member3.status == 'left' || member3.status == 'kicked'){
                 var profile6 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                 if(!profile6 || profile6.total_count == 0)
-                    return ctx.reply(`${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,{
+                    return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                         parse_mode:'HTML',
                         disable_web_page_preview: true,
                         reply_markup:{
                             inline_keyboard:inKey2
                         }
                     })
-                    ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,
+                    ctx.replyWithPhoto(profile6.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,
                         parse_mode:'HTML',
                         disable_web_page_preview: true,
                         reply_markup:{
@@ -1121,12 +1121,12 @@ bot.on('video', async(ctx) => {
                         if(!ctx.message.caption)
                             return ctx.replyWithVideo(video.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                             ctx.replyWithVideo(video.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                     }else{
@@ -1141,12 +1141,12 @@ bot.on('video', async(ctx) => {
                         if(!ctx.message.caption)
                             return ctx.replyWithVideo(video.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                             ctx.replyWithVideo(video.file_id, {
                                 chat_id: process.env.LOG_CHANNEL,
-                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)}\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
+                                caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}`,
                                 parse_mode:'HTML'
                             })
                         }
@@ -1194,7 +1194,7 @@ bot.on('photo', async(ctx) => {
         })
         ctx.replyWithPhoto(photo[1].file_id, {
             chat_id: process.env.LOG_CHANNEL,
-            caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)} \n\n<b>Nama file:</b> ${today2(ctx)} \n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+            caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n<b>Nama file:</b> ${today2(ctx)} \n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
             parse_mode:'HTML'
         })
     }else{
@@ -1205,14 +1205,14 @@ bot.on('photo', async(ctx) => {
             if(!member4 || member4.status == 'left' || member4.status == 'kicked'){
                 var profile7 = await bot.telegram.getUserProfilePhotos(ctx.chat.id)
                 if(!profile7 || profile7.total_count == 0)
-                return ctx.reply(`${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,{
+                return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                     parse_mode:'HTML',
                     disable_web_page_preview: true,
                     reply_markup:{
                         inline_keyboard:inKey2
                     }
                 })
-                ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `${first_name(ctx)} ${last_name(ctx)} \n\n${welcomejoin(ctx)}`,
+                ctx.replyWithPhoto(profile7.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,
                     parse_mode:'HTML',
                     disable_web_page_preview: true,
                     reply_markup:{
@@ -1238,12 +1238,12 @@ bot.on('photo', async(ctx) => {
                         if(!ctx.message.caption)
                         return ctx.replyWithPhoto(photo[1].file_id, {
                             chat_id: process.env.LOG_CHANNEL,
-                            caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)} \n\n<b>Nama file:</b> ${today2(ctx)} \n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                            caption: `<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n<b>Nama file:</b> ${today2(ctx)} \n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                             parse_mode:'HTML'
                         })
                         ctx.replyWithPhoto(photo[1].file_id, {
                             chat_id: process.env.LOG_CHANNEL,
-                            caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> ${first_name(ctx)} ${last_name(ctx)} \n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
+                            caption: `${ctx.message.caption}\n\n<b>Dari:</b> ${ctx.from.id}\n<b>Nama:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}`,
                             parse_mode:'HTML'
                         })
                     }

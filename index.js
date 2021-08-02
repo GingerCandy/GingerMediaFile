@@ -671,7 +671,7 @@ bot.command('sendgroup',async(ctx)=>{
         for (i = n-1; i >=0; i--) {
             groupId.push(res[i].groupId)
         }
-        async function send() {
+        async function sendgroup() {
             for (const group of groupId) {
                 var botStatus = await bot.telegram.getChatMember(group, ctx.botInfo.id)
                 var memberstatus = await bot.telegram.getChatMember(group, ctx.from.id)
@@ -735,7 +735,7 @@ bot.command('sendgroup',async(ctx)=>{
                 }
             }
         }
-        send()
+        sendgroup()
     })
 })
 //END

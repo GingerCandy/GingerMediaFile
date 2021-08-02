@@ -664,14 +664,14 @@ bot.command('unpin',async(ctx)=>{
     })
 })
 
-bot.command('sendgroup',async(ctx)=>{
+bot.command('send',async(ctx)=>{
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
         for (i = n-1; i >=0; i--) {
             groupId.push(res[i].groupId)
         }
-        async function sendgroup() {
+        async function send() {
             for (const group of groupId) {
                 var botStatus = await bot.telegram.getChatMember(group, ctx.botInfo.id)
                 var memberstatus = await bot.telegram.getChatMember(group, ctx.from.id)
@@ -735,7 +735,7 @@ bot.command('sendgroup',async(ctx)=>{
                 }
             }
         }
-        sendgroup()
+        send()
     })
 })
 //END

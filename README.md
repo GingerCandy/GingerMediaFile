@@ -80,6 +80,13 @@ Anda dapat menghapus file 3 cara.
 (Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log).
 
 
+    Hapus file grup dengan mediaId.
+
+<code>/remgrp</code> grp.
+
+(Ini akan menghapus media dalam grup, dapatkan mediaId dari saluran log).
+
+
     Hapus semua file Kirim oleh pengguna.
 
 <code>/remall</code> userID.
@@ -111,6 +118,11 @@ Anda dapat menghapus file 3 cara.
 
 //Update
 
+HISTORY 7
+1. Perbaikan dalam list grup untuk melakukan perintah didalam grup.
+2. Kirim media secara grup.
+3. Hapus media secara grup
+
 HISTORY 6
 1. Kirim pesan ke pengguna melalui BOT.
 
@@ -136,3 +148,4 @@ HISTORY 1
 2. Terdapat penambahan untuk menghilangkan null supaya tidak terlihat saat tampil.
 3. Ada get ID untuk cek ID akun Anda.
 4. Ada pesan bot belum dimasukkan ke channel/grup tujuan.
+

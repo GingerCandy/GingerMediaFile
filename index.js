@@ -415,10 +415,10 @@ bot.command('ban',async(ctx)=>{
                                 user_id: userId
                                 }).then(result=>{
                                     //console.log(result)
-                                    ctx.reply(`[${userId}] ${caption}\nMelanggar peraturan`,{
+                                    ctx.reply(`[${userId}] dibanned\n<b>Karena:</b> ${caption}`,{
                                         reply_to_message_id: ctx.message.message_id
                                     })
-                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
                                 })
                             }
 
@@ -434,10 +434,10 @@ bot.command('ban',async(ctx)=>{
                                 //console.log(result)
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                                ctx.reply(`${replyUsername} ${replyFromid} ${caption}\nMelanggar peraturan`,{
+                                ctx.reply(`${replyUsername} ${replyFromid} dibanned\n<b>Karena:</b> ${caption}`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
-                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
                             })
                         }
                     }else if(memberstatus.status == 'creator'){
@@ -454,10 +454,10 @@ bot.command('ban',async(ctx)=>{
                             user_id: userId
                             }).then(result=>{
                                 //console.log(result)
-                                ctx.reply(`[${userId}] ${caption}\nMelanggar peraturan`,{
+                                ctx.reply(`[${userId}] di banned\n<b>Karena:</b> ${caption}`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
-                                return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(userId, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
                             })
                         }
 
@@ -473,10 +473,10 @@ bot.command('ban',async(ctx)=>{
                             //console.log(result)
                             let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                             let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                            ctx.reply(`${replyUsername} ${replyFromid} ${caption}\nMelanggar peraturan`,{
+                            ctx.reply(`${replyUsername} ${replyFromid} dibanned\n<b>Karena:</b> ${caption}`,{
                                 reply_to_message_id: ctx.message.message_id
                             })
-                            return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                            return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
                         })
                     }else{
                         if(ctx.from.username == 'GroupAnonymousBot'){
@@ -493,10 +493,10 @@ bot.command('ban',async(ctx)=>{
                                 user_id: userId
                                 }).then(result=>{
                                     //console.log(result)
-                                    ctx.reply(`[${userId}] ${caption}\nMelanggar peraturan`,{
+                                    ctx.reply(`[${userId}] dibanned\n<b>Karena:</b> ${caption}`,{
                                         reply_to_message_id: ctx.message.message_id
                                     })
-                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
                                 })
                             }
     
@@ -512,10 +512,10 @@ bot.command('ban',async(ctx)=>{
                                 //console.log(result)
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                                ctx.reply(`${replyUsername} ${replyFromid} ${caption}\nMelanggar peraturan`,{
+                                ctx.reply(`${replyUsername} ${replyFromid} dibanned\n<b>Karena:</b> ${caption}`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
-                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
                             })
                         }
                     }

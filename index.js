@@ -415,7 +415,7 @@ bot.command('ban',async(ctx)=>{
                                 user_id: userId
                                 }).then(result=>{
                                     //console.log(result)
-                                    ctx.reply(`[${userId}] ${caption} telah melanggar peraturan`,{
+                                    ctx.reply(`[${userId}] ${caption}\nMelanggar peraturan`,{
                                         reply_to_message_id: ctx.message.message_id
                                     })
                                     return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
@@ -434,7 +434,7 @@ bot.command('ban',async(ctx)=>{
                                 //console.log(result)
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                                ctx.reply(`${replyUsername} ${replyFromid} ${caption} telah melanggar peraturan`,{
+                                ctx.reply(`${replyUsername} ${replyFromid} ${caption}\nMelanggar peraturan`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
                                 return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
@@ -454,7 +454,7 @@ bot.command('ban',async(ctx)=>{
                             user_id: userId
                             }).then(result=>{
                                 //console.log(result)
-                                ctx.reply(`[${userId}] ${caption} telah melanggar peraturan`,{
+                                ctx.reply(`[${userId}] ${caption}\nMelanggar peraturan`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
                                 return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
@@ -473,7 +473,7 @@ bot.command('ban',async(ctx)=>{
                             //console.log(result)
                             let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                             let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                            ctx.reply(`${replyUsername} ${replyFromid} ${caption} telah melanggar peraturan`,{
+                            ctx.reply(`${replyUsername} ${replyFromid} ${caption}\nMelanggar peraturan`,{
                                 reply_to_message_id: ctx.message.message_id
                             })
                             return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
@@ -493,7 +493,7 @@ bot.command('ban',async(ctx)=>{
                                 user_id: userId
                                 }).then(result=>{
                                     //console.log(result)
-                                    ctx.reply(`[${userId}] ${caption} telah melanggar peraturan`,{
+                                    ctx.reply(`[${userId}] ${caption}\nMelanggar peraturan`,{
                                         reply_to_message_id: ctx.message.message_id
                                     })
                                     return bot.telegram.sendMessage(userId, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)
@@ -512,7 +512,7 @@ bot.command('ban',async(ctx)=>{
                                 //console.log(result)
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                                ctx.reply(`${replyUsername} ${replyFromid} ${caption} telah melanggar peraturan`,{
+                                ctx.reply(`${replyUsername} ${replyFromid} ${caption}\nMelanggar peraturan`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
                                 return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah melanggar peraturan di ${ctx.message.chat.title}`)

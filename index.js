@@ -946,18 +946,6 @@ bot.command('unbanchat', (ctx) => {
     }
 })
 
-//list update
-let updates = []
-bot.use(async (ctx, next) => {
-    if(ctx.message.media_group_id){
-       updates.push(ctx.update);
-    }
-    console.time(`Processing update ${ctx.update}`);
-    await next()
-    //console.log(updates)
-    console.timeEnd(`Processing update ${ctx.update}`);
-})
-
 //saving documents to db and generating link
 bot.on('document', async (ctx) => {
     document = ctx.message.document
@@ -1080,16 +1068,11 @@ bot.on('document', async (ctx) => {
         if(!fileDetails1.file_name){
             saver.saveFile(fileDetails4)
             if(ctx.chat.type == 'private') {
-                if(ctx.message.media_group_id){
-                    if(updates.length > 1){
-                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                            parse_mode: 'HTML',
-                            disable_web_page_preview: true,
-                            reply_to_message_id: updates[0].message.message_id
-                        })
-                        updates = []
-                    }
-                }
+                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true,
+                    reply_to_message_id: updates[0].message.message_id
+                })
             }
             if(!ctx.message.caption)                   
                 return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1107,16 +1090,11 @@ bot.on('document', async (ctx) => {
         }else{
             saver.saveFile(fileDetails3)
             if(ctx.chat.type == 'private') {
-                if(ctx.message.media_group_id){
-                    if(updates.length > 1){
-                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                            parse_mode: 'HTML',
-                            disable_web_page_preview: true,
-                            reply_to_message_id: updates[0].message.message_id
-                        })
-                        updates = []
-                    }
-                }
+                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${doctext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true,
+                    reply_to_message_id: updates[0].message.message_id
+                })
             }
             if(!ctx.message.caption)                   
                 return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1209,16 +1187,11 @@ bot.on('document', async (ctx) => {
                 if(!fileDetails1.file_name){
                     saver.saveFile(fileDetails4)
                     if(ctx.chat.type == 'private') {
-                        if(ctx.message.media_group_id){
-                            if(updates.length > 1){
-                                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: updates[0].message.message_id
-                                })
-                                updates = []
-                            }
-                        }
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: updates[0].message.message_id
+                        })
                     }
                     if(!ctx.message.caption)                   
                         return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1236,16 +1209,11 @@ bot.on('document', async (ctx) => {
                 }else{
                     saver.saveFile(fileDetails3)
                     if(ctx.chat.type == 'private') {
-                        if(ctx.message.media_group_id){
-                            if(updates.length > 1){
-                                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/grp_${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: updates[0].message.message_id
-                                })
-                                updates = []
-                            }
-                        }
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${doctext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: updates[0].message.message_id
+                        })
                     }
                     if(!ctx.message.caption)                   
                         return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1393,16 +1361,11 @@ bot.on('video', async(ctx) => {
         if(!fileDetails1.file_name){
             saver.saveFile(fileDetails4)
             if(ctx.chat.type == 'private') {
-                if(ctx.message.media_group_id){
-                    if(updates.length > 1){
-                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                            parse_mode: 'HTML',
-                            disable_web_page_preview: true,
-                            reply_to_message_id: updates[0].message.message_id
-                        })
-                        updates = []
-                    }
-                }
+                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true,
+                    reply_to_message_id: updates[0].message.message_id
+                })
             }
             if(!ctx.message.caption)                   
                 return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1420,16 +1383,11 @@ bot.on('video', async(ctx) => {
         }else{
             saver.saveFile(fileDetails3)
             if(ctx.chat.type == 'private') {
-                if(ctx.message.media_group_id){
-                    if(updates.length > 1){
-                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                            parse_mode: 'HTML',
-                            disable_web_page_preview: true,
-                            reply_to_message_id: updates[0].message.message_id
-                        })
-                        updates = []
-                    }
-                }
+                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true,
+                    reply_to_message_id: updates[0].message.message_id
+                })
             }
             if(!ctx.message.caption)                   
                 return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1522,16 +1480,11 @@ bot.on('video', async(ctx) => {
                 if(!fileDetails1.file_name){
                     saver.saveFile(fileDetails4)
                     if(ctx.chat.type == 'private') {
-                        if(ctx.message.media_group_id){
-                            if(updates.length > 1){
-                                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: updates[0].message.message_id
-                                })
-                                updates = []
-                            }
-                        }
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: updates[0].message.message_id
+                        })
                     }
                     if(!ctx.message.caption)                   
                         return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1549,16 +1502,11 @@ bot.on('video', async(ctx) => {
                 }else{
                     saver.saveFile(fileDetails3)
                     if(ctx.chat.type == 'private') {
-                        if(ctx.message.media_group_id){
-                            if(updates.length > 1){
-                                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: updates[0].message.message_id
-                                })
-                                updates = []
-                            }
-                        }
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: updates[0].message.message_id
+                        })
                     }
                     if(!ctx.message.caption)                   
                         return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1706,16 +1654,11 @@ bot.on('photo', async(ctx) => {
         if(!fileDetails1.file_name){
             saver.saveFile(fileDetails4)
             if(ctx.chat.type == 'private') {
-                if(ctx.message.media_group_id){
-                    if(updates.length > 1){
-                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                            parse_mode: 'HTML',
-                            disable_web_page_preview: true,
-                            reply_to_message_id: updates[0].message.message_id
-                        })
-                        updates = []
-                    }
-                }
+                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true,
+                    reply_to_message_id: updates[0].message.message_id
+                })
             }
             if(!ctx.message.caption)                   
                 return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1733,16 +1676,11 @@ bot.on('photo', async(ctx) => {
         }else{
             saver.saveFile(fileDetails3)
             if(ctx.chat.type == 'private') {
-                if(ctx.message.media_group_id){
-                    if(updates.length > 1){
-                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                            parse_mode: 'HTML',
-                            disable_web_page_preview: true,
-                            reply_to_message_id: updates[0].message.message_id
-                        })
-                        updates = []
-                    }
-                }
+                ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${photext}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true,
+                    reply_to_message_id: updates[0].message.message_id
+                })
             }
             if(!ctx.message.caption)                   
                 return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1835,16 +1773,10 @@ bot.on('photo', async(ctx) => {
                 if(!fileDetails1.file_name){
                     saver.saveFile(fileDetails4)
                     if(ctx.chat.type == 'private') {
-                        if(ctx.message.media_group_id){
-                            if(updates.length > 1){
-                                ctx.reply(`<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: updates[0].message.message_id
-                                })
-                                updates = []
-                            }
-                        }
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            disable_web_page_preview: true,
+                            reply_to_message_id: updates[0].message.message_id
+                        })
                     }
                     if(!ctx.message.caption)                   
                         return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{
@@ -1862,16 +1794,11 @@ bot.on('photo', async(ctx) => {
                 }else{
                     saver.saveFile(fileDetails3)
                     if(ctx.chat.type == 'private') {
-                        if(ctx.message.media_group_id){
-                            if(updates.length > 1){
-                                ctx.reply(`<b>✔️ Grup disimpan \nID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: updates[0].message.message_id
-                                })
-                                updates = []
-                            }
-                        }
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID grup:</b> ${ctx.message.media_group_id}\n<b>Nama file:</b> ${photext}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: updates[0].message.message_id
+                        })
                     }
                     if(!ctx.message.caption)                   
                         return ctx.telegram.sendMediaGroup(process.env.LOG_CHANNEL,[{

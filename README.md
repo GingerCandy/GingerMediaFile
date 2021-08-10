@@ -121,7 +121,7 @@ Anda dapat menghapus file 3 cara.
 HISTORY 7
 1. Perbaikan dalam list grup untuk melakukan perintah didalam grup.
 2. Kirim media secara grup.
-3. Hapus media secara grup
+3. Hapus media secara grup.
 
 HISTORY 6
 1. Kirim pesan ke pengguna melalui BOT.

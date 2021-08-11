@@ -952,6 +952,14 @@ bot.command('unbanchat', (ctx) => {
     }
 })
 
+let update = []
+bot.use((ctx,next)=>{
+    if(ctx.message.media_group_id){
+        update.push(ctx.update)
+    }
+    next()
+})
+
 //saving documents to db and generating link
 bot.on('document', async (ctx) => {
     document = ctx.message.document
@@ -1071,15 +1079,20 @@ bot.on('document', async (ctx) => {
                     })
             }
         }else{
+            if(ctx.chat.type == 'private') {
+                if(ctx.message.media_group_id){
+                    if(update.length > 1){
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: update[0].message.message_id
+                        })
+                        update = []
+                    }
+                }
+            }
             if(!fileDetails1.file_name){
                 saver.saveFile(fileDetails4)
-                if(ctx.chat.type == 'private') {
-                    ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                        parse_mode: 'HTML',
-                        disable_web_page_preview: true,
-                        reply_to_message_id: ctx.message.message_id
-                    })
-                }
                 if(!ctx.message.caption)                   
                     return ctx.replyWithDocument(document.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
@@ -1093,13 +1106,6 @@ bot.on('document', async (ctx) => {
                     })
             }else{
                 saver.saveFile(fileDetails3)
-                if(ctx.chat.type == 'private') {
-                    ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${doctext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID grup:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                        parse_mode: 'HTML',
-                        disable_web_page_preview: true,
-                        reply_to_message_id: ctx.message.message_id
-                    })
-                }
                 if(!ctx.message.caption)                   
                     return ctx.replyWithDocument(document.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
@@ -1146,13 +1152,6 @@ bot.on('document', async (ctx) => {
                     if(!fileDetails1.mediaId){
                         if(!fileDetails1.file_name){
                             saver.saveFile(fileDetails2)
-                            if(ctx.chat.type == 'private') {
-                                ctx.reply(`✔️ Document disimpan \n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: ctx.message.message_id
-                                })
-                            }
                             if(!ctx.message.caption)
                                 return ctx.replyWithDocument(document.file_id, {
                                     chat_id: process.env.LOG_CHANNEL,
@@ -1186,15 +1185,20 @@ bot.on('document', async (ctx) => {
                                 })
                         }
                     }else{
+                        if(ctx.chat.type == 'private') {
+                            if(ctx.message.media_group_id){
+                                if(update.length > 1){
+                                    ctx.reply(`✔️ Grup disimpan \n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        parse_mode: 'HTML',
+                                        disable_web_page_preview: true,
+                                        reply_to_message_id: update[0].message.message_id
+                                    })
+                                    update = []
+                                }
+                            }
+                        }
                         if(!fileDetails1.file_name){
                             saver.saveFile(fileDetails4)
-                            if(ctx.chat.type == 'private') {
-                                ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: ctx.message.message_id
-                                })
-                            }
                             if(!ctx.message.caption)                   
                                 return ctx.replyWithDocument(document.file_id, {
                                     chat_id: process.env.LOG_CHANNEL,
@@ -1208,13 +1212,6 @@ bot.on('document', async (ctx) => {
                                 })
                         }else{
                             saver.saveFile(fileDetails3)
-                            if(ctx.chat.type == 'private') {
-                                ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${doctext}\n<b>Size:</b> ${document.file_size} B\n<b>ID file:</b> ${document.file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: ctx.message.message_id
-                                })
-                            }
                             if(!ctx.message.caption)                   
                                 return ctx.replyWithDocument(document.file_id, {
                                     chat_id: process.env.LOG_CHANNEL,
@@ -1358,15 +1355,20 @@ bot.on('video', async(ctx) => {
                     })
             }
         }else{
+            if(ctx.chat.type == 'private') {
+                if(ctx.message.media_group_id){
+                    if(update.length > 1){
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: update[0].message.message_id
+                        })
+                        update = []
+                    }
+                }
+            }
             if(!fileDetails1.file_name){
                 saver.saveFile(fileDetails4)
-                if(ctx.chat.type == 'private') {
-                    ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                        parse_mode: 'HTML',
-                        disable_web_page_preview: true,
-                        reply_to_message_id: ctx.message.message_id
-                    })
-                }
                 if(!ctx.message.caption)                   
                     return ctx.replyWithVideo(video.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
@@ -1380,13 +1382,6 @@ bot.on('video', async(ctx) => {
                     })
             }else{
                 saver.saveFile(fileDetails3)
-                if(ctx.chat.type == 'private') {
-                    ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                        parse_mode: 'HTML',
-                        disable_web_page_preview: true,
-                        reply_to_message_id: ctx.message.message_id
-                    })
-                }
                 if(!ctx.message.caption)                   
                     return ctx.replyWithVideo(video.file_id, {
                         chat_id: process.env.LOG_CHANNEL,
@@ -1473,15 +1468,20 @@ bot.on('video', async(ctx) => {
                                 })
                         }
                     }else{
+                        if(ctx.chat.type == 'private') {
+                            if(ctx.message.media_group_id){
+                                if(update.length > 1){
+                                    ctx.reply(`✔️ Grup disimpan \n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        parse_mode: 'HTML',
+                                        disable_web_page_preview: true,
+                                        reply_to_message_id: update[0].message.message_id
+                                    })
+                                    update = []
+                                }
+                            }
+                        }
                         if(!fileDetails1.file_name){
                             saver.saveFile(fileDetails4)
-                            if(ctx.chat.type == 'private') {
-                                ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: ctx.message.message_id
-                                })
-                            }
                             if(!ctx.message.caption)                   
                                 return ctx.replyWithVideo(video.file_id, {
                                     chat_id: process.env.LOG_CHANNEL,
@@ -1495,13 +1495,6 @@ bot.on('video', async(ctx) => {
                                 })
                         }else{
                             saver.saveFile(fileDetails3)
-                            if(ctx.chat.type == 'private') {
-                                ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${vidext}\n<b>Size:</b> ${video.file_size} B\n<b>ID file:</b> ${video.file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: ctx.message.message_id
-                                })
-                            }
                             if(!ctx.message.caption)                   
                                 return ctx.replyWithVideo(video.file_id, {
                                     chat_id: process.env.LOG_CHANNEL,
@@ -1645,15 +1638,19 @@ bot.on('photo', async(ctx) => {
                     })
             }
         }else{
-            if(!fileDetails1.file_name){
-                saver.saveFile(fileDetails4)
-                if(ctx.chat.type == 'private') {
-                    ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                        parse_mode: 'HTML',
-                        disable_web_page_preview: true,
-                        reply_to_message_id: ctx.message.message_id
-                    })
+            if(ctx.chat.type == 'private') {
+                if(ctx.message.media_group_id){
+                    if(update.length > 1){
+                        ctx.reply(`✔️ Grup disimpan \n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                            parse_mode: 'HTML',
+                            disable_web_page_preview: true,
+                            reply_to_message_id: update[0].message.message_id
+                        })
+                        update = []
+                    }
                 }
+            }
+            if(!fileDetails1.file_name){
                 if(!ctx.message.caption)                   
                     return ctx.replyWithPhoto(photo[1].file_id, {
                         chat_id: process.env.LOG_CHANNEL,
@@ -1667,13 +1664,6 @@ bot.on('photo', async(ctx) => {
                     })
             }else{
                 saver.saveFile(fileDetails3)
-                if(ctx.chat.type == 'private') {
-                    ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${photext}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                        parse_mode: 'HTML',
-                        disable_web_page_preview: true,
-                        reply_to_message_id: ctx.message.message_id
-                    })
-                }
                 if(!ctx.message.caption)                   
                     return ctx.replyWithPhoto(photo[1].file_id, {
                         chat_id: process.env.LOG_CHANNEL,
@@ -1760,15 +1750,20 @@ bot.on('photo', async(ctx) => {
                                 })
                         }
                     }else{
+                        if(ctx.chat.type == 'private') {
+                            if(ctx.message.media_group_id){
+                                if(update.length > 1){
+                                    ctx.reply(`✔️ Grup disimpan \n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
+                                        parse_mode: 'HTML',
+                                        disable_web_page_preview: true,
+                                        reply_to_message_id: update[0].message.message_id
+                                    })
+                                    update = []
+                                }
+                            }
+                        }
                         if(!fileDetails1.file_name){
                             saver.saveFile(fileDetails4)
-                            if(ctx.chat.type == 'private') {
-                                ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${today2(ctx)}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode:'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: ctx.message.message_id
-                                })
-                            }
                             if(!ctx.message.caption)                   
                                 return ctx.replyWithPhoto(photo[1].file_id, {
                                     chat_id: process.env.LOG_CHANNEL,
@@ -1782,13 +1777,6 @@ bot.on('photo', async(ctx) => {
                                 })
                         }else{
                             saver.saveFile(fileDetails3)
-                            if(ctx.chat.type == 'private') {
-                                ctx.reply(`✔️ Grup disimpan \n<b>Nama file:</b> ${photext}\n<b>Size:</b> ${photo[1].file_size} B\n<b>ID file:</b> ${photo[1].file_unique_id}\n<b>ID group:</b> ${ctx.message.media_group_id}\n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo[1].file_unique_id}\nhttps://t.me/${process.env.BOTUSERNAME}?start=grp_${ctx.message.media_group_id}`,{
-                                    parse_mode: 'HTML',
-                                    disable_web_page_preview: true,
-                                    reply_to_message_id: ctx.message.message_id
-                                })
-                            }
                             if(!ctx.message.caption)                   
                                 return ctx.replyWithPhoto(photo[1].file_id, {
                                     chat_id: process.env.LOG_CHANNEL,

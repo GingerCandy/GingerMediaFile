@@ -954,10 +954,12 @@ bot.command('unbanchat', (ctx) => {
 
 let update = []
 bot.use(async(ctx,next)=>{
+    console.time(`Processing update ${ctx.update}`)
     if(ctx.message.media_group_id){
         update.push(ctx.update)
     }
     await next()
+    console.timeEnd(`Processing update ${ctx.update}`)
 })
 
 //saving documents to db and generating link

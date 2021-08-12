@@ -121,46 +121,54 @@ bot.start(async(ctx)=>{
             }else{
                 if (query.indexOf('grp_') > -1){
                     var query1 = query.replace('grp_','');
-                    file = await saver.getFile1(query1).then((res1)=>{
-                        //console.log(res1);
-                        let mediagroup = [];
-                        for (let index = 0; index < res1.length; index++) {
-                            const data = res1[index];
-                            mediagroup.push({type: data.type, media: data.file_id, caption: data.caption, parse_mode:'HTML'});
-                        }
-                        //console.log(mediagroup);
-                        return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup);
-                    })
+                    try{
+                        file = await saver.getFile1(query1).then((res1)=>{
+                            //console.log(res1);
+                            let mediagroup = [];
+                            for (let index = 0; index < res1.length; index++) {
+                                const data = res1[index];
+                                mediagroup.push({type: data.type, media: data.file_id, caption: data.caption, parse_mode:'HTML'});
+                            }
+                            //console.log(mediagroup);
+                            return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup);
+                        })
+                    }catch(error){
+                        ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
+                    }
                 }else{
                     let query2 = query;
-                    file2 = await saver.getFile2(query2).then((res2)=>{
-                        //console.log(res2);
-                        if(res2.type=='video'){
-                            if(!res2.caption)
-                            return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                parse_mode:'HTML'
-                            })
-                            ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                parse_mode:'HTML'
-                            })
-                        }else if(res2.type=='photo'){
-                            if(!res2.caption)
-                                return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                    try{
+                        file2 = await saver.getFile2(query2).then((res2)=>{
+                            //console.log(res2);
+                            if(res2.type=='video'){
+                                if(!res2.caption)
+                                return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
                                     parse_mode:'HTML'
                                 })
-                                ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
                                     parse_mode:'HTML'
                                 })
-                        }else if(res2.type=='document'){
-                            if(!res2.caption)
-                                return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                    parse_mode:'HTML'
-                                })
-                                ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                    parse_mode:'HTML'
-                                })
-                        }
-                    })
+                            }else if(res2.type=='photo'){
+                                if(!res2.caption)
+                                    return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                        parse_mode:'HTML'
+                                    })
+                                    ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                        parse_mode:'HTML'
+                                    })
+                            }else if(res2.type=='document'){
+                                if(!res2.caption)
+                                    return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                        parse_mode:'HTML'
+                                    })
+                                    ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                        parse_mode:'HTML'
+                                    })
+                            }
+                        })
+                    }catch(error){
+                        ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
+                    }
                 }
             }
         }else{
@@ -207,46 +215,54 @@ bot.start(async(ctx)=>{
                         }else{
                             if (query.indexOf('grp_') > -1){
                                 var query1 = query.replace('grp_','');
-                                file = await saver.getFile1(query1).then((res1)=>{
-                                //console.log(res1);
-                                    let mediagroup = [];
-                                    for (let index = 0; index < res1.length; index++) {
-                                        const data = res1[index];
-                                        mediagroup.push({type: data.type, media: data.file_id, caption: data.caption, parse_mode:'HTML'});
-                                    }
-                                    //console.log(mediagroup);
-                                    return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup);
-                                })
+                                try{
+                                    file = await saver.getFile1(query1).then((res1)=>{
+                                        //console.log(res1);
+                                        let mediagroup = [];
+                                        for (let index = 0; index < res1.length; index++) {
+                                            const data = res1[index];
+                                            mediagroup.push({type: data.type, media: data.file_id, caption: data.caption, parse_mode:'HTML'});
+                                        }
+                                        //console.log(mediagroup);
+                                        return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup);
+                                    })
+                                }catch(error){
+                                    ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
+                                }
                             }else{
                                 let query2 = query;
-                                file2 = await saver.getFile2(query2).then((res2)=>{
-                                    //console.log(res2);
-                                    if(res2.type=='video'){
-                                        if(!res2.caption)
+                                try{
+                                    file2 = await saver.getFile2(query2).then((res2)=>{
+                                        //console.log(res2);
+                                        if(res2.type=='video'){
+                                            if(!res2.caption)
                                             return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
                                                 parse_mode:'HTML'
                                             })
                                             ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
                                                 parse_mode:'HTML'
                                             })
-                                    }else if(res2.type=='photo'){
-                                        if(!res2.caption)
-                                            return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                                parse_mode:'HTML'
-                                            })
-                                            ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                parse_mode:'HTML'
-                                            })
-                                    }else if(res2.type=='document'){
-                                        if(!res2.caption)
-                                            return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
-                                                parse_mode:'HTML'
-                                            })
-                                            ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                parse_mode:'HTML'
-                                            })
-                                    }
-                                })
+                                        }else if(res2.type=='photo'){
+                                            if(!res2.caption)
+                                                return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                    parse_mode:'HTML'
+                                                })
+                                                ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                                    parse_mode:'HTML'
+                                                })
+                                        }else if(res2.type=='document'){
+                                            if(!res2.caption)
+                                                return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                    parse_mode:'HTML'
+                                                })
+                                                ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
+                                                    parse_mode:'HTML'
+                                                })
+                                        }
+                                    })
+                                }catch(error){
+                                    ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
+                                }
                             }
                         }
                     }
@@ -409,17 +425,17 @@ bot.command('ban',async(ctx)=>{
                                 const command = words.shift().slice(1);
                                 const userId = words.shift();
                                 const caption = words.join(" ");
-                                const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
+                                const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
 
                                 await bot.telegram.callApi('banChatMember', {
                                 chat_id: ctx.message.chat.id,
                                 user_id: userId
                                 }).then(result=>{
                                     //console.log(result)
-                                    ctx.reply(`[${userId}] dibanned ${caption2}`,{
+                                    ctx.reply(`[${userId}] diblokir. ${caption2}`,{
                                         reply_to_message_id: ctx.message.message_id
                                     })
-                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
+                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah diblokir di ${ctx.message.chat.title}`)
                                 })
                             }
 
@@ -427,7 +443,7 @@ bot.command('ban',async(ctx)=>{
                             const words = str.split(/ +/g);
                             const command = words.shift().slice(1);
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
 
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
@@ -436,10 +452,10 @@ bot.command('ban',async(ctx)=>{
                                 //console.log(result)
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                                ctx.reply(`${replyUsername} ${replyFromid} dibanned ${caption2}`,{
+                                ctx.reply(`${replyUsername} ${replyFromid} diblokir. ${caption2}`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
-                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah diblokir di ${ctx.message.chat.title}`)
                             })
                         }
                     }else if(memberstatus.status == 'creator'){
@@ -450,17 +466,17 @@ bot.command('ban',async(ctx)=>{
                             const command = words.shift().slice(1);
                             const userId = words.shift();
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
 
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
                             user_id: userId
                             }).then(result=>{
                                 //console.log(result)
-                                ctx.reply(`[${userId}] dibanned ${caption2}`,{
+                                ctx.reply(`[${userId}] diblokir. ${caption2}`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
-                                return bot.telegram.sendMessage(userId, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(userId, `${caption} Anda telah diblokir di ${ctx.message.chat.title}`)
                             })
                         }
 
@@ -468,7 +484,7 @@ bot.command('ban',async(ctx)=>{
                         const words = str.split(/ +/g);
                         const command = words.shift().slice(1);
                         const caption = words.join(" ");
-                        const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
+                        const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
 
                         await bot.telegram.callApi('banChatMember', {
                         chat_id: ctx.message.chat.id,
@@ -477,10 +493,10 @@ bot.command('ban',async(ctx)=>{
                             //console.log(result)
                             let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                             let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                            ctx.reply(`${replyUsername} ${replyFromid} dibanned ${caption2}`,{
+                            ctx.reply(`${replyUsername} ${replyFromid} diblokir. ${caption2}`,{
                                 reply_to_message_id: ctx.message.message_id
                             })
-                            return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
+                            return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah diblokir di ${ctx.message.chat.title}`)
                         })
                     }else{
                         if(ctx.from.username == 'GroupAnonymousBot'){
@@ -491,17 +507,17 @@ bot.command('ban',async(ctx)=>{
                                 const command = words.shift().slice(1);
                                 const userId = words.shift();
                                 const caption = words.join(" ");
-                                const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
+                                const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
     
                                 await bot.telegram.callApi('banChatMember', {
                                 chat_id: ctx.message.chat.id,
                                 user_id: userId
                                 }).then(result=>{
                                     //console.log(result)
-                                    ctx.reply(`[${userId}] dibanned ${caption2}`,{
+                                    ctx.reply(`[${userId}] diblokir. ${caption2}`,{
                                         reply_to_message_id: ctx.message.message_id
                                     })
-                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
+                                    return bot.telegram.sendMessage(userId, `${caption} Anda telah diblokir di ${ctx.message.chat.title}`)
                                 })
                             }
     
@@ -509,7 +525,7 @@ bot.command('ban',async(ctx)=>{
                             const words = str.split(/ +/g);
                             const command = words.shift().slice(1);
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
     
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
@@ -518,10 +534,10 @@ bot.command('ban',async(ctx)=>{
                                 //console.log(result)
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
-                                ctx.reply(`${replyUsername} ${replyFromid} dibanned ${caption2}`,{
+                                ctx.reply(`${replyUsername} ${replyFromid} diblokir. ${caption2}`,{
                                     reply_to_message_id: ctx.message.message_id
                                 })
-                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah dibanned di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} Anda telah diblokir di ${ctx.message.chat.title}`)
                             })
                         }
                     }

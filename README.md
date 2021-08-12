@@ -119,6 +119,9 @@ Anda dapat menghapus file 3 cara.
 
 //Update
 
+HISTORY 8
+1. Perbaikan penulisan URL gabung grup/channel tinggal tulis name-https://t.me/test
+
 HISTORY 7
 1. Perbaikan dalam list grup untuk melakukan perintah didalam grup.
 2. Kirim media secara grup.

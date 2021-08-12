@@ -73,14 +73,18 @@ function messagelink(ctx){
     return `Kirim BOT video, photo dan dokumen.`;
 }
 
+const url2 = process.env.LINKCHANNEL.split(/[\,-]+/);
+const url3 = url2[0];
+const url4 = url2[1];
+
 // inline keyboard
 const inKey = [
   [{text:'🔎 Pencarian',switch_inline_query:''},{text:'📎 Tautan',callback_data:'POP'}],
-  [{text:'📎 Join', url: `${process.env.LINKCHANNEL}`}]
+  [{text: `${url3}`, url: `${url4}`}]
 ];
 
 const inKey2 = [
-  [{text:'📎 Join', url: `${process.env.LINKCHANNEL}`}]
+  [{text: `${url3}`, url: `${url4}`}]
 ];
 
 //BOT START

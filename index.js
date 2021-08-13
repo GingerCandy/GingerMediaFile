@@ -139,7 +139,7 @@ bot.start(async(ctx)=>{
                                     parse_mode:'HTML'
                                 })
                             }
-                            return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup) + setTimeout(captionFunction, 0.8)
+                            return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup) + setTimeout(captionFunction, 1000)
                         })
                     }catch(error){
                         ctx.reply(`Media tidak ditemukan atau sudah dihapus`)
@@ -238,7 +238,7 @@ bot.start(async(ctx)=>{
                                                 parse_mode:'HTML'
                                             })
                                         }
-                                        return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup) + setTimeout(captionFunction, 0.8)
+                                        return ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup) + setTimeout(captionFunction, 1000)
                                     })
                                 }catch(error){
                                     ctx.reply(`Media tidak ditemukan atau sudah dihapus`)

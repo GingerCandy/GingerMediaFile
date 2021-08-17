@@ -1,15 +1,15 @@
 {
-	"name": "GingerMediaFile",
-	"description": "Ginger Media File",
-	"repository": "https://github.com/GingerCandy/GingerMediaFile",
+	"name": "RatuFileSaver",
+	"description": "Ratu File Saver",
+	"repository": "https://github.com/BimoSora/RatuFileSaver",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg",
 	"keywords": ["telegram","filesaver","bot","nodejs"],
-	"env": {
+		"env": {
 		"TOKEN": {
-			"description": "bot token provided by @botfather",
-            "value":""
-		},
-"DOMAIN":{
+                         "description": "Token bot disediakan oleh  @botfather",
+                "value":""
+	        },
+        "DOMAIN":{
             "description": "Masukkan nama aplikasi Anda",
             "value": ""
 	       },
@@ -19,6 +19,14 @@
                },
         "ADMIN":{
             "description": "Masukkan id akun kamu",
+            "value":""
+        },
+        "ADMIN1":{
+            "description": "Masukkan id akun kamu jika tidak ada admin ke2 abaikan",
+            "value":""
+        },
+        "ADMIN2":{
+            "description": "Masukkan id akun kamu jika tidak ada admin ke3 abaikan",
             "value":""
         },
         "BOTUSERNAME":{
@@ -47,7 +55,7 @@
         },
         "LINKCHANNEL":{
             "description": "Link channel grup masukkan disini dan ikuti format penulisan",
-            "value": "Gabung-https://t.me/test"
+            "value":"Gabung-https://t.me/test"
         }
         
         	

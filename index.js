@@ -1263,7 +1263,7 @@ bot.on('document', async (ctx) => {
         }
         }
         catch(error){
-            ctx.reply(`${messagebotnoaddgroup(ctx)}`)
+
         }
     }
 
@@ -1550,7 +1550,7 @@ bot.on('video', async(ctx) => {
         }
         }
         catch(error){
-            ctx.reply(`${messagebotnoaddgroup(ctx)}`) 
+
         }
     }
 
@@ -1837,7 +1837,7 @@ bot.on('photo', async(ctx) => {
         }
         }
         catch(error){
-            ctx.reply(`${messagebotnoaddgroup(ctx)}`)    
+              
         }
     }
 

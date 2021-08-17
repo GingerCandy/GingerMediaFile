@@ -20,7 +20,8 @@ Detail yang diperlukan.
 
 <code>DOMAIN</code> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.
 
-<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot). <code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di config Heroku dan tinggal kasih angka di belakangnya</code>
+<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).
+<code>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di config Heroku dan tinggal kasih angka di belakangnya</code>
 
 <code>BOTUSERNAME</code> - Nama pengguna BOT Anda tanpa '@'.
 

@@ -22,11 +22,11 @@
             "value":""
         },
         "ADMIN1":{
-            "description": "Masukkan id akun kamu jika tidak ada admin ke 2 abaikan",
+            "description": "Masukkan id akun kamu, jika tidak ada admin ke 2 abaikan",
             "value":""
         },
         "ADMIN2":{
-            "description": "Masukkan id akun kamu jika tidak ada admin ke 3 abaikan",
+            "description": "Masukkan id akun kamu, jika tidak ada admin ke 3 abaikan",
             "value":""
         },
         "BOTUSERNAME":{

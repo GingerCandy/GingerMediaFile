@@ -1157,6 +1157,62 @@ bot.on('document', async (ctx) => {
                             ctx.reply(`${messagebanned(ctx)}`)
                         }
                     }else{
+                        document = ctx.message.document
+                        //console.log(ctx);
+                        
+                        if(ctx.message.media_group_id == undefined){
+                            if(document.file_name == undefined){
+                                fileDetails1 = {
+                                    file_name: today2(ctx),
+                                    userId:ctx.from.id,
+                                    file_id: document.file_id,
+                                    caption: ctx.message.caption,
+                                    file_size: document.file_size,
+                                    uniqueId: document.file_unique_id,
+                                    type: 'document'
+                                }
+                            }else{
+                                var exstension = document.file_name;
+                                var regex = /\.[A-Za-z0-9]+$/gm
+                                var doctext = exstension.replace(regex, '');
+                                fileDetails2 = {
+                                    file_name: doctext,
+                                    userId:ctx.from.id,
+                                    file_id: document.file_id,
+                                    caption: ctx.message.caption,
+                                    file_size: document.file_size,
+                                    uniqueId: document.file_unique_id,
+                                    type: 'document'
+                                }
+                            }
+                        }else{
+                            if(document.file_name == undefined){
+                                fileDetails3 = {
+                                    file_name: today2(ctx),
+                                    userId:ctx.from.id,
+                                    file_id: document.file_id,
+                                    mediaId: ctx.message.media_group_id,
+                                    caption: ctx.message.caption,
+                                    file_size: document.file_size,
+                                    uniqueId: document.file_unique_id,
+                                    type: 'document'
+                                }
+                            }else{
+                                var exstension2 = document.file_name;
+                                var regex2 = /\.[A-Za-z0-9]+$/gm
+                                var doctext2 = exstension2.replace(regex2, '');
+                                fileDetails4 = {
+                                    file_name: doctext2,
+                                    userId:ctx.from.id,
+                                    file_id: document.file_id,
+                                    mediaId: ctx.message.media_group_id,
+                                    caption: ctx.message.caption,
+                                    file_size: document.file_size,
+                                    uniqueId: document.file_unique_id,
+                                    type: 'document'
+                                }
+                            }
+                        }
                         if(ctx.message.media_group_id == undefined){
                             if(document.file_name == undefined){
                                 saver.saveFile(fileDetails1)
@@ -1428,6 +1484,62 @@ bot.on('video', async (ctx) => {
                             ctx.reply(`${messagebanned(ctx)}`)
                         }
                     }else{
+                        video = ctx.message.video
+                        //console.log(ctx);
+                        
+                        if(ctx.message.media_group_id == undefined){
+                            if(video.file_name == undefined){
+                                fileDetails1 = {
+                                    file_name: today2(ctx),
+                                    userId:ctx.from.id,
+                                    file_id: video.file_id,
+                                    caption: ctx.message.caption,
+                                    file_size: video.file_size,
+                                    uniqueId: video.file_unique_id,
+                                    type: 'video'
+                                }
+                            }else{
+                                var exstension = video.file_name;
+                                var regex = /\.[A-Za-z0-9]+$/gm
+                                var vidext = exstension.replace(regex, '');
+                                fileDetails2 = {
+                                    file_name: vidext,
+                                    userId:ctx.from.id,
+                                    file_id: video.file_id,
+                                    caption: ctx.message.caption,
+                                    file_size: video.file_size,
+                                    uniqueId: video.file_unique_id,
+                                    type: 'video'
+                                }
+                            }
+                        }else{
+                            if(video.file_name == undefined){
+                                fileDetails3 = {
+                                    file_name: today2(ctx),
+                                    userId:ctx.from.id,
+                                    file_id: video.file_id,
+                                    mediaId: ctx.message.media_group_id,
+                                    caption: ctx.message.caption,
+                                    file_size: video.file_size,
+                                    uniqueId: video.file_unique_id,
+                                    type: 'video'
+                                }
+                            }else{
+                                var exstension2 = video.file_name;
+                                var regex2 = /\.[A-Za-z0-9]+$/gm
+                                var vidext2 = exstension2.replace(regex2, '');
+                                fileDetails4 = {
+                                    file_name: vidext2,
+                                    userId:ctx.from.id,
+                                    file_id: video.file_id,
+                                    mediaId: ctx.message.media_group_id,
+                                    caption: ctx.message.caption,
+                                    file_size: video.file_size,
+                                    uniqueId: video.file_unique_id,
+                                    type: 'video'
+                                }
+                            }
+                        }
                         if(ctx.message.media_group_id == undefined){
                             if(video.file_name == undefined){
                                 saver.saveFile(fileDetails1)
@@ -1699,6 +1811,62 @@ bot.on('photo', async (ctx) => {
                             ctx.reply(`${messagebanned(ctx)}`)
                         }
                     }else{
+                        photo = ctx.message.photo
+                            //console.log(ctx);
+                            
+                            if(ctx.message.media_group_id == undefined){
+                                if(photo[1].file_name == undefined){
+                                    fileDetails1 = {
+                                        file_name: today2(ctx),
+                                        userId:ctx.from.id,
+                                        file_id: photo[1].file_id,
+                                        caption: ctx.message.caption,
+                                        file_size: photo[1].file_size,
+                                        uniqueId: photo[1].file_unique_id,
+                                        type: 'photo'
+                                    }
+                                }else{
+                                    var exstension = photo[1].file_name;
+                                    var regex = /\.[A-Za-z0-9]+$/gm
+                                    var photext = exstension.replace(regex, '');
+                                    fileDetails2 = {
+                                        file_name: photext,
+                                        userId:ctx.from.id,
+                                        file_id: photo[1].file_id,
+                                        caption: ctx.message.caption,
+                                        file_size: photo[1].file_size,
+                                        uniqueId: photo[1].file_unique_id,
+                                        type: 'photo'
+                                    }
+                                }
+                            }else{
+                                if(photo[1].file_name == undefined){
+                                    fileDetails3 = {
+                                        file_name: today2(ctx),
+                                        userId:ctx.from.id,
+                                        file_id: photo[1].file_id,
+                                        mediaId: ctx.message.media_group_id,
+                                        caption: ctx.message.caption,
+                                        file_size: photo[1].file_size,
+                                        uniqueId: photo[1].file_unique_id,
+                                        type: 'photo'
+                                    }
+                                }else{
+                                    var exstension2 = photo[1].file_name;
+                                    var regex2 = /\.[A-Za-z0-9]+$/gm
+                                    var photext2 = exstension2.replace(regex2, '');
+                                    fileDetails4 = {
+                                        file_name: photext2,
+                                        userId:ctx.from.id,
+                                        file_id: photo[1].file_id,
+                                        mediaId: ctx.message.media_group_id,
+                                        caption: ctx.message.caption,
+                                        file_size: photo[1].file_size,
+                                        uniqueId: photo[1].file_unique_id,
+                                        type: 'photo'
+                                    }
+                                }
+                            }
                         if(ctx.message.media_group_id == undefined){
                             if(photo[1].file_name == undefined){
                                 saver.saveFile(fileDetails1)

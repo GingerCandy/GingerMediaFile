@@ -90,19 +90,18 @@ const inKey2 = [
 //BOT START
 bot.start(async(ctx)=>{
 
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    //console.log(msgArray.length);
-    let length = msgArray.length
-    msgArray.shift()
-    let query = msgArray.join(' ')
-
-     user ={
-        first_name:ctx.from.first_name,
-        userId:ctx.from.id
-    }
-
     if(ctx.chat.type == 'private') {
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        //console.log(msgArray.length);
+        let length = msgArray.length
+        msgArray.shift()
+        let query = msgArray.join(' ')
+    
+         user = {
+            first_name:ctx.from.first_name,
+            userId:ctx.from.id
+        }
         if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             //welcoming message on /start and ifthere is a query available we can send files
             if(length == 1){
@@ -305,36 +304,36 @@ bot.action('POP',(ctx)=>{
 
 bot.action('STARTUP',async(ctx)=>{
     ctx.deleteMessage()
-    if(ctx.chat.id == 'private'){
-        const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
-        if(!profile || profile.total_count == 0)
-            return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
-                parse_mode:'HTML',
-                disable_web_page_preview: true,
-                reply_markup:{
-                    inline_keyboard:inKey
-                }
-            })
-            ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
-                parse_mode:'HTML',
-                disable_web_page_preview: true,
-                reply_markup:{
-                    inline_keyboard:inKey
-                }
-            })
-    }
+    const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+    if(!profile || profile.total_count == 0)
+        return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
+            parse_mode:'HTML',
+            disable_web_page_preview: true,
+            reply_markup:{
+                inline_keyboard:inKey
+            }
+        })
+        ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
+            parse_mode:'HTML',
+            disable_web_page_preview: true,
+            reply_markup:{
+                inline_keyboard:inKey
+            }
+        })
 })
 
 //TEST BOT
 bot.hears('ping',(ctx)=>{
-    let chatId = ctx.message.from.id;
-    let opts = {
-        reply_to_message_id: ctx.message.message_id,
-        reply_markup:{
-            inline_keyboard: [[{text:'OK',callback_data:'PONG'}]]
+    if(ctx.chat.type == 'private') {
+        let chatId = ctx.message.from.id;
+        let opts = {
+            reply_to_message_id: ctx.message.message_id,
+            reply_markup:{
+                inline_keyboard: [[{text:'OK',callback_data:'PONG'}]]
+            }
         }
+        return bot.telegram.sendMessage(chatId, 'pong', opts);
     }
-    return bot.telegram.sendMessage(chatId, 'pong', opts);
 })
 
 bot.action('PONG',(ctx)=>{
@@ -343,13 +342,13 @@ bot.action('PONG',(ctx)=>{
 
 //GROUP COMMAND
 bot.command('reload',async(ctx)=>{
-    group ={
-        groupId:ctx.chat.id
-    }
 
     var botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
     var memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
     //console.log(memberstatus);
+    group = {
+        groupId:ctx.chat.id
+    }
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         if(!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator'){
             ctx.reply('BOT dimulai ulang')
@@ -772,7 +771,7 @@ bot.command('send',async(ctx)=>{
 
 //check account
 bot.command('getid',async(ctx)=>{
-
+  
     if(ctx.chat.type == 'private') {
         const profile4 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
         if(!profile4 || profile4.total_count == 0){
@@ -789,14 +788,14 @@ bot.command('getid',async(ctx)=>{
 
 //remove files with file_id
 bot.command('rem', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text);
 
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text);
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.removeFile(text)
             ctx.reply('✅ Dihapus')
         }
@@ -805,14 +804,14 @@ bot.command('rem', (ctx) => {
 
 //remove files with mediaId
 bot.command('remgrp', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text);
 
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text);
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.removeFileMedia(text)
             ctx.reply('✅ Group Dihapus')
         }
@@ -821,8 +820,9 @@ bot.command('remgrp', (ctx) => {
 
 //remove whole collection(remove all files)
 bot.command('clear',(ctx)=>{
+
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.deleteCollection()
             ctx.reply('✅ Dihapus')
         }
@@ -831,15 +831,15 @@ bot.command('clear',(ctx)=>{
 
 //removing all files sent by a user
 bot.command('remall', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text);
-    let id = parseInt(text)
 
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text);
+        let id = parseInt(text)
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.removeUserFile(id)
             ctx.reply('✅ Dihapus')
         }
@@ -873,7 +873,7 @@ bot.command('sendchat',async(ctx)=>{
         }
 
         if(ctx.chat.type == 'private') {
-            if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
                 const str = ctx.message.text;
                 const words = str.split(/ +/g);
                 const command = words.shift().slice(1);
@@ -893,12 +893,12 @@ bot.command('sendchat',async(ctx)=>{
 
 //broadcasting message to bot users(from last joined to first)
 bot.command('broadcast',async(ctx)=>{
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
 
     if(ctx.chat.type == 'private') {
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
         userDetails = await saver.getUser().then((res)=>{
             n = res.length
             userId = []
@@ -930,7 +930,7 @@ bot.command('broadcast',async(ctx)=>{
                 })
 
             }
-            if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+            if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
                 broadcast(text)
                 ctx.reply('Penyiaran dimulai (Pesan disiarkan dari terakhir bergabung hingga pertama).')
 
@@ -944,20 +944,22 @@ bot.command('broadcast',async(ctx)=>{
 
 //ban user with user id
 bot.command('banchat', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text)
-    userId = {
-        id: text
-    }
-
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id ==process.env.ADMIN|| ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
-            saver.banUser(userId).then((res) => {
-                ctx.reply('❌ Dibanned')
-            })
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text)
+        userId = {
+            id: text
+        }
+
+        if(ctx.chat.type == 'private') {
+            if(ctx.from.id == process.env.ADMIN|| ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+                saver.banUser(userId).then((res) => {
+                    ctx.reply('❌ Dibanned')
+                })
+            }
         }
     }
     
@@ -965,20 +967,22 @@ bot.command('banchat', (ctx) => {
 
 //unban user with user id
 bot.command('unbanchat', (ctx) => {
-    msg = ctx.message.text
-    let msgArray = msg.split(' ')
-    msgArray.shift()
-    let text = msgArray.join(' ')
-    //console.log(text)
-    userId = {
-        id: text
-    }
-
     if(ctx.chat.type == 'private') {
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
-            saver.unBan(userId).then((res) => {
-                ctx.reply('✅ Selesai')
-            })
+        msg = ctx.message.text
+        let msgArray = msg.split(' ')
+        msgArray.shift()
+        let text = msgArray.join(' ')
+        //console.log(text)
+        userId = {
+            id: text
+        }
+
+        if(ctx.chat.type == 'private') {
+            if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+                saver.unBan(userId).then((res) => {
+                    ctx.reply('✅ Selesai')
+                })
+            }
         }
     }
 })
@@ -1922,25 +1926,25 @@ bot.on('photo', async (ctx) => {
 
 bot.command('stats',async(ctx)=>{
     stats = await saver.getUser().then((res)=>{
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             ctx.reply(`📊 Total pengguna: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
         
     })
     stats = await saver.getMedia().then((res)=>{
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             ctx.reply(`📊 Total media: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
 
     })
     stats = await saver.getBan().then((res)=>{
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             ctx.reply(`📊 Total pengguna melanggar: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
         
     })
     stats = await saver.getGroup().then((res)=>{
-        if(ctx.from.id ==process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
+        if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             ctx.reply(`📊 Total grup terdaftar: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }
         

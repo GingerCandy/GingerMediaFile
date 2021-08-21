@@ -1,7 +1,7 @@
 {
 	"name": "RatuFileSaver",
 	"description": "Ratu File Saver",
-	"repository": "https://github.com/BimoSora/RatuFileSaver",
+	"repository": "https://github.com/GingerCandy/GingerMediaFile",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg",
 	"keywords": ["telegram","filesaver","bot","nodejs"],
 		"env": {

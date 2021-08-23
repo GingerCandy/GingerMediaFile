@@ -30,43 +30,27 @@ Detail yang diperlukan.
 <code>LOG_CHANNEL</code> - buat saluran pribadi dan dapatkan ID saluran (jika Anda tidak dapat meneruskan ID saluran apa pun dari saluran ke @getidsbot itu mungkin terlihat seperti -1001234567899).
 <hr>
 
-<h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1>
+<h1>Berikut adalah beberapa perintah dan penggunaan admin.</h1></br>
 
+~ Bagaimana pengguna melarang, unban dan kick dari BOT dan group.
+<code>/ban</code> userID caption jika ada.</br>
+<code>/banchat</code> userID (pribadi).</br>
+<code>/unban</code> userID.</br>
+<code>/unbanchat</code> userID (pribadi).</br>
+<code>/kick</code> userID.</br>
+<b>Dapatkan UserID dari saluran log.</b></br>
 
-    Bagaimana pengguna melarang, unban dan kick dari BOT dan Grup.
+~ Bagaimana cara menggunakan pin dan unpin di group.</br>
+<code>/pin</code> reply ke pesan yang mau di pin.</br>
+<code>/unpin</code> reply ke pesan yang mau di unpin.</br>
 
-<code>/ban</code> userID caption jika ada.
-<code>/banchat</code> userID (pribadi). 
+~ Bagaimana cara kirim pesan ke pengguna dari group.</br>
+<code>/send</code> pesan. kirim pesan di group.</br>
 
-<code>/unban</code> userID.
-<code>/unbanchat</code> userID (pribadi).
-
-<code>/kick</code> userID.
-
-(Dapatkan UserID dari saluran log).
-
-
-    Bagaimana cara menggunakan pin dan unpin di grup.
-
-<code>/pin</code> reply ke pesan yang mau di pin.
-
-<code>/unpin</code> reply ke pesan yang mau di unpin.
-
-
-    Bagaimana cara kirim pesan ke pengguna dari grup.
-
-<code>/send</code> pesan. kirim pesan di grup.
-
-
-    Bagaimana cara kirim pesan ke pengguna dari BOT.
-
-<code>/sendchat</code> userID pesan. kirim ke pengguna melalui BOT.
- 
-
-<h2>Cara Menghapus File Dari Bot.</h2>
-
-
-Anda dapat menghapus file 3 cara.
+~ Bagaimana cara kirim pesan ke pengguna dari BOT.</br>
+<code>/sendchat</code> userID pesan. kirim ke pengguna melalui BOT.</br>
+<h2>Cara Menghapus File Dari Bot.</h2></br>
+Anda dapat menghapus file 3 cara.</br>
 
   ⚫ Hapus file individual dengan file_id.
 
@@ -74,65 +58,50 @@ Anda dapat menghapus file 3 cara.
 
   ⚫ Hapus semua file Kirim ke BOT.
 
+~ Hapus file individual dengan file_id.</br>
+<code>/rem</code> file_id.</br>
+<b>Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log.</b></br>
 
-    Hapus file individual dengan file_id.
+~ Hapus file group dengan mediaId.</br>
+<code>/remgrp</code> mediaId.</br>
+<b>Ini akan menghapus media dalam group, dapatkan mediaId dari saluran log).</b></br>
 
-<code>/rem</code> file_id.
+~ Hapus semua file Kirim oleh pengguna.</br>
+<code>/remall</code> userID.</br>
+<b>Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log).</b>
 
-(Ini akan menghapus file satu per satu saat Anda memberikan file_id, dapatkan file_id dari saluran log).
-
-
-    Hapus file grup dengan mediaId.
-
-<code>/remgrp</code> grp.
-
-(Ini akan menghapus media dalam grup, dapatkan mediaId dari saluran log).
-
-
-    Hapus semua file Kirim oleh pengguna.
-
-<code>/remall</code> userID.
-
-(Anda dapat menghapus semua file dikirim oleh pengguna tertentu jika pengguna mengirim konten atau spam yang kasar, dapatkan userid dari saluran log).
-
-
-    Hapus semua file Kirim ke B0T.
-
-<code>/clear</code>
-
-(Ini akan menghapus semua file yang dikirim ke BOT secara permanen).
+~ Hapus semua file Kirim ke B0T.</br>
+<code>/clear</code></br>
+<b>Ini akan menghapus semua file yang dikirim ke BOT secara permanen).</b></br>
 
 <h2>Kirim pesan ke pengguna</h2>
 
-<code>/broadcast</code> Pesan Anda akan dikirim ke pengguna.
-
-(Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).
-
+<code>/broadcast</code> Pesan Anda akan dikirim ke pengguna.</br>
+<b>Anda dapat menyiarkan pesan teks ke pengguna Anda, pesan akan dikirim dari pengguna terakhir bergabung untuk pertama-tama bergabung dengan pengguna untuk mengurangi spam. Cobalah untuk tidak mengirim terlalu banyak pesan sekaligus jika Anda memiliki sejumlah besar pengguna).</b>
 
 <h2>Cara Mengetahui Total Pengguna BOT.</h2>
 
-<code>/stats</code>
-
-(Anda akan mendapatkan total pengguna memulai BOT Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil).
-
+<code>/stats</code></br>
+<b>Anda akan mendapatkan total pengguna memulai BOT Anda, data waktu nyata akan diperbarui setelah siaran yang berhasil.</b>
+<hr>
 
 <b>Jika Anda ingin mendukung saya, ikuti saya di GitHub sebagai dukungan.</b>
 
 //Update
 
 HISTORY 8
-1. Perbaikan penulisan URL gabung grup/channel tinggal tulis name-https://t.me/test
+1. Perbaikan penulisan URL gabung group/channel tinggal tulis name-https://t.me/test
 
 HISTORY 7
-1. Perbaikan dalam list grup untuk melakukan perintah didalam grup.
-2. Kirim media secara grup.
-3. Hapus media secara grup.
+1. Perbaikan dalam list group untuk melakukan perintah didalam group.
+2. Kirim media secara group.
+3. Hapus media secara group.
 
 HISTORY 6
 1. Kirim pesan ke pengguna melalui BOT.
 
 HISTORY 5
-1. Kirim pesan ke pengguna melalui grup.
+1. Kirim pesan ke pengguna melalui group.
 
 HISTORY 4
 1. BOT mendukung kick, ban, unban dan ada pesan pribadi.
@@ -145,12 +114,11 @@ HISTORY 3
 HISTORY 2
 1. Function teks disederhanakan.
 2. Mendeteksi jika belum ada nama akun akan dikosongkan.
-3. Admin bisa menggunakan BOT tanpa masuk channel/grup.
+3. Admin bisa menggunakan BOT tanpa masuk channel/group.
 4. Ada log channel untuk mengetahui siapa yang ngirim dan apa deskripsi filenya.
 
 HISTORY 1
-1. Ada join channel/grup terlebih dahulu saat start, pastikan id channel/grup di ganti pada index.js dan bot harus jadi admin di grup/channel.
+1. Ada join channel/group terlebih dahulu saat start, pastikan id channel/group di ganti pada index.js dan bot harus jadi admin di group/channel.
 2. Terdapat penambahan untuk menghilangkan null supaya tidak terlihat saat tampil.
 3. Ada get ID untuk cek ID akun Anda.
-4. Ada pesan bot belum dimasukkan ke channel/grup tujuan.
-
+4. Ada pesan bot belum dimasukkan ke channel/group tujuan.

@@ -148,30 +148,29 @@ bot.start(async(ctx)=>{
                     try{
                         file2 = await saver.getFile2(query2).then((res2)=>{
                             //console.log(res2);
+                            function captionFunction2() {
+                                ctx.reply(`${captionbuild(ctx)}`,{
+                                    parse_mode:'HTML'
+                                })
+                            }
                             if(res2.type=='video'){
                                 if(!res2.caption)
-                                    return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                    return ctx.replyWithVideo(res2.file_id) + setTimeout(captionFunction2, 1000)
+                                    ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption}`,
                                         parse_mode:'HTML'
-                                    })
-                                    ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                        parse_mode:'HTML'
-                                    })
+                                    }) + setTimeout(captionFunction2, 1000)
                             }else if(res2.type=='photo'){
                                 if(!res2.caption)
-                                    return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                    return ctx.replyWithPhoto(res2.file_id) + setTimeout(captionFunction2, 1000)
+                                    ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption}`,
                                         parse_mode:'HTML'
-                                    })
-                                    ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                        parse_mode:'HTML'
-                                    })
+                                    }) + setTimeout(captionFunction2, 1000)
                             }else if(res2.type=='document'){
                                 if(!res2.caption)
-                                    return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                    return ctx.replyWithDocument(res2.file_id) + setTimeout(captionFunction2, 1000)
+                                    ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption}`,
                                         parse_mode:'HTML'
-                                    })
-                                    ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                        parse_mode:'HTML'
-                                    })
+                                    }) + setTimeout(captionFunction2, 1000)
                             }
                         })
                     }catch(error){
@@ -247,30 +246,29 @@ bot.start(async(ctx)=>{
                                 try{
                                     file2 = await saver.getFile2(query2).then((res2)=>{
                                         //console.log(res2);
+                                        function captionFunction2() {
+                                            ctx.reply(`${captionbuild(ctx)}`,{
+                                                parse_mode:'HTML'
+                                            })
+                                        }
                                         if(res2.type=='video'){
                                             if(!res2.caption)
-                                                return ctx.replyWithVideo(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                return ctx.replyWithVideo(res2.file_id) + setTimeout(captionFunction2, 1000)
+                                                ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption}`,
                                                     parse_mode:'HTML'
-                                                })
-                                                ctx.replyWithVideo(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
-                                                })
+                                                }) + setTimeout(captionFunction2, 1000)
                                         }else if(res2.type=='photo'){
                                             if(!res2.caption)
-                                                return ctx.replyWithPhoto(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                return ctx.replyWithPhoto(res2.file_id) + setTimeout(captionFunction2, 1000)
+                                                ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption}`,
                                                     parse_mode:'HTML'
-                                                })
-                                                ctx.replyWithPhoto(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
-                                                })
+                                                }) + setTimeout(captionFunction2, 1000)
                                         }else if(res2.type=='document'){
                                             if(!res2.caption)
-                                                return ctx.replyWithDocument(res2.file_id,{caption: `\n\n${captionbuild(ctx)}`,
+                                                return ctx.replyWithDocument(res2.file_id) + setTimeout(captionFunction2, 1000)
+                                                ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption}`,
                                                     parse_mode:'HTML'
-                                                })
-                                                ctx.replyWithDocument(res2.file_id,{caption: `${res2.caption} \n\n${captionbuild(ctx)}`,
-                                                    parse_mode:'HTML'
-                                                })
+                                                }) + setTimeout(captionFunction2, 1000)
                                         }
                                     })
                                 }catch(error){

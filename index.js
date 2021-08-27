@@ -449,7 +449,7 @@ bot.command('ban',async(ctx)=>{
                                         parse_mode: 'HTML',
                                         reply_to_message_id: ctx.message.message_id
                                     })
-                                    return bot.telegram.sendMessage(userId, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
+                                    return bot.telegram.sendMessage(userId, `Anda telah diblokir di ${ctx.message.chat.title} ${caption2}`)
                                 })
                             }
 
@@ -470,7 +470,7 @@ bot.command('ban',async(ctx)=>{
                                     parse_mode: 'HTML',
                                     reply_to_message_id: ctx.message.reply_to_message.message_id
                                 })
-                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(userId, `Anda telah diblokir di ${ctx.message.chat.title} ${caption2}`)
                             })
                         }
                     }else if(memberstatus.status == 'creator'){
@@ -492,8 +492,8 @@ bot.command('ban',async(ctx)=>{
                                     parse_mode: 'HTML',
                                     reply_to_message_id: ctx.message.message_id
                                 })
-                                return bot.telegram.sendMessage(userId, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
-                            })
+                                return bot.telegram.sendMessage(userId, `Anda telah diblokir di ${ctx.message.chat.title} ${caption2}`)
+                             })
                         }
 
                         const str = ctx.message.text;
@@ -513,8 +513,8 @@ bot.command('ban',async(ctx)=>{
                                 parse_mode: 'HTML',
                                 reply_to_message_id: ctx.message.reply_to_message.message_id
                             })
-                            return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
-                        })
+                            return bot.telegram.sendMessage(userId, `Anda telah diblokir di ${ctx.message.chat.title} ${caption2}`)
+                         })
                     }else{
                         if(ctx.from.username == 'GroupAnonymousBot'){
                             if(ctx.message.reply_to_message == undefined){
@@ -535,7 +535,7 @@ bot.command('ban',async(ctx)=>{
                                         parse_mode: 'HTML',
                                         reply_to_message_id: ctx.message.message_id
                                     })
-                                    return bot.telegram.sendMessage(userId, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
+                                    return bot.telegram.sendMessage(userId, `Anda telah diblokir di ${ctx.message.chat.title} ${caption2}`)
                                 })
                             }
     
@@ -556,7 +556,7 @@ bot.command('ban',async(ctx)=>{
                                     parse_mode: 'HTML',
                                     reply_to_message_id: ctx.message.reply_to_message.message_id
                                 })
-                                return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
+                                return bot.telegram.sendMessage(userId, `Anda telah diblokir di ${ctx.message.chat.title} ${caption2}`)
                             })
                         }
                     }

@@ -512,6 +512,7 @@ bot.command('ban',async(ctx)=>{
                             ctx.reply(`${replyUsername} ${replyFromid} diblokir. ${caption2}`,{
                                 parse_mode: 'HTML',
                                 reply_to_message_id: ctx.message.reply_to_message.message_id
+                            })
                             return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
                         })
                     }else{

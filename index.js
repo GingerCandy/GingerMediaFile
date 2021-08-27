@@ -438,7 +438,7 @@ bot.command('ban',async(ctx)=>{
                                 const command = words.shift().slice(1);
                                 const userId = words.shift();
                                 const caption = words.join(" ");
-                                const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                                const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                                 await bot.telegram.callApi('banChatMember', {
                                 chat_id: ctx.message.chat.id,
@@ -457,7 +457,7 @@ bot.command('ban',async(ctx)=>{
                             const words = str.split(/ +/g);
                             const command = words.shift().slice(1);
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
@@ -468,7 +468,7 @@ bot.command('ban',async(ctx)=>{
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
                                 ctx.reply(`${replyUsername} ${replyFromid} diblokir. ${caption2}`,{
                                     parse_mode: 'HTML',
-                                    reply_to_message_id: ctx.message.message_id
+                                    reply_to_message_id: ctx.message.reply_to_message.message_id
                                 })
                                 return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
                             })
@@ -481,7 +481,7 @@ bot.command('ban',async(ctx)=>{
                             const command = words.shift().slice(1);
                             const userId = words.shift();
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
@@ -500,7 +500,7 @@ bot.command('ban',async(ctx)=>{
                         const words = str.split(/ +/g);
                         const command = words.shift().slice(1);
                         const caption = words.join(" ");
-                        const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                        const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
 
                         await bot.telegram.callApi('banChatMember', {
                         chat_id: ctx.message.chat.id,
@@ -511,8 +511,7 @@ bot.command('ban',async(ctx)=>{
                             let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
                             ctx.reply(`${replyUsername} ${replyFromid} diblokir. ${caption2}`,{
                                 parse_mode: 'HTML',
-                                reply_to_message_id: ctx.message.message_id
-                            })
+                                reply_to_message_id: ctx.message.reply_to_message.message_id
                             return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
                         })
                     }else{
@@ -524,7 +523,7 @@ bot.command('ban',async(ctx)=>{
                                 const command = words.shift().slice(1);
                                 const userId = words.shift();
                                 const caption = words.join(" ");
-                                const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                                const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
     
                                 await bot.telegram.callApi('banChatMember', {
                                 chat_id: ctx.message.chat.id,
@@ -543,7 +542,7 @@ bot.command('ban',async(ctx)=>{
                             const words = str.split(/ +/g);
                             const command = words.shift().slice(1);
                             const caption = words.join(" ");
-                            const caption2 = caption ? `\n<b>Karena: </b> ${caption}` : "";
+                            const caption2 = caption ? `\n<b>Karena:</b> ${caption}` : "";
     
                             await bot.telegram.callApi('banChatMember', {
                             chat_id: ctx.message.chat.id,
@@ -554,7 +553,7 @@ bot.command('ban',async(ctx)=>{
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
                                 ctx.reply(`${replyUsername} ${replyFromid} diblokir. ${caption2}`,{
                                     parse_mode: 'HTML',
-                                    reply_to_message_id: ctx.message.message_id
+                                    reply_to_message_id: ctx.message.reply_to_message.message_id
                                 })
                                 return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `${caption} \nAnda telah diblokir di ${ctx.message.chat.title}`)
                             })
@@ -598,7 +597,7 @@ bot.command('unban',async(ctx)=>{
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
                                 ctx.reply(`${replyUsername} ${replyFromid} tidak diblokir, boleh masuk kembali!`,{
-                                    reply_to_message_id: ctx.message.message_id
+                                    reply_to_message_id: ctx.message.reply_to_message.message_id
                                 })
                                 return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
                             })
@@ -619,7 +618,7 @@ bot.command('unban',async(ctx)=>{
                             let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                             let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
                             ctx.reply(`${replyUsername} ${replyFromid} tidak diblokir, boleh masuk kembali!`,{
-                                reply_to_message_id: ctx.message.message_id
+                                reply_to_message_id: ctx.message.reply_to_message.message_id
                             })
                             return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
                         })
@@ -640,7 +639,7 @@ bot.command('unban',async(ctx)=>{
                                 let replyUsername = ctx.message.reply_to_message.from.username ? `@${ctx.message.reply_to_message.from.username}` : `${ctx.message.reply_to_message.from.first_name}`;
                                 let replyFromid = ctx.message.reply_to_message.from.id ? `[${ctx.message.reply_to_message.from.id}]` : "";
                                 ctx.reply(`${replyUsername} ${replyFromid} tidak diblokir, boleh masuk kembali!`,{
-                                    reply_to_message_id: ctx.message.message_id
+                                    reply_to_message_id: ctx.message.reply_to_message.message_id
                                 })
                                 return bot.telegram.sendMessage(ctx.message.reply_to_message.from.id, `Anda tidak diblokir, boleh masuk kembali di ${ctx.message.chat.title}`)
                             })

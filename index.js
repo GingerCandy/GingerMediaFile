@@ -882,7 +882,7 @@ bot.command('sendchat',async(ctx)=>{
                 var memberstatus = await bot.telegram.getChatMember(group, ctx.from.id)
                 //console.log(memberstatus);
 
-                if(!memberstatus || memberstatus.status == 'creator' || memberstatus.status == 'administrator'){
+                if(memberstatus.status == 'creator' || memberstatus.status == 'administrator'){
                     const str = ctx.message.text;
                     const words = str.split(/ +/g);
                     const command = words.shift().slice(1);

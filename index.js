@@ -4,28 +4,28 @@ const rateLimit = require('telegraf-ratelimit')
 
 //limit send media
 const documentLimitConfig = {
-    window: 3000,
+    window: 60000,
     limit: 10,
     keyGenerator: function (ctx) {
-      return ctx.chat.id
+      return ctx.from.id
     },
-    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 3 detik, limit sekali kirim 10 media`)
+    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 1 menit, limit sekali kirim maksimal 10 media`)
 }
 const videoLimitConfig = {
-    window: 3000,
+    window: 60000,
     limit: 10,
     keyGenerator: function (ctx) {
-      return ctx.chat.id
+      return ctx.from.id
     },
-    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 3 detik, limit sekali kirim 10 media`)
+    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 1 menit, limit sekali kirim maksimal 10 media`)
 }
 const photoLimitConfig = {
-    window: 3000,
+    window: 60000,
     limit: 10,
     keyGenerator: function (ctx) {
-      return ctx.chat.id
+      return ctx.from.id
     },
-    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 3 detik, limit sekali kirim 10 media`)
+    onLimitExceeded: (ctx, next) => ctx.reply(`Anda tidak bisa mengirim sampai menunggu 1 menit, limit sekali kirim maksimal 10 media`)
 }
 
 const bot = new Telegraf(process.env.TOKEN)

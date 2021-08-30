@@ -42,7 +42,7 @@
             "value":""
         },
         "CHANNELJOIN":{
-            "description": "Masukkan ID channel grup untuk identifikasi BOT bisa membaca pengguna yang masuk",
+            "description": "Masukkan ID channel grup untuk identifikasi bot bisa membaca pengguna yang masuk",
             "value":""
         },
         "LINKCHANNEL":{

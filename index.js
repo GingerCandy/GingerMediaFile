@@ -821,7 +821,7 @@ bot.command('rem', (ctx) => {
         //console.log(text);
         if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.removeFile(text)
-            ctx.reply('✅ 1 media dihapus berhasil')
+            ctx.reply('❌ 1 media dihapus berhasil')
         }
     }
 })
@@ -837,7 +837,7 @@ bot.command('remgrp', (ctx) => {
         //console.log(text);
         if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.removeFileMedia(text)
-            ctx.reply('✅ Grup dihapus berhasil')
+            ctx.reply('❌ Grup dihapus berhasil')
         }
     }
 })
@@ -848,7 +848,7 @@ bot.command('clear',(ctx)=>{
     if(ctx.chat.type == 'private') {
         if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.deleteCollection()
-            ctx.reply('✅ Semua media dihapus berhasil')
+            ctx.reply('❌ Semua media dihapus berhasil')
         }
     }
 })
@@ -865,7 +865,7 @@ bot.command('remall', (ctx) => {
         let id = parseInt(text)
         if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             saver.removeUserFile(id)
-            ctx.reply('✅ Hapus semua media pada pengguna berhasil')
+            ctx.reply('❌ Hapus semua media pengguna berhasil')
         }
     }
 })

@@ -17,8 +17,7 @@ Klik di sini untuk menonton cara meng-host
 Detail yang diperlukan.</br>
 <code>TOKEN</code> - Dapatkan Token bot dari bot father.</br>
 <code>DOMAIN</code> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.</br>
-<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot).
-<b>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di config Heroku dan tinggal kasih angka di belakangnya</b></br>
+<code>ADMIN</code> - ID Akun Anda (jika Anda tidak dapat menemukannya menggunakan bot seperti @getmyid_bot). <b>Jika ada tambahan ADMIN1 dan ADMIN2 tulis sesuai contoh yang ada di config Heroku dan tinggal kasih angka di belakangnya</b></br>
 <code>botUSERNAME</code> - Nama pengguna bot Anda tanpa '@'.</br>
 <code>DB_URL</code> - Buat akun di https://www.mongodb.com/cloud/atlas , nama database - GingerMediaFile ,nama collection - GingerFileBackup. Klik Connect dan pilih 'Hubungkan aplikasi Anda'.copy tautan dan ganti "< password >" dengan kata sandi pengguna yang memiliki akses ke DB dan ganti "myFirstDatabase" untuk "GingerMediaFile". Kalau mau ubah sesuai keinginan nama databasenya ada di folder config.</br>
 <b>Tautan DB_URL</b>

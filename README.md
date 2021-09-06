@@ -1,5 +1,5 @@
 # GingerMediaFile
-Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara grup.
+Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, photo, dokumen dan bisa berbagi secara grup. Lewat 20 media Anda tidak bisa mengirim sampai 1 menit selesai.
 <hr>
 
 <a href="https://heroku.com/deploy?template=https://github.com/GingerCandy/GingerMediaFile">

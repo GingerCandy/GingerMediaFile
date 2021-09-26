@@ -102,7 +102,7 @@ const url4 = url2[1];
 
 // inline keyboard
 const inKey = [
-  [{text:'🔎 Pencarian',switch_inline_query:''},{text:'📎 Tautan',callback_data:'POP'}],
+  [{text:'📎 Tautan',callback_data:'POP'}],
   [{text: `${url3}`, url: `${url4}`}]
 ];
 

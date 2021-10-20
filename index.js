@@ -6,7 +6,7 @@ const limitConfig = {
     limit: 20,
     onLimitExceeded: (ctx, next) => {
         if(ctx.chat.type == 'private') {
-            ctx.reply('Silakan menunggu 3 detik untuk mengirim')
+            ctx.reply('Silakan menunggu 3 detik untuk mengirim.')
         }
     }
 }

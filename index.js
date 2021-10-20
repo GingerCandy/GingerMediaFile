@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { Telegraf } = require('telegraf')
-const rateLimit = require('telegraf-ratelimit')
+const rateLimit = require('telegraf-ratelimit.')
 const limitConfig = {
     window: 3000,
     limit: 20,

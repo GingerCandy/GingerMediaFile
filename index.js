@@ -1275,6 +1275,7 @@ bot.on('document', rateLimit(mediaLimitConfig), async(ctx) => {
                             ctx.reply(`${messagebanned(ctx)}`)
                         }
                     }else{
+                      if(ctx.chat.type == 'private') {
                         if(!profile2 || profile2.total_count == 0)
                             return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                                 parse_mode:'HTML',
@@ -1290,6 +1291,7 @@ bot.on('document', rateLimit(mediaLimitConfig), async(ctx) => {
                                     inline_keyboard:inKey2
                                 }
                             })
+                       }
                     }
                 })
             }else{
@@ -1606,6 +1608,7 @@ bot.on('video', rateLimit(mediaLimitConfig), async(ctx) => {
                             ctx.reply(`${messagebanned(ctx)}`)
                         }
                     }else{
+                      if(ctx.chat.type == 'private') {
                         if(!profile2 || profile2.total_count == 0)
                             return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                                 parse_mode:'HTML',
@@ -1621,6 +1624,7 @@ bot.on('video', rateLimit(mediaLimitConfig), async(ctx) => {
                                     inline_keyboard:inKey2
                                 }
                             })
+                       }
                     }
                 })
             }else{
@@ -1937,6 +1941,7 @@ bot.on('photo', rateLimit(mediaLimitConfig), async(ctx) => {
                             ctx.reply(`${messagebanned(ctx)}`)
                         }
                     }else{
+                      if(ctx.chat.type == 'private') {
                         if(!profile2 || profile2.total_count == 0)
                             return ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${welcomejoin(ctx)}`,{
                                 parse_mode:'HTML',
@@ -1952,6 +1957,7 @@ bot.on('photo', rateLimit(mediaLimitConfig), async(ctx) => {
                                     inline_keyboard:inKey2
                                 }
                             })
+                       }
                     }
                 })
             }else{

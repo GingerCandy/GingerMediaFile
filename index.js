@@ -1116,7 +1116,14 @@ bot.command('unbanchat', (ctx) => {
 })
 
 //saving documents to db and generating link
-bot.on('document', rateLimit(mediaLimitConfig), async(ctx) => {
+bot.on('document', async(ctx, next) => {
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 5_000);
+    });
+    await next();
+
     if(ctx.chat.type == 'private') {
         document = ctx.message.document
 
@@ -1449,7 +1456,13 @@ bot.on('document', rateLimit(mediaLimitConfig), async(ctx) => {
 })
 
 //video files
-bot.on('video', rateLimit(mediaLimitConfig), async(ctx) => {
+bot.on('video', async(ctx, next) => {
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 5_000);
+    });
+    await next();
     if(ctx.chat.type == 'private') {
         video = ctx.message.video
 
@@ -1782,7 +1795,13 @@ bot.on('video', rateLimit(mediaLimitConfig), async(ctx) => {
 })
 
 //photo files
-bot.on('photo', rateLimit(mediaLimitConfig), async(ctx) => {
+bot.on('photo', async(ctx, next) => {
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 5_000);
+    });
+    await next();
     if(ctx.chat.type == 'private') {
         photo = ctx.message.photo
         

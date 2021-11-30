@@ -89,7 +89,11 @@ const inKey2 = [
 
 //BOT START
 bot.start(async(ctx)=>{
-
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     if(ctx.chat.type == 'private') {
         msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -321,6 +325,11 @@ bot.start(async(ctx)=>{
 
 //DEFINING POP CALLBACK
 bot.action('POP',(ctx)=>{
+   await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     ctx.deleteMessage()
     ctx.reply(`${messagelink(ctx)}`,{
         parse_mode: 'HTML',
@@ -333,6 +342,11 @@ bot.action('POP',(ctx)=>{
 })
 
 bot.action('STARTUP',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     ctx.deleteMessage()
     const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
     if(!profile || profile.total_count == 0)
@@ -381,7 +395,11 @@ bot.action('PONG',async(ctx)=>{
 
 //GROUP COMMAND
 bot.command('reload',async(ctx)=>{
-
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     var botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
     var memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
     //console.log(memberstatus);
@@ -401,6 +419,11 @@ bot.command('reload',async(ctx)=>{
 })
 
 bot.command('kick',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
@@ -457,6 +480,11 @@ bot.command('kick',async(ctx)=>{
 })
 
 bot.command('ban',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
@@ -609,6 +637,11 @@ bot.command('ban',async(ctx)=>{
 })
 
 bot.command('unban',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
@@ -695,6 +728,11 @@ bot.command('unban',async(ctx)=>{
 })
 
 bot.command('pin',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
@@ -739,6 +777,11 @@ bot.command('pin',async(ctx)=>{
 })
 
 bot.command('unpin',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
@@ -777,6 +820,11 @@ bot.command('unpin',async(ctx)=>{
 })
 
 bot.command('send',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
@@ -836,7 +884,11 @@ bot.command('send',async(ctx)=>{
 
 //check account
 bot.command('getid',async(ctx)=>{
-  
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     if(ctx.chat.type == 'private') {
         const profile4 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
         await saver.checkBan(`${ctx.from.id}`).then((res) => {
@@ -862,7 +914,11 @@ bot.command('getid',async(ctx)=>{
 
 //remove files with file_id
 bot.command('rem', (ctx) => {
-
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     if(ctx.chat.type == 'private') {
         msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -878,7 +934,11 @@ bot.command('rem', (ctx) => {
 
 //remove files with mediaId
 bot.command('remgrp', (ctx) => {
-
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     if(ctx.chat.type == 'private') {
         msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -905,7 +965,11 @@ bot.command('clear',(ctx)=>{
 
 //removing all files sent by a user
 bot.command('remall', (ctx) => {
-
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     if(ctx.chat.type == 'private') {
         msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -921,51 +985,11 @@ bot.command('remall', (ctx) => {
 })
 
 bot.command('sendchat',async(ctx)=>{
-    groupDetails = await saver.getGroup().then((res)=>{
-        n = res.length
-        groupId = []
-        for (i = n-1; i >=0; i--) {
-            groupId.push(res[i].groupId)
-        }
-        async function sendchat() {
-            for (const group of groupId) {
-                var memberstatus = await bot.telegram.getChatMember(group, ctx.from.id)
-                //console.log(memberstatus);
-
-                if(memberstatus.status == 'creator' || memberstatus.status == 'administrator'){
-                    const str = ctx.message.text;
-                    const words = str.split(/ +/g);
-                    const command = words.shift().slice(1);
-                    const userId = words.shift();
-                    const caption = words.join(" ");
-                    ctx.reply('Terkirim!',{
-                        reply_to_message_id: ctx.message.message_id
-                    })
-                    return bot.telegram.sendMessage(userId, `${caption}`)
-                }
-            }
-        }
-
-        if(ctx.chat.type == 'private') {
-            if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
-                const str = ctx.message.text;
-                const words = str.split(/ +/g);
-                const command = words.shift().slice(1);
-                const userId = words.shift();
-                const caption = words.join(" ");
-                ctx.reply('Terkirim!',{
-                    reply_to_message_id: ctx.message.message_id
-                })
-
-                return bot.telegram.sendMessage(userId, `${caption}`)
-            }
-
-            sendchat()
-        }
-    })
-})
-
-bot.command('sendchat',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     groupDetails = await saver.getGroup().then((res)=>{
         n = res.length
         groupId = []
@@ -1063,6 +1087,11 @@ bot.command('broadcast',async(ctx)=>{
 
 //ban user with user id
 bot.command('banchat', (ctx) => {
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     if(ctx.chat.type == 'private') {
         msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -1086,6 +1115,11 @@ bot.command('banchat', (ctx) => {
 
 //unban user with user id
 bot.command('unbanchat', (ctx) => {
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     if(ctx.chat.type == 'private') {
         msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -2341,6 +2375,11 @@ bot.on('photo', async(ctx, next) => {
 })
 
 bot.command('stats',async(ctx)=>{
+    await new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            return resolve("Result");
+        }, 2_000);
+    });
     stats = await saver.getUser().then((res)=>{
         if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             ctx.reply(`📊 Total pengguna: <b>${res.length}</b>`,{parse_mode:'HTML'})

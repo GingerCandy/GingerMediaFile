@@ -64,13 +64,13 @@ function messagewelcome(ctx){
     return `${process.env.MESSAGEWELCOMEBOT}\n\n${today(ctx)}`;
 }
 function messagebanned(ctx){
-    return `⚠ ANDA DIBANNED KARENA MENYALAHGUNAKAN BOT, HUBUNGI ADMIN UNTUK BANDING.`;
+    return `⚠ YOU ARE BLOCKED FOR ABUSE OF A BOTT, CALL THE ADMIN FOR APPEAL.`;
 }
 function messagebotnoaddgroup(ctx){
-    return `Bot belum masuk channel/grup pemiliknya.`;
+    return `The bot has not entered the owner's channel/group.`;
 }
 function messagelink(ctx){
-    return `Kirim bot video, photo dan dokumen.`;
+    return `Send bot videos, photos and documents.`;
 }
 
 const url2 = process.env.LINKCHANNEL.split(/[\,-]+/);
@@ -147,7 +147,7 @@ bot.start(async(ctx)=>{
                         setTimeout(captionFunction, 1000)
                     }catch(error){
                         await ctx.deleteMessage()
-                        await ctx.reply(`Media tidak ditemukan atau sudah dihapus.`)
+                        await ctx.reply(`Media not found or has been removed.`)
                     }
                 }else{
                     let query2 = query;
@@ -192,7 +192,7 @@ bot.start(async(ctx)=>{
                         }
                     }catch(error){
                         await ctx.deleteMessage()
-                        await ctx.reply(`Media tidak ditemukan atau sudah dihapus.`)
+                        await ctx.reply(`Media not found or has been removed.`)
                     }
                 }
             }
@@ -299,7 +299,7 @@ bot.start(async(ctx)=>{
                                             }
                                         }else{
                                             await ctx.deleteMessage()
-                                            await ctx.reply(`Media tidak ditemukan atau sudah dihapus.`)
+                                            await ctx.reply(`Media not found or has been removed.`)
                                         }
                                     })
                                 }
@@ -364,7 +364,7 @@ bot.start(async(ctx)=>{
                                             }
                                         }else{
                                             await ctx.deleteMessage()
-                                            await ctx.reply(`Media tidak ditemukan atau sudah dihapus.`)
+                                            await ctx.reply(`Media not found or has been removed.`)
                                         }
                                     })
                                 }

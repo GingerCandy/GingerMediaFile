@@ -5,15 +5,18 @@ Bot menghasilkan tautan yang dapat dibagikan di dalam telegram untuk video, phot
 <a href="https://heroku.com/deploy?template=https://github.com/GingerCandy/GingerMediaFile">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
-<br>
-Ganti tautan dengan template github Anda.
 </br>
-
-<br>
+Ganti tautan dengan template github Anda.
+</br></br>
 <a href="https://youtu.be/zw_ijvhzomI">
 Klik di sini untuk menonton cara meng-host
 </a>
-<br>
+</br></br>
+Ganti mode jalaninnya dari web ke worker.
+</br>
+<a href="https://www.imagebam.com/view/ME5P87D" target="_blank"><img src="https://thumbs4.imagebam.com/8f/7e/1f/ME5P87D_t.jpg" alt="20211220_051345.jpg"/></a>
+</br></br>
+
 Detail yang diperlukan.</br>
 <code>TOKEN</code> - Dapatkan Token bot dari bot father.</br>
 <code>DOMAIN</code> - Sama dengan nama aplikasi yang Anda masukkan di Heroku.</br>

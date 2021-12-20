@@ -87,6 +87,7 @@ const inKey2 = [
   [{text: `${url3}`, url: `${url4}`}]
 ];
 
+
 //BOT START
 bot.start(async(ctx)=>{
     await new Promise((resolve, reject) =>{
@@ -383,9 +384,9 @@ bot.start(async(ctx)=>{
 })
 
 //DEFINING POP CALLBACK
-bot.action('POP',(ctx)=>{
-    ctx.deleteMessage()
-    ctx.reply(`${messagelink(ctx)}`,{
+bot.action('POP', async(ctx)=>{
+    await ctx.deleteMessage()
+    await ctx.reply(`${messagelink(ctx)}`,{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
@@ -933,21 +934,23 @@ bot.command('getid',async(ctx)=>{
         }, 1_000);
     });
   
-    if(ctx.chat.type == 'private') {
-        await ctx.deleteMessage()
+    if(ctx.chat.type == 'private') {       
         const profile4 = await bot.telegram.getUserProfilePhotos(ctx.from.id)
         await saver.checkBan(`${ctx.from.id}`).then(async res => {
             //console.log(res);
             if(res == true) {
                 if(ctx.chat.type == 'private') {
+                    await ctx.deleteMessage()
                     await ctx.reply(`${messagebanned(ctx)}`)
                 }
             }else{
                 if(!profile4 || profile4.total_count == 0){
+                    await ctx.deleteMessage()
                     await ctx.reply(`<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,{
                         parse_mode:'HTML'  
                     })
                 }else{
+                    await ctx.deleteMessage()
                     await ctx.replyWithPhoto(profile4.photos[0][0].file_id,{caption: `<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n<b>Username:</b> ${username(ctx)}\n<b>ID:</b> ${ctx.from.id}`,
                         parse_mode:'HTML'
                     })

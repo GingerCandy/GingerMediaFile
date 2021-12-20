@@ -12,10 +12,6 @@ Ganti tautan dengan template github Anda.
 Klik di sini untuk menonton cara meng-host
 </a>
 </br></br>
-Ganti mode jalaninnya dari web ke worker.
-</br>
-<a href="https://www.imagebam.com/view/ME5P87D" target="_blank"><img src="https://thumbs4.imagebam.com/8f/7e/1f/ME5P87D_t.jpg" alt="20211220_051345.jpg"/></a>
-</br></br>
 
 Detail yang diperlukan.</br>
 <code>TOKEN</code> - Dapatkan Token bot dari bot father.</br>

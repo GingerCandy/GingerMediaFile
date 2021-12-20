@@ -2501,12 +2501,10 @@ bot.command('stats',async(ctx)=>{
 })
  
 //heroku config
-//domain = `${process.env.DOMAIN}.herokuapp.com`
-//bot.launch({
-//    webhook:{
-//       domain:domain,
-//        port:Number(process.env.PORT) 
-//    }
-//})
-
-bot.launch()
+domain = `${process.env.DOMAIN}.herokuapp.com`
+bot.launch({
+    webhook:{
+       domain:domain,
+        port:Number(process.env.PORT) 
+    }
+})

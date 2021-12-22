@@ -381,6 +381,7 @@ bot.start(async(ctx)=>{
         //saving user details to the database
         await saver.saveUser(user)
     }
+    return next();
 })
 
 //DEFINING POP CALLBACK
@@ -394,7 +395,6 @@ bot.action('POP', async(ctx)=>{
             ]
         }
     })
-    return next();
 })
 
 bot.action('STARTUP', async(ctx)=>{

@@ -143,10 +143,10 @@ bot.start(async(ctx, next)=>{
                                 parse_mode:'HTML'
                             })
                         }
+                        await ctx.deleteMessage()
                         await ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup);
                         setTimeout(captionFunction, 1000)
                     }catch(error){
-                        await ctx.deleteMessage()
                         await ctx.reply(`Media not found or has been removed.`)
                     }
                 }else{
@@ -284,6 +284,7 @@ bot.start(async(ctx, next)=>{
                                                 await ctx.reply(`${messagebanned(ctx)}`)
                                             }
                                         }else{
+                                            await ctx.deleteMessage()
                                             await ctx.telegram.sendMediaGroup(ctx.chat.id, mediagroup);
                                             setTimeout(captionFunction, 1000)
                                         }
@@ -297,7 +298,6 @@ bot.start(async(ctx, next)=>{
                                                 await ctx.reply(`${messagebanned(ctx)}`)
                                             }
                                         }else{
-                                            await ctx.deleteMessage()
                                             await ctx.reply(`Media not found or has been removed.`)
                                         }
                                     })
@@ -1066,10 +1066,10 @@ bot.command('remgrp', async(ctx, next) => {
         let msgArray = msg.split(' ')
         msgArray.shift()
         let text = msgArray.join(' ')
-        console.log(text);
+        console.log(media);
         if(ctx.from.id == process.env.ADMIN || ctx.from.id == process.env.ADMIN1 || ctx.from.id == process.env.ADMIN2){
             await ctx.deleteMessage()
-            saver.removeFileMedia(text)
+            saver.removeFileMedia(media)
             await ctx.reply('❌ Media group deleted successfully')
         }
     }

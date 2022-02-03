@@ -43,9 +43,6 @@ Detail yang diperlukan.</br>
 ~ Bagaimana cara kirim pesan ke pengguna dari grup.</br>
 <code>/send</code> pesan. kirim pesan di grup.</br>
 
-~ Bagaimana cara kirim pesan ke pengguna dari bot.</br>
-<code>/sendchat</code> userID pesan. kirim ke pengguna melalui bot.</br>
-
 <h2>Cara menghapus file dari bot.</h2>
 Anda dapat menghapus file 4 cara.</br>
 
@@ -82,6 +79,12 @@ Anda dapat menghapus file 4 cara.</br>
 <b>Jika Anda ingin mendukung saya, ikuti saya di GitHub sebagai dukungan.</b>
 
 //Update
+
+HISTORY 12
+1. Admin digantikan dengan log grup/channel media.
+
+HISTORY 11
+1. Penambahan woker untuk mengatasi Heroku tertidur.
 
 HISTORY 10
 1. Jika media sudah ada akan ada pemberitahuan.

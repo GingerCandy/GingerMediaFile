@@ -1160,11 +1160,11 @@ bot.command('unbanchat', async(ctx) => {
 //saving documents to db and generating link
 bot.on('document', async(ctx) => {
 
-    await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          return resolve("Result");
-        }, 10_000);
-    });
+    //await new Promise((resolve, reject) => {
+    //    setTimeout(() => {
+    //      return resolve("Result");
+    //    }, 10_000);
+    //});
 
     if(ctx.chat.type == 'private') {
         var botStatus = await bot.telegram.getChatMember(process.env.LOG_CHANNEL, ctx.botInfo.id)
@@ -1253,17 +1253,17 @@ bot.on('document', async(ctx) => {
             })
         }
     }
-    return next();
+    //return next();
 })
 
 //video files
 bot.on('video', async(ctx) => {
 
-    await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          return resolve("Result");
-        }, 10_000);
-    });
+    //await new Promise((resolve, reject) => {
+    //    setTimeout(() => {
+    //      return resolve("Result");
+    //    }, 10_000);
+    //});
 
     if(ctx.chat.type == 'private') {
         var botStatus = await bot.telegram.getChatMember(process.env.LOG_CHANNEL, ctx.botInfo.id)
@@ -1352,17 +1352,17 @@ bot.on('video', async(ctx) => {
             })
         }
     }
-    return next();
+    //return next();
 })
 
 //photo files
 bot.on('photo', async(ctx) => {
 
-    await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          return resolve("Result");
-        }, 10_000);
-    });
+    //await new Promise((resolve, reject) => {
+    //    setTimeout(() => {
+    //      return resolve("Result");
+    //    }, 10_000);
+    //});
 
     if(ctx.chat.type == 'private') {
         var botStatus = await bot.telegram.getChatMember(process.env.LOG_CHANNEL, ctx.botInfo.id)
@@ -1451,7 +1451,7 @@ bot.on('photo', async(ctx) => {
             })
         }
     }
-    return next();
+    //return next();
 })
 
 bot.command('stats',async(ctx)=>{

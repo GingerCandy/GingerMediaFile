@@ -6,7 +6,7 @@
 	"keywords": ["telegram","filesaver","bot","nodejs"],
 	"env": {
         "TOKEN": {
-            "description": "Token bot disediakan oleh  @botfather",
+            "description": "Token bot disediakan oleh @botfather",
             "value":""
         },
         "DOMAIN":{
@@ -19,6 +19,10 @@
         },
         "BOTUSERNAME":{
             "description": "Masukkan nama pengguna bot Anda tanpa @ dan harus huruf kecil",
+            "value":""
+        },
+        "ADMIN":{
+            "description": "Masukkan id Admin",
             "value":""
         },
         "LOG_CHANNEL":{

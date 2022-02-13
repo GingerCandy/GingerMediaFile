@@ -1122,10 +1122,10 @@ bot.on('document', async(ctx) => {
     //    }, 10_000);
     //});
 
-    if(ctx.chat.type == 'private') {
+     if(ctx.chat.type == 'private') {
         if(ctx.from.id == Number(process.env.ADMIN) || ctx.from.id == Number(process.env.ADMIN1) || ctx.from.id == Number(process.env.ADMIN2)){
             let document = ctx.message.document
-    
+
             if(ctx.message.media_group_id == undefined){
                 var tag = `✔️ Document save`;
                 var mediaId = ``;
@@ -1141,7 +1141,7 @@ bot.on('document', async(ctx) => {
                     var exstension2 = document.file_name;
                     var regex2 = /\.[A-Za-z0-9]+$/gm
                     var doctext2 = exstension2.replace(regex2, '');
-        
+                    
                     var file_name2 = `${doctext2}`;
                     if(ctx.message.caption == undefined){
                         var caption2 =  ``;
@@ -1164,7 +1164,7 @@ bot.on('document', async(ctx) => {
                     var exstension2 = document.file_name;
                     var regex2 = /\.[A-Za-z0-9]+$/gm
                     var doctext2 = exstension2.replace(regex2, '');
-        
+                    
                     var file_name2 = `${doctext2}`;
                     if(ctx.message.caption == undefined){
                         var caption2 =  ``;
@@ -1191,7 +1191,7 @@ bot.on('document', async(ctx) => {
                         caption: `${tag} \n<b>From:</b> ${ctx.from.id}\n<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${document.file_size} B\n<b>File ID:</b> ${document.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} ${mediaId2} ${caption2}`,
                         parse_mode:'HTML'
                     })
-                    let fileDetails1 = {
+                    const fileDetails1 = {
                         file_name: file_name2,
                         userId:ctx.from.id,
                         file_id: document.file_id,
@@ -1316,8 +1316,8 @@ bot.on('photo', async(ctx) => {
 
     if(ctx.chat.type == 'private') {
         if(ctx.from.id == Number(process.env.ADMIN) || ctx.from.id == Number(process.env.ADMIN1) || ctx.from.id == Number(process.env.ADMIN2)){
-            let photo = ctx.message.photo[1]
-    
+            const photo = ctx.message.photo[1]
+
             if(ctx.message.media_group_id == undefined){
                 var tag = `✔️ Photo save`;
                 var mediaId = ``;
@@ -1333,7 +1333,7 @@ bot.on('photo', async(ctx) => {
                     var exstension2 = photo.file_name;
                     var regex2 = /\.[A-Za-z0-9]+$/gm
                     var photext2 = exstension2.replace(regex2, '');
-        
+                    
                     var file_name2 = `${photext2}`;
                     if(ctx.message.caption == undefined){
                         var caption2 =  ``;
@@ -1356,7 +1356,7 @@ bot.on('photo', async(ctx) => {
                     var exstension2 = photo.file_name;
                     var regex2 = /\.[A-Za-z0-9]+$/gm
                     var photext2 = exstension2.replace(regex2, '');
-        
+                    
                     var file_name2 = `${photext2}`;
                     if(ctx.message.caption == undefined){
                         var caption2 =  ``;
@@ -1383,7 +1383,7 @@ bot.on('photo', async(ctx) => {
                         caption: `${tag} \n<b>From:</b> ${ctx.from.id}\n<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${photo.file_size} B\n<b>File ID:</b> ${photo.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo.file_unique_id} ${mediaId2} ${caption2}`,
                         parse_mode:'HTML'
                     })
-                    let fileDetails1 = {
+                    const fileDetails1 = {
                         file_name: file_name2,
                         userId:ctx.from.id,
                         file_id: photo.file_id,

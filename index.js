@@ -684,7 +684,6 @@ bot.command('ban',async(ctx)=>{
 })
 
 bot.command('unban',async(ctx)=>{
-    
     const groupDetails = await saver.getGroup().then(async res => {
         const n = res.length
         const groupId = []
@@ -964,7 +963,6 @@ bot.command('rem', async(ctx) => {
 })
 
 bot.command('remgrp', async(ctx) => {
-
     if(ctx.chat.type == 'private') {
         const msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -993,7 +991,6 @@ bot.command('clear', async(ctx)=>{
 
 //removing all files sent by a user
 bot.command('remall', async(ctx) => {
-    
     if(ctx.chat.type == 'private') {
         const msg = ctx.message.text
         let msgArray = msg.split(' ')
@@ -1287,7 +1284,7 @@ bot.on('video', async(ctx,next) => {
                         caption: `${tag} \n<b>From:</b> ${ctx.from.id}\n<b>Name:</b> <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a>\n\n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${video.file_size} B\n<b>File ID:</b> ${video.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} ${mediaId2} ${caption2}`,
                         parse_mode:'HTML'
                     })
-                    let fileDetails1 = {
+                    const fileDetails1 = {
                         file_name: file_name2,
                         userId:ctx.from.id,
                         file_id: video.file_id,
@@ -1316,7 +1313,7 @@ bot.on('photo', async(ctx,next) => {
 
     if(ctx.chat.type == 'private') {
         if(ctx.from.id == Number(process.env.ADMIN) || ctx.from.id == Number(process.env.ADMIN1) || ctx.from.id == Number(process.env.ADMIN2)){
-            const photo = ctx.message.photo[1]
+            let photo = ctx.message.photo[1]
 
             if(ctx.message.media_group_id == undefined){
                 var tag = `✔️ Photo save`;
@@ -1409,7 +1406,6 @@ bot.command('stats',async(ctx)=>{
         }
     })
     const stats2 = await saver.getMedia().then(async res=>{
-
         if(ctx.from.id == Number(process.env.ADMIN) || ctx.from.id == Number(process.env.ADMIN1) || ctx.from.id == Number(process.env.ADMIN2)){
             await ctx.reply(`📊 Total media: <b>${res.length}</b>`,{parse_mode:'HTML'})
         }

@@ -18,7 +18,6 @@ db.connect((err) => {
 
 //ID Channel/Group
 const channelId = `${process.env.CHANNELJOIN}`;
-const logchannel = `${process.env.LOG_CHANNEL}`;
 
 function today(ctx){
     var today = new Date();

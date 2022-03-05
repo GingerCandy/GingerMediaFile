@@ -378,7 +378,7 @@ bot.start(async(ctx)=>{
 
 //DEFINING POP CALLBACK
 bot.action('POP', async(ctx)=>{
-    await ctx.deleteMessage(ctx.message.message_id)
+    await ctx.deleteMessage()
     await ctx.reply(`${messagelink(ctx)}`,{
         parse_mode: 'HTML',
         reply_markup:{
@@ -390,7 +390,7 @@ bot.action('POP', async(ctx)=>{
 })
 
 bot.action('STARTUP', async(ctx)=>{
-    await ctx.deleteMessage(ctx.message.message_id)
+    await ctx.deleteMessage()
     const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
     if(!profile || profile.total_count == 0)
         return await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{

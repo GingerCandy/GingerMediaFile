@@ -1116,6 +1116,7 @@ bot.command('unbanchat', async(ctx) => {
     
 })
 
+//saving documents to db and generating link
 bot.on('document', async(ctx, next) => {
     await new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -1182,7 +1183,9 @@ bot.on('document', async(ctx, next) => {
                         reply_to_message_id: ctx.message.message_id
                     })
                 }else{
-                    await ctx.reply(`${tag} \n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${document.file_size} B\n<b>File ID:</b> ${document.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} ${mediaId2}`,{
+                    await ctx.replyWithDocument(document.file_id, {
+                        chat_d: ctx.from.id,
+                        caption: `${tag} \n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${document.file_size} B\n<b>File ID:</b> ${document.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${document.file_unique_id} ${mediaId2}`,
                         parse_mode: 'HTML',
                         disable_web_page_preview: true,
                         reply_to_message_id: ctx.message.message_id
@@ -1194,7 +1197,7 @@ bot.on('document', async(ctx, next) => {
                     })
                     const fileDetails1 = {
                         file_name: file_name2,
-                        userId:ctx.from.id,
+                        userId: ctx.from.id,
                         file_id: document.file_id,
                         mediaId: ctx.message.media_group_id,
                         caption: ctx.message.caption,
@@ -1277,7 +1280,9 @@ bot.on('video', async(ctx, next) => {
                         reply_to_message_id: ctx.message.message_id
                     })
                 }else{
-                    await ctx.reply(`${tag} \n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${video.file_size} B\n<b>File ID:</b> ${video.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} ${mediaId2}`,{
+                    await ctx.replyWithVideo(video.file_id, {
+                        chat_d: ctx.from.id,
+                        caption: `${tag} \n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${video.file_size} B\n<b>File ID:</b> ${video.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${video.file_unique_id} ${mediaId2}`,
                         parse_mode: 'HTML',
                         disable_web_page_preview: true,
                         reply_to_message_id: ctx.message.message_id
@@ -1289,7 +1294,7 @@ bot.on('video', async(ctx, next) => {
                     })
                     const fileDetails1 = {
                         file_name: file_name2,
-                        userId:ctx.from.id,
+                        userId: ctx.from.id,
                         file_id: video.file_id,
                         mediaId: ctx.message.media_group_id,
                         caption: ctx.message.caption,
@@ -1372,7 +1377,9 @@ bot.on('photo', async(ctx, next) => {
                         reply_to_message_id: ctx.message.message_id
                     })
                 }else{
-                    await ctx.reply(`${tag} \n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${photo.file_size} B\n<b>File ID:</b> ${photo.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo.file_unique_id} ${mediaId2}`,{
+                    await ctx.replyWithPhoto(photo.file_id, {
+                        chat_d: ctx.from.id,
+                        caption: `${tag} \n<b>Name file:</b> ${file_name2}\n<b>Size:</b> ${photo.file_size} B\n<b>File ID:</b> ${photo.file_unique_id} ${mediaId} \n\nhttps://t.me/${process.env.BOTUSERNAME}?start=${photo.file_unique_id} ${mediaId2}`,
                         parse_mode: 'HTML',
                         disable_web_page_preview: true,
                         reply_to_message_id: ctx.message.message_id
@@ -1384,7 +1391,7 @@ bot.on('photo', async(ctx, next) => {
                     })
                     const fileDetails1 = {
                         file_name: file_name2,
-                        userId:ctx.from.id,
+                        userId: ctx.from.id,
                         file_id: photo.file_id,
                         mediaId: ctx.message.media_group_id,
                         caption: ctx.message.caption,

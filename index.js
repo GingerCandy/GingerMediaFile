@@ -1,6 +1,9 @@
 require('dotenv').config()
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf(process.env.TOKEN)
+const bot = new Telegraf(process.env.TOKEN, {
+    handlerTimeout: 90_000,
+ });
+ 
 
 process.env.TZ = "Asia/Jakarta";
 

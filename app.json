@@ -22,7 +22,7 @@
             "value":""
         },
         "ADMIN":{
-            "description": "Masukkan id Admin",
+            "description": "Masukkan id Admin, ada admin lain tambah seperti ini 1234 2453",
             "value":""
         },
         "LOG_CHANNEL":{

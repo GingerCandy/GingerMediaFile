@@ -29,10 +29,6 @@
             "description": "Buat saluran pribadi dan masukkan id saluran untuk memantau file dan mendapatkan data pengguna dan file",
             "value":""
         },
-        "CAPTIONLINK":{
-            "description": "Caption ketika link media yang dikirim di tekan",
-            "value":""
-        },
         "WELCOMEJOINBOT":{
             "description": "Masukkan pesan sebelum pengguna bergabung",
             "value":""

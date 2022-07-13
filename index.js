@@ -81,6 +81,12 @@ const inKey = [
   [{text: `${url3}`, url: `${url4}`}]
 ];
 
+const inKey2 = [
+    [{text: `${url3}`, url: `${url4}`}]
+  ];
+
+bot.catch(e => console.error(e))
+
 //BOT START
 bot.start(async(ctx)=>{
     if(ctx.chat.type == 'private') {
@@ -173,14 +179,14 @@ bot.start(async(ctx)=>{
                                         parse_mode:'HTML',
                                         disable_web_page_preview: true,
                                         reply_markup:{
-                                            inline_keyboard:inKey
+                                            inline_keyboard:inKey2
                                         }
                                     })
                                     await ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
                                         parse_mode:'HTML',
                                         disable_web_page_preview: true,
                                         reply_markup:{
-                                            inline_keyboard:inKey
+                                            inline_keyboard:inKey2
                                         }
                                     })
                             }
@@ -341,14 +347,14 @@ bot.start(async(ctx)=>{
                                                 parse_mode:'HTML',
                                                 disable_web_page_preview: true,
                                                 reply_markup:{
-                                                    inline_keyboard:inKey
+                                                    inline_keyboard:inKey2
                                                 }
                                             })
                                             await ctx.replyWithPhoto(profile3.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
                                                 parse_mode:'HTML',
                                                 disable_web_page_preview: true,
                                                 reply_markup:{
-                                                    inline_keyboard:inKey
+                                                    inline_keyboard:inKey2
                                                 }
                                             })
                                     }
@@ -473,23 +479,45 @@ bot.action('POP', async(ctx)=>{
 })
 
 bot.action('STARTUP', async(ctx)=>{
+    let str = process.env.ADMIN;
+    let result = str.includes(ctx.from.id);
+    
     await ctx.deleteMessage()
-    const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
-    if(!profile || profile.total_count == 0)
-        return await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
-            parse_mode:'HTML',
-            disable_web_page_preview: true,
-            reply_markup:{
-                inline_keyboard:inKey
-            }
-        })
-        await ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
-            parse_mode:'HTML',
-            disable_web_page_preview: true,
-            reply_markup:{
-                inline_keyboard:inKey
-            }
-        })
+    if(result == true){
+        const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+        if(!profile || profile.total_count == 0)
+            return await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey
+                }
+            })
+            await ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey
+                }
+            })
+    }else{
+        const profile = await bot.telegram.getUserProfilePhotos(ctx.from.id)
+        if(!profile || profile.total_count == 0)
+            return await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,{
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey2
+                }
+            })
+            await ctx.replyWithPhoto(profile.photos[0][0].file_id,{caption: `<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\n${messagewelcome(ctx)}`,
+                parse_mode:'HTML',
+                disable_web_page_preview: true,
+                reply_markup:{
+                    inline_keyboard:inKey2
+                }
+            })
+    }
 })
 
 //TEST BOT
@@ -1534,8 +1562,6 @@ bot.command('stats',async(ctx)=>{
         })
     })
 })
-
-bot.catch(e => console.error(e))
  
 //heroku config
 domain = `${process.env.DOMAIN}.herokuapp.com`

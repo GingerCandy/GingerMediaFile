@@ -472,7 +472,7 @@ bot.action('POP', async(ctx)=>{
         parse_mode: 'HTML',
         reply_markup:{
             inline_keyboard: [
-                [{text:'Batal',callback_data:'STARTUP'}]
+                [{text:'❌ CANCEL',callback_data:'STARTUP'}]
             ]
         }
     })
